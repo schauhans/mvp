@@ -1,16 +1,16 @@
 {
   "brand": "ALL",
-  "category": "beauty",
+  "category": "",
   "time_window": {
     "start_date": "2026-01-01",
     "end_date": "2026-03-31"
   },
-  "max_posts": 50,
-  "top_k_trends": 5,
+  "max_posts": 100,
+  "top_k_trends": 8,
   "min_posts_per_trend": 2,
   "llm": {
-    "enabled": true,
-    "model": "gpt-4.1-mini"
+    "enabled": false,
+    "model": "claude-haiku-4-5-20251001"
   },
-  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Your job is to turn retrieved Xiaohongshu posts for one brand/category and one time window into reviewable Type-B trend objects that can be audited by a human reviewer. Work only with the provided posts. Do not use outside knowledge, assumptions, or invented examples. First, identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behavior patterns, or language signals. Then ensure trend distinctness: trends should be meaningfully different from each other and not just renamed duplicates. If clusters overlap heavily, merge them or lower confidence rather than forcing extra trends. For each trend, generate: (1) a concise trend label, (2) a one-sentence summary of what the trend represents, (3) evidence linked to real posts, including supporting post IDs and short snippets, (4) metrics computed only from retrieved data, including post_count and total_engagement, and (5) confidence as low, medium, or high. Confidence should be high only when evidence is coherent and sufficient; medium when signal is present but partially mixed; low when sparse, weak, or ambiguous. Include explicit ai_reasoning that explains why those posts belong together and why confidence was chosen. Never claim evidence that is not directly present in the retrieved posts. If evidence is weak or ambiguous, output fewer trends and clearly state uncertainty."
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts."
 }

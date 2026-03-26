@@ -1,0 +1,133 @@
+{
+  "run_timestamp": "2026-03-26T16:28:41.485772",
+  "model": "claude-haiku-4-5-20251001",
+  "brand": "Loewe",
+  "city": "Shanghai",
+  "week": "2026-03-25",
+  "prompt_template": "You are a luxury retail trend intelligence assistant generating Client Insight Briefs for Client Advisors (CAs) at high-end fashion maisons in China.\n\nYour output is a structured trend card that a CA can scan in under 60 seconds and immediately act on in a client conversation. Everything you write must pass a single test: could a CA read this, pick up their phone, and open a WeChat conversation with a VIP client within 5 minutes?\n\nLANGUAGE RULE — CRITICAL: Write the entire card in English only. The ONE exception is the Conversation Starter section, which must include a Chinese version (first) followed by an English version. Do not use Chinese characters, bilingual labels, or Chinese text anywhere else in the card — not in section headers, not in data labels, not in the confidence note, not in the maison lens.\n\n## CARD FORMAT — OUTPUT EXACTLY THIS STRUCTURE:\n\n### [Trend Name in English]\n**Category:** [category] | **Relevance:** [brand] · [month, year]\n\n---\n\n**TREND OVERVIEW**\n[2–3 sentences. What is happening on XHS right now? Describe the visual or behavioral signal. Plain language a CA can repeat out loud. No jargon.]\n\n---\n\n**DATA SIGNAL**\n- Engagement rate: [X]% (vs. XHS fashion category avg ~4.5% · [N] posts · [month year])\n- Post growth: +[X]% (week-on-week)\n- Brand relevance: [high/medium/low]\n\n**CONFIDENCE NOTE**\n[use exactly the confidence level you are given] — [one sentence on methodology; if data is synthetic write: \"Synthetic data — for prototype testing only\"]\n\n---\n\n**CLIENT MATCH**\n**Best-fit persona:** [persona name from input]\n**Who they are:** [copy persona summary exactly from input]\n**Why this trend fits:** [copy match rationale exactly from input]\n**Match score:** [score]/10\n\n**This trend is NOT for:** [one sentence naming the client type to exclude — base this on the persona's avoid profile provided in the input]\n\n---\n\n**CONVERSATION STARTER**\n\nChinese:\n「[2–3 sentences in Chinese. WeChat-intimate register. Structure: personal observation → relevance to client → open question. Tactile/sensory language. Sound like a trusted friend, not a brand brief.]」\n\nEnglish:\n\"[Warm, specific. Never begin with 'I've noticed a lot of our clients...' or 'Many of our VIP customers...'. Sound like a real person.]\"\n\n---\n\n## RULES:\n- LANGUAGE: All content is in English. Only the Conversation Starter section contains Chinese (first) and English (second).\n- ALWAYS contextualize every metric: show figure + benchmark + sample size + date. No floating numbers.\n- The confidence level in CONFIDENCE NOTE must exactly match the value provided in the input — do not substitute your own assessment.\n- CONFIDENCE NOTE must explain the methodology, not just state the level.\n- The 'NOT for' statement is required — draw from the persona's avoid field provided.\n- Never write conversation starters that begin with 'I've noticed a lot of our clients...'\n- The persona summary and match rationale must be used as provided — do not rewrite them.\n- Do not pad. Every sentence must inform a decision or enable a conversation.\n",
+  "retrieved_source": "trend_shortlist.json",
+  "retrieved_record_ids": [
+    "t20",
+    "t04",
+    "t18",
+    "t19",
+    "t01"
+  ],
+  "decision_logic": {
+    "type": "LLM-first",
+    "criteria": [
+      "City match: trend['city'] must equal the selected store city",
+      "Brand relevance: trend['brand_relevance'] must be 'high'; 'medium' accepted only if fewer than 3 high-relevance trends exist for the city",
+      "Composite score: ranked by weighted sum of engagement_rate (×40), growth_pct (×30), post_count normalised (×30); top 3 selected"
+    ],
+    "evidence_requirements": [
+      "Minimum post_count >= 3,000 to be considered as evidence",
+      "Engagement rate >= 0.08 required; trends below this threshold are flagged LOW confidence regardless of other signals"
+    ],
+    "failure_types_defined": {
+      "MISSING_EVIDENCE": {
+        "name": "FAILURE TYPE 1 — Missing Evidence",
+        "trigger": "Fewer than 3 of these fields are present: post_count, engagement_rate, week_on_week_growth, cluster_summary",
+        "consequence": "Card cannot make evidence-anchored claims; 'Why it's moving' would be invented. Card is skipped."
+      },
+      "MISSING_CONTEXT": {
+        "name": "FAILURE TYPE 2 — Missing Context",
+        "trigger": "city or target_age_range is absent from the trend object",
+        "consequence": "'Who to bring it up with' and city-specific tone cannot be applied — card becomes generic and unusable for a CA. Card is skipped."
+      },
+      "WEAK_SIGNAL": {
+        "name": "FAILURE TYPE 3 — Weak Signal",
+        "trigger": "week_on_week_growth is under +10% AND engagement_rate is under 0.08",
+        "consequence": "Trend has insufficient momentum to recommend this week — surfacing it risks wasting client interaction capital on something not yet proven. Card is skipped."
+      }
+    },
+    "failure_mode_summary": "Three named failure types are checked before card generation. MISSING_EVIDENCE: fewer than 3 evidence fields present. MISSING_CONTEXT: city field absent. WEAK_SIGNAL: growth under +10% AND engagement under 0.08. Any failure skips the card and logs the reason. If fewer than 3 valid trends remain, the agent lowers brand_relevance threshold to include 'medium' trends.",
+    "used_fallback_to_medium_relevance": false,
+    "excluded_trends": []
+  },
+  "selected_trends": [
+    {
+      "trend_id": "t18",
+      "trend_label": "Top Handle Bag Elegance",
+      "decision_output": "SELECTED",
+      "confidence": "LOW",
+      "composite_score": 11.197,
+      "evidence_used": {
+        "post_count": 11,
+        "engagement_rate": 0.12909,
+        "week_on_week_growth": "+20%",
+        "brand_relevance": "high",
+        "top_post_example": "total_engagement: 142000",
+        "trending_hashtags": [
+          "total_saves: 23000",
+          "Lady Dior永远是第一选择",
+          "文化活动、晚宴、开幕式——手提包才是真正的场合之选"
+        ]
+      },
+      "matched_persona": {
+        "persona_id": "p02",
+        "persona_name": "The Quiet Aesthete",
+        "persona_summary": "Creative director, curator, or cultural professional who wears Loewe as an extension of their visual identity. Logoless luxury is a deliberate statement about taste — they want to be recognised by those who know.",
+        "match_rationale": "The trend demonstrates exceptional cultural engagement through creators attending formal cultural events and galas, perfectly aligning with the Quiet Aesthete's identity as a cultural professional who uses luxury as a statement of refined taste. The emphasis on 'heritage and appropriateness' in formal occasions, combined with high-intent engagement (23000 saves), reflects someone who selects pieces as deliberate extensions of their visual identity rather than status symbols. The Lady Dior positioning as the sophisticated choice for cultural events resonates with someone who values pieces that are recognized by those with cultivated taste.",
+        "match_score": 9,
+        "avoid": "Anything with visible logos or overt branding, overly commercial or widely recognisable pieces, trend-chasing"
+      },
+      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Loewe\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Top Handle Bag Elegance\nCategory: leather goods\nCluster summary: Outstanding brand alignment with 'Lady Dior永远是第一选择' and cultural context references. Highest engagement at 142000 with 23000 saves showing exceptional purchase intent. Creators like 'cultural_luxe_bj' attending '文化活动、晚宴、开幕式' perfectly match Dior's affluent, culturally-engaged clientele. The formal occasion positioning in '正式场合的最佳拍档' enables sophisticated client conversations about heritage and appropriateness.\nPost count: 11\nEngagement rate: 12.9% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +20%\nBrand relevance: high\nConfidence (use this exact value in the card): LOW\nConfidence methodology: Post count (11) or engagement rate (12.9%) below threshold (requires ≥3,000 posts, ≥8% engagement). Source: live XHS data scraped via DrissionPage.\nTop post example: total_engagement: 142000\nTrending hashtags: total_saves: 23000, Lady Dior永远是第一选择, 文化活动、晚宴、开幕式——手提包才是真正的场合之选\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Quiet Aesthete\nPersona summary: Creative director, curator, or cultural professional who wears Loewe as an extension of their visual identity. Logoless luxury is a deliberate statement about taste — they want to be recognised by those who know.\nWhy this trend fits: The trend demonstrates exceptional cultural engagement through creators attending formal cultural events and galas, perfectly aligning with the Quiet Aesthete's identity as a cultural professional who uses luxury as a statement of refined taste. The emphasis on 'heritage and appropriateness' in formal occasions, combined with high-intent engagement (23000 saves), reflects someone who selects pieces as deliberate extensions of their visual identity rather than status symbols. The Lady Dior positioning as the sophisticated choice for cultural events resonates with someone who values pieces that are recognized by those with cultivated taste.\nMatch score: 9/10\nPersona avoids: Anything with visible logos or overt branding, overly commercial or widely recognisable pieces, trend-chasing\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
+    },
+    {
+      "trend_id": "t20",
+      "trend_label": "Lady Dior Styling and Heritage",
+      "decision_output": "SELECTED",
+      "confidence": "LOW",
+      "composite_score": 10.901,
+      "evidence_used": {
+        "post_count": 13,
+        "engagement_rate": 0.12154,
+        "week_on_week_growth": "+20%",
+        "brand_relevance": "high",
+        "top_post_example": "Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史",
+        "trending_hashtags": [
+          "total_engagement: 158000",
+          "total_saves: 26200"
+        ]
+      },
+      "matched_persona": {
+        "persona_id": "p03",
+        "persona_name": "The Considered Upgrader",
+        "persona_summary": "Client who has moved on from logo-driven luxury and is actively seeking brands that reflect a more evolved taste. Loewe is aspirational to them — they're building their first Loewe wardrobe deliberately.",
+        "match_rationale": "The Lady Dior heritage narrative—spanning 30 years from Princess Diana to present and framed as 'a history of female power'—provides exactly the kind of provenance storytelling that guides a Considered Upgrader's investment decisions. This trend offers accessible entry into a storied leather goods category with clear historical legitimacy and cultural resonance, eliminating the gatekeeping risk of niche knowledge while validating an aspirational purchase.",
+        "match_score": 8,
+        "avoid": "Pieces that require deep brand knowledge to appreciate without guidance, niche limited editions before trust is established"
+      },
+      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Loewe\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Lady Dior Styling and Heritage\nCategory: leather goods\nCluster summary: Strong freshness with posts spanning March 10-23, including March 23 being very recent. The heritage narrative perfectly fits Dior's brand positioning, with snippets like 'Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史' connecting to Dior's royal heritage and feminine empowerment codes. High-quality creators like 'fashion_editor_paris' align with preferred luxury editorial sources. Exceptional materiality with 158,000 total engagement across 13 posts and 26,200 saves demonstrates sustained client interest.\nPost count: 13\nEngagement rate: 12.2% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +20%\nBrand relevance: high\nConfidence (use this exact value in the card): LOW\nConfidence methodology: Post count (13) or engagement rate (12.2%) below threshold (requires ≥3,000 posts, ≥8% engagement). Source: live XHS data scraped via DrissionPage.\nTop post example: Lady Dior三十年——从戴安娜王妃到现在，这只包的历史就是一部女性力量史\nTrending hashtags: total_engagement: 158000, total_saves: 26200\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Considered Upgrader\nPersona summary: Client who has moved on from logo-driven luxury and is actively seeking brands that reflect a more evolved taste. Loewe is aspirational to them — they're building their first Loewe wardrobe deliberately.\nWhy this trend fits: The Lady Dior heritage narrative—spanning 30 years from Princess Diana to present and framed as 'a history of female power'—provides exactly the kind of provenance storytelling that guides a Considered Upgrader's investment decisions. This trend offers accessible entry into a storied leather goods category with clear historical legitimacy and cultural resonance, eliminating the gatekeeping risk of niche knowledge while validating an aspirational purchase.\nMatch score: 8/10\nPersona avoids: Pieces that require deep brand knowledge to appreciate without guidance, niche limited editions before trust is established\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
+    },
+    {
+      "trend_id": "t19",
+      "trend_label": "Cannage Quilting Detail Focus",
+      "decision_output": "SELECTED",
+      "confidence": "LOW",
+      "composite_score": 10.75,
+      "evidence_used": {
+        "post_count": 10,
+        "engagement_rate": 0.118,
+        "week_on_week_growth": "+20%",
+        "brand_relevance": "high",
+        "top_post_example": "Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了",
+        "trending_hashtags": [
+          "total_engagement: 118000",
+          "post date: 2026-03-23"
+        ]
+      },
+      "matched_persona": {
+        "persona_id": "p01",
+        "persona_name": "The Craft Connoisseur",
+        "persona_summary": "Design-literate professional who entered luxury through architecture, ceramics, or art. Chooses Loewe specifically for its craft narrative and artisanal leather work — the intrecciato and puzzle construction are the point, not a bonus.",
+        "match_rationale": "This trend's core appeal is the artisanal heritage behind Cannage quilting—directly tracing the pattern to Monsieur Dior's original chair inspiration and cultural provenance. The Craft Connoisseur is precisely the audience who resonates with this layered narrative of material craftsmanship and design lineage, valuing the documented story of construction over logo visibility. The engagement from editorial sources focused on 'cultural depth' (cultural_luxe_bj) confirms this attracts design-literate professionals who prize substantive craft narratives.",
+        "match_score": 9,
+        "avoid": "Logo-heavy or status-signaling pieces, anything trend-forward without craft substance, fast seasonal novelties"
+      },
+      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Loewe\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Cannage Quilting Detail Focus\nCategory: leather goods\nCluster summary: This trend shows strong recent momentum with posts from March 12-23, including March 23 being just 2 days ago. The content perfectly aligns with Dior's heritage codes, evidenced by snippets like 'Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了' which connects to Monsieur Dior's original design inspiration. The creators include 'couture_observer_cn' and 'cultural_luxe_bj', matching Dior's preferred luxury editorial sources. With 118,000 total engagement across 10 posts and high save rates (19,200 saves), this represents sustained interest rather than a viral spike.\nPost count: 10\nEngagement rate: 11.8% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +20%\nBrand relevance: high\nConfidence (use this exact value in the card): LOW\nConfidence methodology: Post count (10) or engagement rate (11.8%) below threshold (requires ≥3,000 posts, ≥8% engagement). Source: live XHS data scraped via DrissionPage.\nTop post example: Cannage图案的灵感来源——Dior先生椅子上的藤编，太有文化底蕴了\nTrending hashtags: total_engagement: 118000, post date: 2026-03-23\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Craft Connoisseur\nPersona summary: Design-literate professional who entered luxury through architecture, ceramics, or art. Chooses Loewe specifically for its craft narrative and artisanal leather work — the intrecciato and puzzle construction are the point, not a bonus.\nWhy this trend fits: This trend's core appeal is the artisanal heritage behind Cannage quilting—directly tracing the pattern to Monsieur Dior's original chair inspiration and cultural provenance. The Craft Connoisseur is precisely the audience who resonates with this layered narrative of material craftsmanship and design lineage, valuing the documented story of construction over logo visibility. The engagement from editorial sources focused on 'cultural depth' (cultural_luxe_bj) confirms this attracts design-literate professionals who prize substantive craft narratives.\nMatch score: 9/10\nPersona avoids: Logo-heavy or status-signaling pieces, anything trend-forward without craft substance, fast seasonal novelties\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
+    }
+  ],
+  "next_step_suggestion": "Share the 3 trend cards with the Loewe Shanghai CA team for review. 0 card(s) are HIGH confidence and ready for client conversations. Run log_feedback.py after team review."
+}

@@ -1,0 +1,38 @@
+{
+  "run_id": "run_0009",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "ALL",
+  "category": "ALL",
+  "time_window": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 30,
+    "records_retrieved": 0
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-26T05:45:36.760890+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": false,
+    "llm_model": null,
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 0,
+    "llm_errors": []
+  },
+  "trend_objects": [],
+  "schema_file": "outputs/trend_object_schema.json"
+}

@@ -1,0 +1,604 @@
+{
+  "run_id": "run_0011",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "ALL",
+  "category": "",
+  "time_window": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 30,
+    "records_retrieved": 30
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-26T06:44:10.639777+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": false,
+    "llm_model": null,
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 5,
+    "llm_errors": []
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: Dior春夏最后的购买指南，现在还来得及；Dior x 中国传统纹样，东西方对话做到了极致.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['dior', 'bar', '投资单品', '奢侈品开箱', 'lady'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "f030",
+          "f026",
+          "f019",
+          "f001",
+          "f012"
+        ],
+        "snippets": [
+          "Dior春夏最后的购买指南，现在还来得及",
+          "Dior x 中国传统纹样，东西方对话做到了极致",
+          "Dior Lady Dior 2026新配色，哪个最值得入手",
+          "Dior这季的软西装太绝了，穿上就是巴黎女人",
+          "从Dior秀场到上海精品店，这件外套我等了三个月"
+        ],
+        "posts": [
+          {
+            "post_id": "f030",
+            "title": "Dior春夏最后的购买指南，现在还来得及",
+            "date": "2026-03-25",
+            "brand": "Dior",
+            "likes": 31200,
+            "comments": 1580,
+            "saves": 9400,
+            "creator": "精品店观察员",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f026",
+            "title": "Dior x 中国传统纹样，东西方对话做到了极致",
+            "date": "2026-03-23",
+            "brand": "Dior",
+            "likes": 23100,
+            "comments": 1050,
+            "saves": 7800,
+            "creator": "东西方时尚对话",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f019",
+            "title": "Dior Lady Dior 2026新配色，哪个最值得入手",
+            "date": "2026-03-23",
+            "brand": "Dior",
+            "likes": 19600,
+            "comments": 940,
+            "saves": 7200,
+            "creator": "Dior的爱好者",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f001",
+            "title": "Dior这季的软西装太绝了，穿上就是巴黎女人",
+            "date": "2026-03-20",
+            "brand": "Dior",
+            "likes": 12400,
+            "comments": 580,
+            "saves": 3200,
+            "creator": "巴黎时尚观察",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f012",
+            "title": "从Dior秀场到上海精品店，这件外套我等了三个月",
+            "date": "2026-03-16",
+            "brand": "Dior",
+            "likes": 11600,
+            "comments": 508,
+            "saves": 3800,
+            "creator": "奢品生活家",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 6,
+        "total_engagement": 146870,
+        "avg_engagement": 24478.33,
+        "total_likes": 107700,
+        "total_comments": 5070,
+        "total_saves": 34100,
+        "top_keywords": [
+          "dior",
+          "bar",
+          "投资单品",
+          "奢侈品开箱",
+          "lady"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-26T06:44:10.637397+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t02",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: BV Jodie还是Andiamo？2026年的选择题；Bottega Veneta的无声奢华，今年为什么这么火.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['bv', 'jodie', 'andiamo', 'logo', 'lv'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "f017",
+          "f007",
+          "f015",
+          "f018"
+        ],
+        "snippets": [
+          "BV Jodie还是Andiamo？2026年的选择题",
+          "Bottega Veneta的无声奢华，今年为什么这么火",
+          "LV Capucines今年为什么突然火了？深度解析",
+          "BV编织工艺的秘密，为什么摸起来和别人不一样"
+        ],
+        "posts": [
+          {
+            "post_id": "f017",
+            "title": "BV Jodie还是Andiamo？2026年的选择题",
+            "date": "2026-03-18",
+            "brand": "Bottega Veneta",
+            "likes": 17300,
+            "comments": 820,
+            "saves": 6100,
+            "creator": "BV专研所",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f007",
+            "title": "Bottega Veneta的无声奢华，今年为什么这么火",
+            "date": "2026-03-17",
+            "brand": "Bottega Veneta",
+            "likes": 13500,
+            "comments": 610,
+            "saves": 4800,
+            "creator": "时髦不说话",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f015",
+            "title": "LV Capucines今年为什么突然火了？深度解析",
+            "date": "2026-03-19",
+            "brand": "Louis Vuitton",
+            "likes": 13200,
+            "comments": 560,
+            "saves": 4200,
+            "creator": "皮具鉴赏Lena",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f018",
+            "title": "BV编织工艺的秘密，为什么摸起来和别人不一样",
+            "date": "2026-03-09",
+            "brand": "Bottega Veneta",
+            "likes": 11800,
+            "comments": 490,
+            "saves": 4700,
+            "creator": "奢品工艺研究院",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 4,
+        "total_engagement": 78080,
+        "avg_engagement": 19520.0,
+        "total_likes": 55800,
+        "total_comments": 2480,
+        "total_saves": 19800,
+        "top_keywords": [
+          "bv",
+          "jodie",
+          "andiamo",
+          "logo",
+          "lv"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-26T06:44:10.637920+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t03",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: LV 2026春夏成衣发布会观后感，Nicolas的新章节；LV的城市系列，带着上海DNA的那件.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['lv', 'monogram', 'speedy', 'dna', '成衣'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "f005",
+          "f029",
+          "f016",
+          "f006"
+        ],
+        "snippets": [
+          "LV 2026春夏成衣发布会观后感，Nicolas的新章节",
+          "LV的城市系列，带着上海DNA的那件",
+          "LV Speedy 40 二十年经典，2026依然是最佳选择",
+          "LV这季的廓形太适合中国女生了，显高显瘦"
+        ],
+        "posts": [
+          {
+            "post_id": "f005",
+            "title": "LV 2026春夏成衣发布会观后感，Nicolas的新章节",
+            "date": "2026-03-19",
+            "brand": "Louis Vuitton",
+            "likes": 18900,
+            "comments": 890,
+            "saves": 5200,
+            "creator": "Fashion Week Daily",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f029",
+            "title": "LV的城市系列，带着上海DNA的那件",
+            "date": "2026-03-16",
+            "brand": "Louis Vuitton",
+            "likes": 12800,
+            "comments": 550,
+            "saves": 4000,
+            "creator": "上海时尚记录",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f016",
+            "title": "LV Speedy 40 二十年经典，2026依然是最佳选择",
+            "date": "2026-03-13",
+            "brand": "Louis Vuitton",
+            "likes": 9500,
+            "comments": 430,
+            "saves": 3300,
+            "creator": "包包用后真实感受",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f006",
+            "title": "LV这季的廓形太适合中国女生了，显高显瘦",
+            "date": "2026-03-10",
+            "brand": "Louis Vuitton",
+            "likes": 8700,
+            "comments": 356,
+            "saves": 2100,
+            "creator": "购物清单by Momo",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 4,
+        "total_engagement": 66726,
+        "avg_engagement": 16681.5,
+        "total_likes": 49900,
+        "total_comments": 2226,
+        "total_saves": 14600,
+        "top_keywords": [
+          "lv",
+          "monogram",
+          "speedy",
+          "dna",
+          "成衣"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-26T06:44:10.638205+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t04",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: Celine今年最值得入手的包，不是你以为的那个；Celine 16 bag用了两年，来说说真实体感.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['celine', 'triomphe', 'bag', '今年最值得入手的', '不是你以为的那个'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "f025",
+          "f024"
+        ],
+        "snippets": [
+          "Celine今年最值得入手的包，不是你以为的那个",
+          "Celine 16 bag用了两年，来说说真实体感"
+        ],
+        "posts": [
+          {
+            "post_id": "f025",
+            "title": "Celine今年最值得入手的包，不是你以为的那个",
+            "date": "2026-03-13",
+            "brand": "Celine",
+            "likes": 18200,
+            "comments": 890,
+            "saves": 6700,
+            "creator": "包包性价比研究",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f024",
+            "title": "Celine 16 bag用了两年，来说说真实体感",
+            "date": "2026-03-21",
+            "brand": "Celine",
+            "likes": 15400,
+            "comments": 680,
+            "saves": 5800,
+            "creator": "两年用后真实说",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 47670,
+        "avg_engagement": 23835.0,
+        "total_likes": 33600,
+        "total_comments": 1570,
+        "total_saves": 12500,
+        "top_keywords": [
+          "celine",
+          "triomphe",
+          "bag",
+          "今年最值得入手的",
+          "不是你以为的那个"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-26T06:44:10.638324+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t05",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: Chanel 2026新季手袋，哪些值得等待；Chanel今年的连衣裙复兴，裙子又回来了.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['chanel', '今年', '新季手袋', '哪些值得等待', '手袋系列的新意在'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "f014",
+          "f022"
+        ],
+        "snippets": [
+          "Chanel 2026新季手袋，哪些值得等待",
+          "Chanel今年的连衣裙复兴，裙子又回来了"
+        ],
+        "posts": [
+          {
+            "post_id": "f014",
+            "title": "Chanel 2026新季手袋，哪些值得等待",
+            "date": "2026-03-11",
+            "brand": "Chanel",
+            "likes": 16800,
+            "comments": 780,
+            "saves": 5600,
+            "creator": "包包百科全书",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "f022",
+            "title": "Chanel今年的连衣裙复兴，裙子又回来了",
+            "date": "2026-03-22",
+            "brand": "Chanel",
+            "likes": 12100,
+            "comments": 540,
+            "saves": 3900,
+            "creator": "裙子控Grace",
+            "post_link": "",
+            "cover_url": "",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 39720,
+        "avg_engagement": 19860.0,
+        "total_likes": 28900,
+        "total_comments": 1320,
+        "total_saves": 9500,
+        "top_keywords": [
+          "chanel",
+          "今年",
+          "新季手袋",
+          "哪些值得等待",
+          "手袋系列的新意在"
+        ],
+        "video_post_count": 0,
+        "image_count": 0
+      },
+      "timestamp": "2026-03-26T06:44:10.638881+00:00",
+      "visual_assets": {
+        "all_image_urls": [],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}

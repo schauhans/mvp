@@ -1,0 +1,92 @@
+{
+  "run_id": "run_0010",
+  "retrieved_sources": [
+    "data/xhs_posts.json",
+    "data/run_config.json"
+  ],
+  "retrieved_post_ids": [
+    "f030",
+    "f013",
+    "f026",
+    "f019",
+    "f025",
+    "f005",
+    "f017",
+    "f014",
+    "f027",
+    "f024",
+    "f020",
+    "f028",
+    "f003",
+    "f011",
+    "f007",
+    "f015",
+    "f029",
+    "f018",
+    "f022",
+    "f001",
+    "f012",
+    "f004",
+    "f009",
+    "f023",
+    "f016",
+    "f002",
+    "f008",
+    "f021",
+    "f006",
+    "f010"
+  ],
+  "decision_output_file": "outputs/runs/run_0010_trend_objects.json",
+  "decision_mode": "rules-first with optional LLM",
+  "prompt_in_use_for_decision": true,
+  "llm_enabled": false,
+  "llm_model": null,
+  "llm_label_calls_succeeded": 0,
+  "llm_label_calls_total": 5,
+  "llm_errors": [],
+  "evidence_used": {
+    "t01": [
+      "f030",
+      "f026",
+      "f019",
+      "f001",
+      "f012"
+    ],
+    "t02": [
+      "f017",
+      "f007",
+      "f015",
+      "f018"
+    ],
+    "t03": [
+      "f005",
+      "f029",
+      "f016",
+      "f006"
+    ],
+    "t04": [
+      "f025",
+      "f024"
+    ],
+    "t05": [
+      "f014",
+      "f022"
+    ]
+  },
+  "labeling_sources": {
+    "t01": "heuristic",
+    "t02": "heuristic",
+    "t03": "heuristic",
+    "t04": "heuristic",
+    "t05": "heuristic"
+  },
+  "confidence": {
+    "t01": "high",
+    "t02": "high",
+    "t03": "high",
+    "t04": "medium",
+    "t05": "medium"
+  },
+  "next_step_suggestion": "Send approved trend objects into Module 2 for materiality ranking.",
+  "timestamp_utc": "2026-03-26T06:39:46.052462+00:00"
+}

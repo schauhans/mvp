@@ -1,0 +1,441 @@
+{
+  "run_id": "run_0013",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "ALL",
+  "category": "",
+  "time_window": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 212,
+    "records_retrieved": 100
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-26T07:38:39.719117+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": false,
+    "llm_model": null,
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 3,
+    "llm_errors": []
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 26Dior春夏🤍好漂亮的裙子；Dior 26春夏 新总监成衣系列怎么样❓.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['dior', 'bar', 'jacket', 'dior26', '春夏'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0001",
+          "live_0002",
+          "live_0003",
+          "live_0005",
+          "live_0009"
+        ],
+        "snippets": [
+          "26Dior春夏🤍好漂亮的裙子",
+          "Dior 26春夏 新总监成衣系列怎么样❓",
+          "Dior 2026秋冬系列女装大秀（完整视频）",
+          "Dior 春天会降临很多粉色的浪漫💕",
+          "Dior 26春夏"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0001",
+            "title": "26Dior春夏🤍好漂亮的裙子",
+            "date": "",
+            "brand": "Dior新款成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_e5e5c2e0",
+            "post_link": "https://www.xiaohongshu.com/explore/69450b69000000001e0039d3",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261524/cb30e2e1ac6efc59dd9afaf460dd4dd1/1040g00831q93psn3720g5oivm35odaj6eesmvr8!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0002",
+            "title": "Dior 26春夏 新总监成衣系列怎么样❓",
+            "date": "",
+            "brand": "Dior新款成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_17ecce4a",
+            "post_link": "https://www.xiaohongshu.com/explore/69578d93000000001e034404",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261524/fa96a363fc618bd7294bf46fa022026c/1040g2sg31qr6716vnusg4a3m2orj8sgfamnfbr0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0003",
+            "title": "Dior 2026秋冬系列女装大秀（完整视频）",
+            "date": "",
+            "brand": "Dior新款成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_0df04ded",
+            "post_link": "https://www.xiaohongshu.com/explore/69b0fa4d000000001503a0b4",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261524/3b8cff7f9db80e02648d2a3a6c653522/1040g2sg31tigm9a1627g5n1na041bke97of5nfg!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0005",
+            "title": "Dior 春天会降临很多粉色的浪漫💕",
+            "date": "",
+            "brand": "Dior新款成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_33e2900e",
+            "post_link": "https://www.xiaohongshu.com/explore/69bb9dc9000000001d01c88e",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261524/22b29f406bde557a02463b281723496d/1040g00831tst4ipc0o005n88kv85hhjfs98guko!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0009",
+            "title": "Dior 26春夏",
+            "date": "",
+            "brand": "Dior新款成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_17ecce4a",
+            "post_link": "https://www.xiaohongshu.com/explore/6997b9fd000000001a022aef",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261524/cca6c2584a1fb873da963fabe1e0a0e6/1040g2sg31sprl9kom8904a3m2orj8sgf4kgdlm8!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 60,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "dior",
+          "bar",
+          "jacket",
+          "dior26",
+          "春夏"
+        ],
+        "video_post_count": 0,
+        "image_count": 60
+      },
+      "timestamp": "2026-03-26T07:38:39.718743+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261524/cb30e2e1ac6efc59dd9afaf460dd4dd1/1040g00831q93psn3720g5oivm35odaj6eesmvr8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/fa96a363fc618bd7294bf46fa022026c/1040g2sg31qr6716vnusg4a3m2orj8sgfamnfbr0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/3b8cff7f9db80e02648d2a3a6c653522/1040g2sg31tigm9a1627g5n1na041bke97of5nfg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/22b29f406bde557a02463b281723496d/1040g00831tst4ipc0o005n88kv85hhjfs98guko!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/cca6c2584a1fb873da963fabe1e0a0e6/1040g2sg31sprl9kom8904a3m2orj8sgf4kgdlm8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/5b0731d4b8be9a0badf955496dbcff14/notes_pre_post/1040g3k831th6m0475kd05p6jccb3kr2cqh74as8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/4e23dec55e68444f2ac9da49bc275f29/1040g00831rjfc3gni80g49chbohimo51urb3p38!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/7639d32c40a5c621e13c25ea118ef90a/notes_pre_post/1040g3k031ot0cckah2004906u16f0s0ku1s2q00!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/5944786e4fa69549e266fbdfcaefb715/notes_pre_post/1040g3k031sihhm155k4g5n6otp9k9038tilgiug!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/f508d968a14a3670cd9132173654448a/1040g00831u2a4ef71a004a5fcep9108uuvdjfdg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/3c1f355d597641edd9f782248b3cd6eb/1040g00831t22vs10l6005n88kv85hhjfr1qbou8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/4776985593274e9aa894fd47dddf051c/1040g00831t8buqu868205q4cgmuq914q1eulp4o!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/d5111bf0c99569d2734724636d26f125/1040g2sg31r9dgjc6gm005nj2bdl08vpqtektbgg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/78dbcabea7753e21207143fb31cbf2c3/1040g00831ssqfgarlk1g5qa2of3tu1nmp14k8a0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261524/a1926c45e3dff2a98c76c08284859edd/notes_pre_post/1040g3k831tjqjtf6ne705o0ibgng88g7oei37bg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261526/b2825da8f298c541c24c3a4cfc564321/1040g2sg31qr6716vnusg4a3m2orj8sgfamnfbr0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261526/80a622c4ad9d8299cdd1b4034c2ddb8a/notes_pre_post/1040g3k831th6m0475kd05p6jccb3kr2cqh74as8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261526/f737474a53f2dddaf2dcbc95a675d1ce/notes_pre_post/1040g3k831o6n33ha50805pide1fgu1kkdcmgos8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261526/51caa1ad167f60437c7581f2def80174/1040g00831t22vs10l6005n88kv85hhjfr1qbou8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261526/5a5394ec5ee594db7eece1a06cbf8695/1040g2sg31r9dgjc6gm005nj2bdl08vpqtektbgg!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t02",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 开春穿搭；开春穿搭.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['开春穿搭'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0018",
+          "live_0040"
+        ],
+        "snippets": [
+          "开春穿搭",
+          "开春穿搭"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0018",
+            "title": "开春穿搭",
+            "date": "",
+            "brand": "Dior新款成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_9632a6b2",
+            "post_link": "https://www.xiaohongshu.com/explore/69aa9555000000000e00d9a1",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261524/8531abc43895204f4a86d739a9a87cd4/notes_pre_post/1040g3k831tc8v2mtm87048c6n9hmk0pqt5r46ao!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0040",
+            "title": "开春穿搭",
+            "date": "",
+            "brand": "迪奥春夏穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_9632a6b2",
+            "post_link": "https://www.xiaohongshu.com/explore/69aa9555000000000e00d9a1",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261526/94001eb6b417d52ed3d1bfe869435842/notes_pre_post/1040g3k831tc8v2mtm87048c6n9hmk0pqt5r46ao!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "开春穿搭"
+        ],
+        "video_post_count": 0,
+        "image_count": 2
+      },
+      "timestamp": "2026-03-26T07:38:39.718835+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261524/8531abc43895204f4a86d739a9a87cd4/notes_pre_post/1040g3k831tc8v2mtm87048c6n9hmk0pqt5r46ao!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261526/94001eb6b417d52ed3d1bfe869435842/notes_pre_post/1040g3k831tc8v2mtm87048c6n9hmk0pqt5r46ao!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t03",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 广告大赏丨CHANEL 2026 春夏系列视觉；Matthieu Blazy的Chanel工艺细节.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['chanel', '广告大赏丨', '春夏系列视觉', '工艺细节', 'matthieu'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0086",
+          "live_0089",
+          "live_0093",
+          "live_0096",
+          "live_0100"
+        ],
+        "snippets": [
+          "广告大赏丨CHANEL 2026 春夏系列视觉",
+          "Matthieu Blazy的Chanel工艺细节",
+          "沉浸式拆箱Chanel",
+          "Chanel 2025/26秋冬高级定制系列：自然与传",
+          "一些Chanel秀场图片"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0086",
+            "title": "广告大赏丨CHANEL 2026 春夏系列视觉",
+            "date": "",
+            "brand": "高定成衣穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_a8022f0a",
+            "post_link": "https://www.xiaohongshu.com/explore/696ce8db000000000c03560b",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261529/8771bab509a5258fcc1afdc54e9b07e0/spectrum/1040g34o31rg0ku0cn0105omann30gb1djf705uo!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0089",
+            "title": "Matthieu Blazy的Chanel工艺细节",
+            "date": "",
+            "brand": "高定成衣穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_183e4adc",
+            "post_link": "https://www.xiaohongshu.com/explore/68e4f6fe0000000003023b35",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261529/107f849eb1f01d80ee6dfd5855f87d13/notes_pre_post/1040g3k031nb8om286g2g499d8a6r31c15o7699o!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0093",
+            "title": "沉浸式拆箱Chanel",
+            "date": "",
+            "brand": "高定成衣穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_49918930",
+            "post_link": "https://www.xiaohongshu.com/explore/6972200e000000000a0307bd",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261529/ada3b2072db492421e74c938e22a1b71/1040g2sg31rl48vd9i0eg5pide1fgu1kkkngrbj0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0096",
+            "title": "Chanel 2025/26秋冬高级定制系列：自然与传",
+            "date": "",
+            "brand": "高定成衣穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_1255e644",
+            "post_link": "https://www.xiaohongshu.com/explore/68d4cc9a000000001400aef8",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261529/fe9acdd8dfe2f0c02c182cec4dbbbc73/notes_uhdr/1040g3qg31mrg53ik58005ndjlgmg8949ffce108!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0100",
+            "title": "一些Chanel秀场图片",
+            "date": "",
+            "brand": "高定成衣穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_2a048037",
+            "post_link": "https://www.xiaohongshu.com/explore/6870daab0000000017033ba7",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261529/644924a1928994011ad4723bc28eb100/1040g2sg31jpqngcaj0fg4a1f8e1k2l00cv7tkb0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 6,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "chanel",
+          "广告大赏丨",
+          "春夏系列视觉",
+          "工艺细节",
+          "matthieu"
+        ],
+        "video_post_count": 0,
+        "image_count": 6
+      },
+      "timestamp": "2026-03-26T07:38:39.718975+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261529/8771bab509a5258fcc1afdc54e9b07e0/spectrum/1040g34o31rg0ku0cn0105omann30gb1djf705uo!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261529/107f849eb1f01d80ee6dfd5855f87d13/notes_pre_post/1040g3k031nb8om286g2g499d8a6r31c15o7699o!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261529/ada3b2072db492421e74c938e22a1b71/1040g2sg31rl48vd9i0eg5pide1fgu1kkkngrbj0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261529/fe9acdd8dfe2f0c02c182cec4dbbbc73/notes_uhdr/1040g3qg31mrg53ik58005ndjlgmg8949ffce108!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261529/644924a1928994011ad4723bc28eb100/1040g2sg31jpqngcaj0fg4a1f8e1k2l00cv7tkb0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261529/0424a4ae1205a73d17464ebd27da881b/1040g2sg31t0s4usmlk705q4gmpfa69vl9rk91jg!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}

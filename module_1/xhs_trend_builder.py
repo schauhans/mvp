@@ -20,7 +20,8 @@ import threading
 import time
 from collections import Counter
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
+UTC = timezone.utc  # datetime.UTC requires Python 3.11+; this is equivalent
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
