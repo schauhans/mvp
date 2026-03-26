@@ -1,0 +1,14 @@
+{
+  "brand_name": "Christian Dior",
+  "aesthetic": "Parisian elegance, feminine codes, couture heritage, romantic yet structured",
+  "clientele": "affluent women 28-55, fashion-conscious but brand-loyal, values heritage and craftsmanship",
+  "preferred_sources": ["Chinese fashion KOL", "luxury lifestyle editorial", "Dior brand accounts", "high-fashion photographers"],
+  "avoided_sources": ["streetwear influencers", "mass-market fashion bloggers", "fast fashion accounts", "hypebeast culture"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "fast",
+    "leather goods": "medium"
+  },
+  "brand_taboos": ["streetwear", "hypebeast", "fast fashion", "logomania", "athleisure", "gender-neutral mass market", "dupes", "knockoff"],
+  "clienteling_tone": "expert, aspirational, warm but refined, story-driven"
+}

@@ -1,0 +1,587 @@
+{
+  "run_id": "run_0014",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "ALL",
+  "category": "",
+  "time_window": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 107,
+    "records_retrieved": 100
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-26T08:28:11.291512+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": false,
+    "llm_model": null,
+    "llm_label_calls_succeeded": 0,
+    "llm_label_calls_total": 5,
+    "llm_errors": []
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: LOEWE｜年度amazona180超全颜色合集；🛍️｜是谁拥有了这个Amazona180？！是我！.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['loewe', '罗意威', 'puzzle', '春夏', '系列热门款合集'] and show consistent engagement patterns in the same category.",
+      "confidence": "high",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0001",
+          "live_0003",
+          "live_0006",
+          "live_0012",
+          "live_0015"
+        ],
+        "snippets": [
+          "LOEWE｜年度amazona180超全颜色合集",
+          "🛍️｜是谁拥有了这个Amazona180？！是我！",
+          "Loewe 新版 amazona適合我嗎？",
+          "Loewe",
+          "Loewe｜26早春"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0001",
+            "title": "LOEWE｜年度amazona180超全颜色合集",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_1123abd7",
+            "post_link": "https://www.xiaohongshu.com/explore/699e8e7400000000260333c1",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/56a2e297e411ed9be8a17cda7f66a569/notes_pre_post/1040g3k831t0o4js756705o4njkd0bunug0eq2no!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0003",
+            "title": "🛍️｜是谁拥有了这个Amazona180？！是我！",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_1ed35f3f",
+            "post_link": "https://www.xiaohongshu.com/explore/69a18d3d000000002303be62",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/df10b6af127ca8a5832f01162bb4ba15/notes_pre_post/1040g3k031t3e8iis5e005nf7oi008sqjhocu1no!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0006",
+            "title": "Loewe 新版 amazona適合我嗎？",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_bca603bf",
+            "post_link": "https://www.xiaohongshu.com/explore/69b958da000000002003bbbf",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/9633a2c40c068acfdcff509522696dfb/notes_pre_post/1040g3k831tqm7td6n2705pdt2urifsg205t012o!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0012",
+            "title": "Loewe",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_d48f3e80",
+            "post_link": "https://www.xiaohongshu.com/explore/69b8c0a50000000023020d95",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/b46882ce46f090ce77156a3a47e76ae9/notes_pre_post/1040g3k031torc6ejg85g5ok9if98damj2ejprtg!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0015",
+            "title": "Loewe｜26早春",
+            "date": "",
+            "brand": "罗意威穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_e6e1c70b",
+            "post_link": "https://www.xiaohongshu.com/explore/691a99cc0000000007039b50",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261623/e1496f3f914f840bf64dc34ea46a2061/1040g00831ovgvqr2121g400pn10obfkfsldi4ro!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 25,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "loewe",
+          "罗意威",
+          "puzzle",
+          "春夏",
+          "系列热门款合集"
+        ],
+        "video_post_count": 0,
+        "image_count": 25
+      },
+      "timestamp": "2026-03-26T08:28:11.291144+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261622/56a2e297e411ed9be8a17cda7f66a569/notes_pre_post/1040g3k831t0o4js756705o4njkd0bunug0eq2no!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261622/df10b6af127ca8a5832f01162bb4ba15/notes_pre_post/1040g3k031t3e8iis5e005nf7oi008sqjhocu1no!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261622/9633a2c40c068acfdcff509522696dfb/notes_pre_post/1040g3k831tqm7td6n2705pdt2urifsg205t012o!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261622/b46882ce46f090ce77156a3a47e76ae9/notes_pre_post/1040g3k031torc6ejg85g5ok9if98damj2ejprtg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/e1496f3f914f840bf64dc34ea46a2061/1040g00831ovgvqr2121g400pn10obfkfsldi4ro!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/4deaf6748432c69fcf568d9bf61eac98/1040g00831u0eojahn2005p8eg055n0h6cri2iso!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/7afb02637ffbf5232b475565263a2e45/1040g00831n63tt845m0049vqqu0ce7s4f6vvang!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/37bd00d3af9fb3d2e5e6f5a9150d4a0f/1040g00831s87ve035k305p8eg055n0h6e3ae6a8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/1a10c4d9c39c73a604f741cea28c1e59/1040g2sg31s9de3jmm8e05p8eg055n0h6r14jm7o!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/a042df35c966350809b9eae6e33bb91f/1040g2sg31srh179jlsgg414oq5g72e8ds23kmno!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/5be316224367c2a003b32c4e8d107916/1040g00831tik1tfjm8005q67gvs6bh5rcir3psg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/6725a086674fcc5c2232bd9baf74e6f7/notes_pre_post/1040g3k831tge7pfelkd0410m4thjgjtha2l6qtg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/c8a138fb5b23c5c20394167c37f37d13/notes_uhdr/1040g3qo31riagcpfj20g49sujvqv95n3i6c0reg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/ed0f89625197f2e0c0a41ed8082af22d/note_pre_post_uhdr/1040g3r831tmqhfs6nq0g5n1vt9mhs6h2jh3kalg!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/9cdcb96de43dc2485aebc45cb9d3b2de/notes_pre_post/1040g3k031n63tcla4s105nruqo6gbhllbdk2mbo!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/265ad6925efdb2536e211c0b0e543ad8/notes_pre_post/1040g3k031ppi5l5d4g004a3m2orj8sgfn2glqqo!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/5f10cbf13bbab177ad508f3875880fab/notes_pre_post/1040g3k031q7f82ee7g004a4hsui9amvd89s91l8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/9dbf8714ba374a343c602d29eebeab31/1040g00831n66q0j0mm005n38t7r4abvohihh8e0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/572a4d5126a6bc45a35ce7902cc06384/1040g00831sijiesrls0049utu6ssdhrr1tuag8g!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261622/756f232dfeb485b90aafeac3f1142f1b/1040g00831u5klpq42a005qdujsccsh2pi3hc698!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t02",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 来L🔵E️WE拍了点；罗意威的代言人强的可怕🔥.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['三亚海棠湾免税店', '罗意威快递到家'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0002",
+          "live_0016"
+        ],
+        "snippets": [
+          "来L🔵E️WE拍了点",
+          "罗意威的代言人强的可怕🔥"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0002",
+            "title": "来L🔵E️WE拍了点",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_8abd251f",
+            "post_link": "https://www.xiaohongshu.com/explore/69b449a700000000230235de",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/7734c1aee280cebbfde0720570fe0afb/1040g2sg31tlmrqa1ns0g5n9bajc4iti8c9ppvb0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0016",
+            "title": "罗意威的代言人强的可怕🔥",
+            "date": "",
+            "brand": "罗意威穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_34ea3c24",
+            "post_link": "https://www.xiaohongshu.com/explore/699c378f000000001a0252e8",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261623/ed2c5c50f0566f1d31f5fcf1404d7a02/1040g00831su7pkvolm305pn51dbnefuqdin33r0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "三亚海棠湾免税店",
+          "罗意威快递到家"
+        ],
+        "video_post_count": 0,
+        "image_count": 2
+      },
+      "timestamp": "2026-03-26T08:28:11.291234+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261622/7734c1aee280cebbfde0720570fe0afb/1040g2sg31tlmrqa1ns0g5n9bajc4iti8c9ppvb0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/ed2c5c50f0566f1d31f5fcf1404d7a02/1040g00831su7pkvolm305pn51dbnefuqdin33r0!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t03",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 徐若晗 ✘ LOEWE 罗意威；Loewe 春日里的奶油黄穿搭哇🍰🐤🌼🐣🔆🐝.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['都说西班牙是罗意', '威老家'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0009",
+          "live_0018",
+          "live_0030"
+        ],
+        "snippets": [
+          "徐若晗 ✘ LOEWE 罗意威",
+          "Loewe 春日里的奶油黄穿搭哇🍰🐤🌼🐣🔆🐝",
+          "2026新款Loewe罗意威t桖男短袖穿搭"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0009",
+            "title": "徐若晗 ✘ LOEWE 罗意威",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_5d5abee5",
+            "post_link": "https://www.xiaohongshu.com/explore/699fa7c10000000015021ad0",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/7a75023c495b394a7afc63a936d10fc4/1040g00831t1j83cl5k004a4d62jppumflifugfo!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0018",
+            "title": "Loewe 春日里的奶油黄穿搭哇🍰🐤🌼🐣🔆🐝",
+            "date": "",
+            "brand": "罗意威穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_c8a08b0e",
+            "post_link": "https://www.xiaohongshu.com/explore/699ead14000000001a035951",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261623/1039857c2c54bcb2619a24303c9fed94/1040g2sg31t0kkf7l5mfg4a6hgj2gjnlfsudng3g!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0030",
+            "title": "2026新款Loewe罗意威t桖男短袖穿搭",
+            "date": "",
+            "brand": "Loewe成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_0c06d574",
+            "post_link": "https://www.xiaohongshu.com/explore/69b116e9000000000c00b4ec",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261624/5be316224367c2a003b32c4e8d107916/1040g00831tik1tfjm8005q67gvs6bh5rcir3psg!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 3,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "都说西班牙是罗意",
+          "威老家"
+        ],
+        "video_post_count": 0,
+        "image_count": 3
+      },
+      "timestamp": "2026-03-26T08:28:11.291267+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261622/7a75023c495b394a7afc63a936d10fc4/1040g00831t1j83cl5k004a4d62jppumflifugfo!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/1039857c2c54bcb2619a24303c9fed94/1040g2sg31t0kkf7l5mfg4a6hgj2gjnlfsudng3g!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/5be316224367c2a003b32c4e8d107916/1040g00831tik1tfjm8005q67gvs6bh5rcir3psg!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t04",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 每天认识一个品牌 | LOEWE 罗意威；罗意威的代言人强的可怕🔥.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['医学博士', '岁靠自己全款拿下', '第一个大牌包'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0011",
+          "live_0034",
+          "live_0049"
+        ],
+        "snippets": [
+          "每天认识一个品牌 | LOEWE 罗意威",
+          "罗意威的代言人强的可怕🔥",
+          "罗意威 26早春日常穿搭 🐈‍"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0011",
+            "title": "每天认识一个品牌 | LOEWE 罗意威",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_16eeeef8",
+            "post_link": "https://www.xiaohongshu.com/explore/69abbdb10000000028008aa7",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/fd87cf0f429d03b93838253419dd8f2d/1040g00831tdckkcq5m505pnjvk6nc9tbu3vabb8!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0034",
+            "title": "罗意威的代言人强的可怕🔥",
+            "date": "",
+            "brand": "Loewe成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_34ea3c24",
+            "post_link": "https://www.xiaohongshu.com/explore/699c378f000000001a0252e8",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261624/4310e08b84aad2f2606f5c19c04996f0/1040g00831su7pkvolm305pn51dbnefuqdin33r0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0049",
+            "title": "罗意威 26早春日常穿搭 🐈‍",
+            "date": "",
+            "brand": "Loewe春夏",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_bed3cb3c",
+            "post_link": "https://www.xiaohongshu.com/explore/696a2236000000000a02ed85",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261624/7010c3fc7a0c0dd3519127a5ad57ed04/notes_pre_post/1040g3k031rda9gu2n0405prg2vgm3oi20b0qip0!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 3,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "医学博士",
+          "岁靠自己全款拿下",
+          "第一个大牌包"
+        ],
+        "video_post_count": 0,
+        "image_count": 3
+      },
+      "timestamp": "2026-03-26T08:28:11.291346+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261622/fd87cf0f429d03b93838253419dd8f2d/1040g00831tdckkcq5m505pnjvk6nc9tbu3vabb8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/4310e08b84aad2f2606f5c19c04996f0/1040g00831su7pkvolm305pn51dbnefuqdin33r0!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261624/7010c3fc7a0c0dd3519127a5ad57ed04/notes_pre_post/1040g3k031rda9gu2n0405prg2vgm3oi20b0qip0!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    },
+    {
+      "trend_id": "t05",
+      "label": "Mixed Beauty Trend Signals",
+      "category": "",
+      "summary": "Posts cluster around mixed beauty trend signals with recurring evidence such as: 🎨王一博开启三奢行！秀场穿搭➕秀场解析；罗意威SS26女装秀款分享🔴🟡🔵.",
+      "ai_reasoning": "Grouped because posts share recurring keywords/themes ['罗意威草编包三选'] and show consistent engagement patterns in the same category.",
+      "confidence": "medium",
+      "labeling_source": "heuristic",
+      "evidence": {
+        "post_ids": [
+          "live_0013",
+          "live_0021"
+        ],
+        "snippets": [
+          "🎨王一博开启三奢行！秀场穿搭➕秀场解析",
+          "罗意威SS26女装秀款分享🔴🟡🔵"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0013",
+            "title": "🎨王一博开启三奢行！秀场穿搭➕秀场解析",
+            "date": "",
+            "brand": "Loewe新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_1d600e9a",
+            "post_link": "https://www.xiaohongshu.com/explore/69aacb74000000002801ce8a",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261622/e8ff4eab4d7f5f5f066beb3c9bda522a/1040g2sg31tcfgido62e05n0veg91dqvqpoe0og8!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0021",
+            "title": "罗意威SS26女装秀款分享🔴🟡🔵",
+            "date": "",
+            "brand": "罗意威穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_657f0c17",
+            "post_link": "https://www.xiaohongshu.com/explore/69a15430000000001a0335a4",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603261623/6cd3a4f23ce0b52f999b76708d45eab1/notes_pre_post/1040g3k031t37c8mm5s4g5p93nitqj8ujpp2nu8o!nc_n_webp_mw_1",
+            "all_image_urls": [],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 2,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "罗意威草编包三选"
+        ],
+        "video_post_count": 0,
+        "image_count": 2
+      },
+      "timestamp": "2026-03-26T08:28:11.291371+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603261622/e8ff4eab4d7f5f5f066beb3c9bda522a/1040g2sg31tcfgido62e05n0veg91dqvqpoe0og8!nc_n_webp_mw_1",
+          "https://sns-webpic-qc.xhscdn.com/202603261623/6cd3a4f23ce0b52f999b76708d45eab1/notes_pre_post/1040g3k031t37c8mm5s4g5p93nitqj8ujpp2nu8o!nc_n_webp_mw_1"
+        ],
+        "image_captions": [],
+        "video_post_count": 0
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}
