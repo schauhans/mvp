@@ -580,7 +580,7 @@ def _card_to_html(trend_id, card_text):
 
 def write_html_report(brand, city, week, source, selected, cards, used_fallback):
     """Generate a self-contained styled HTML trend brief."""
-    slug = brand.lower()
+    slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
     output_path = SCRIPT_DIR / f"trend_cards_{slug}_{city.lower()}.html"
     generated = datetime.datetime.now().strftime('%d %b %Y, %H:%M')
 

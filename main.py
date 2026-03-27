@@ -247,14 +247,8 @@ def main():
     # ── Module 3: trend briefs + persona matching ───────────────────────────────
     run_module("module_3/trend_brief_agent", "agent.py", "--brand", brand, "--city", city)
 
-    # ── Module 4: client memory structurer ─────────────────────────────────────
-    run_module("module_4", "First_Run.py")
-
-    # ── Module 5: outreach angle agent ─────────────────────────────────────────
-    run_module("module_5", "agent.py")
-
     print("\n" + "="*60)
-    print(f"  Pipeline complete: Modules 1 → 2 → 3 → 4 → 5")
+    print(f"  Pipeline complete: Modules 1 → 2 → 3")
     print("="*60)
     print(f"\n  Trend cards → module_3/trend_brief_agent/trend_cards_{slug}_{city.lower()}.html")
 
