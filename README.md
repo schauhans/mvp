@@ -1,27 +1,24 @@
-# Agent Pipeline (Modules 1-5)
+# Agent Pipeline (Modules 1–3)
 
-This repository combines Modules 1 through 5 of the MVP Agent project into a single, cohesive pipeline. The goal is to run an end-to-end agent workflow sequentially from Module 1 to Module 5.
+This repository contains Modules 1 through 3 of the MVP Agent project. The pipeline runs end-to-end from XHS data scraping through trend filtering to CA-ready trend brief generation.
 
 ## Project Structure
 
 - `module_1/`: XHS Trend Object Builder
-- `module_2/`: (Reserved for future use)
-- `module_3/`: Trend Brief Agent
-- `module_4/`: Course MVP
-- `module_5/`: Yanny MVP
-- `config.py`: Global configuration for OpenRouter API keys and default models.
-- `main.py`: The entry point script that orchestrates the execution of all modules sequentially.
+- `module_2/`: Trend Relevance & Materiality Filter
+- `module_3/`: CA Trend Brief Agent (with Client Persona Matching)
+- `config.py`: Global configuration for API keys and default model
+- `main.py`: Entry point — orchestrates modules 1 → 2 → 3 sequentially
 
 ## Setup
 
 1. **Install Dependencies:**
-   Ensure you have Python 3 installed. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
+   pip install DrissionPage tqdm  # required for live XHS scraping
    ```
 
 2. **Configure API Keys:**
-   Copy the `.env.example` file to `.env` and add your OpenRouter API key:
    ```bash
    cp .env.example .env
    ```
@@ -29,39 +26,43 @@ This repository combines Modules 1 through 5 of the MVP Agent project into a sin
    ```env
    OPENROUTER_API_KEY=your_openrouter_api_key_here
    DEFAULT_MODEL=openai/gpt-4o-mini
+   BRAND=Celine
    ```
 
 ## Running the Pipeline
-
-To run the entire agent pipeline from Module 1 to Module 5 in order, execute the `main.py` script:
 
 ```bash
 python main.py
 ```
 
-This script will sequentially execute the primary functionality of each module, passing data between them if necessary.
+You will be prompted for:
+- **Brand** — defaults to Celine
+- **City** — defaults to Shanghai
+- **Live scrape?** — answer `y` to scrape XHS in real time (requires Chrome), or `n` to use existing data
 
 ## Modules Overview
 
 ### Module 1: XHS Trend Object Builder
-Converts raw Xiaohongshu signals into a strict reusable Trend Object schema (label/category/evidence/metrics/timestamp/summary/confidence).
+Scrapes Xiaohongshu search results for brand-relevant keywords and clusters posts into reusable Trend Objects (label / category / evidence / metrics / confidence).
 
-### Module 2: (Placeholder)
-Currently empty, reserved for future pipeline steps.
+### Module 2: Trend Relevance & Materiality Filter
+Takes Module 1 trend objects and runs a two-stage filter: a deterministic pre-filter against the brand profile, then an LLM evaluation scoring each trend on freshness, brand fit, category fit, materiality, and actionability. Outputs a ranked shortlist of up to 5 trends.
 
-### Module 3: Trend Brief Agent
-Generates trend briefs based on the objects created in Module 1.
+Brand profiles are stored in `module_2/brand_profile_{brand}.json` — currently available for Celine, Dior, Chanel, Louis Vuitton, Bottega Veneta, Loewe, and Amiri.
 
-### Module 4: Course MVP
-Contains the `First_Run.py` script (converted from a Jupyter notebook) which performs the initial data processing or agent setup.
+### Module 3: CA Trend Brief Agent
+Transforms the Module 2 shortlist into formatted Client Advisor trend cards. Each card includes:
+- Trend overview and data signal with benchmarks
+- Confidence rating with methodology explanation
+- **Client persona matching** — automatically matches each trend to the most relevant client persona from the brand's persona file, including a "not for" filter to help CAs qualify clients
+- Bilingual conversation starters (Chinese-first, English second)
 
-### Module 5: Yanny MVP
-The final stage of the pipeline, executing the agent architecture defined in `agent.py`.
+Outputs both a Markdown file and a **styled HTML file** that can be opened in any browser or shared via a link for CAs to scroll through on their phones.
+
+Persona files are stored in `module_3/trend_brief_agent/personas/{brand}_personas.json`.
 
 ## Global Configuration
 
-The `config.py` file provides a centralized way to access the OpenRouter API key and the selected model across all modules. You can import these variables in any module:
-
 ```python
-from config import OPENROUTER_API_KEY, DEFAULT_MODEL
+from config import OPENROUTER_API_KEY, DEFAULT_MODEL, BRAND
 ```
