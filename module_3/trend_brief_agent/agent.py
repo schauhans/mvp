@@ -6,7 +6,7 @@ import sys
 import datetime
 from pathlib import Path
 from dotenv import load_dotenv
-import anthropic
+from openai import OpenAI
 
 # Load API key from .env
 load_dotenv()
@@ -20,7 +20,7 @@ JSON_PATH = SCRIPT_DIR / "trend_shortlist.json"
 RUN_LOG_PATH = SCRIPT_DIR / "run_log.json"
 PERSONAS_DIR = SCRIPT_DIR / "personas"
 
-MODEL = os.environ.get("DEFAULT_MODEL", "claude-haiku-4-5-20251001")  # cheapest Claude model
+MODEL = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
 
 # System prompt: role, card format, rules
 SYSTEM_PROMPT = (
@@ -405,12 +405,12 @@ def match_persona_to_trend(client, trend, personas):
         top_post_example=trend["top_post_example"],
         personas_block=personas_block,
     )
-    response = client.messages.create(
+    response = client.chat.completions.create(
         model=MODEL,
         max_tokens=400,
         messages=[{"role": "user", "content": prompt}],
     )
-    raw = response.content[0].text.strip()
+    raw = response.choices[0].message.content.strip()
     # Strip markdown code fences if present
     if raw.startswith("```"):
         raw = raw.split("```")[1]
@@ -471,14 +471,16 @@ def generate_trend_card(client, trend, brand, city, persona_match=None, data_not
         city_tone_rule=CITY_TONE.get(city, DEFAULT_CITY_TONE),
     )
 
-    response = client.messages.create(
+    response = client.chat.completions.create(
         model=MODEL,
         max_tokens=1200,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": prompt}],
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ],
     )
 
-    return prompt, response.content[0].text
+    return prompt, response.choices[0].message.content
 
 
 def _inline_md(text):
@@ -839,11 +841,11 @@ def main():
     parser.add_argument("--city", default=None, help="Store city (e.g. Shanghai, Beijing)")
     args, _ = parser.parse_known_args()
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = os.environ.get("OPENROUTER_API_KEY", "")
     if not api_key:
-        raise EnvironmentError("ANTHROPIC_API_KEY not set. Check your .env file.")
+        raise EnvironmentError("OPENROUTER_API_KEY not set. Check your .env file.")
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
 
     # B1: Get brand + city — from CLI args (pipeline) or interactive prompt (standalone)
     if args.brand and args.city:

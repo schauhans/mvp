@@ -4,13 +4,10 @@ import json
 import shutil
 import subprocess
 from pathlib import Path
-from config import ANTHROPIC_API_KEY, DEFAULT_MODEL
+from config import OPENROUTER_API_KEY, DEFAULT_MODEL, BRAND
 
 
 # ── Brand → XHS search keywords ────────────────────────────────────────────────
-# Two buckets per brand: ready-to-wear and leather goods.
-# The scraper tags every post it collects with whichever category bucket it ran for,
-# so module 2's category pre-filter will accept them.
 BRAND_KEYWORDS = {
     "dior": {
         "ready-to-wear": ["Dior新款成衣", "迪奥春夏穿搭", "Dior Bar夹克", "高定成衣穿搭"],
@@ -66,14 +63,15 @@ def get_keywords(slug: str, brand: str) -> dict:
 def get_pipeline_inputs():
     print("\n=== Luxury Trend Intelligence Pipeline ===\n")
 
-    if not ANTHROPIC_API_KEY:
-        print("ERROR: ANTHROPIC_API_KEY is not set.")
-        print("Add it to your .env file:  ANTHROPIC_API_KEY=sk-ant-...")
+    if not OPENROUTER_API_KEY:
+        print("ERROR: OPENROUTER_API_KEY is not set.")
+        print("Add it to your .env file:  OPENROUTER_API_KEY=sk-or-...")
         sys.exit(1)
 
     if sys.stdin.isatty():
-        brand_input = input("Brand (e.g. Dior, Chanel, Louis Vuitton — press Enter for Dior): ").strip()
-        brand = brand_input if brand_input else "Dior"
+        default_brand = BRAND  # from .env, default Celine
+        brand_input = input(f"Brand (press Enter for {default_brand}): ").strip()
+        brand = brand_input if brand_input else default_brand
 
         city_input = input("Store city (e.g. Shanghai, Beijing, Chengdu — press Enter for Shanghai): ").strip()
         city = city_input if city_input else "Shanghai"
@@ -83,7 +81,7 @@ def get_pipeline_inputs():
         ).strip().lower()
         do_scrape = scrape_input == "y"
     else:
-        brand, city, do_scrape = "Dior", "Shanghai", False
+        brand, city, do_scrape = BRAND, "Shanghai", False
 
     return brand, city, do_scrape
 
@@ -98,15 +96,12 @@ def scrape_live_xhs(brand: str, slug: str, scroll_times: int = 1) -> bool:
     """
     Run xhs_scraper_live.py for the brand — once for ready-to-wear keywords,
     once for leather goods keywords. Merges both runs into xhs_posts.json.
-
-    Returns True if any posts were collected.
     """
     scraper_path = Path("module_1/xhs_scraper_live.py")
     if not scraper_path.exists():
         print("  [scraper] xhs_scraper_live.py not found — skipping.")
         return False
 
-    # Check DrissionPage is available
     check = subprocess.run(
         [sys.executable, "-c", "import DrissionPage"],
         capture_output=True
@@ -114,7 +109,6 @@ def scrape_live_xhs(brand: str, slug: str, scroll_times: int = 1) -> bool:
     if check.returncode != 0:
         print("  [scraper] DrissionPage is not installed.")
         print("  [scraper] Run:  pip3 install DrissionPage tqdm")
-        print("  [scraper] Then re-run the pipeline and choose 'y' to scrape.")
         return False
 
     keywords_map = get_keywords(slug, brand)
@@ -140,8 +134,8 @@ def scrape_live_xhs(brand: str, slug: str, scroll_times: int = 1) -> bool:
                  "--keywords", *keywords,
                  "--times",    str(scroll_times),
                  "--category", category,
-                 "--no-caption",    # skips OpenRouter image captioning; we use Anthropic
-                 "--no-detail"],    # skips per-post detail pages; ~5x faster (remove for richer data)
+                 "--no-caption",
+                 "--no-detail"],
                 cwd="module_1",
                 env=env,
                 check=True
@@ -160,7 +154,6 @@ def scrape_live_xhs(brand: str, slug: str, scroll_times: int = 1) -> bool:
         print("  [scraper] No posts collected — keeping existing xhs_posts.json")
         return False
 
-    # Merge both category runs into a single file
     with open(posts_path, "w", encoding="utf-8") as f:
         json.dump(all_posts, f, ensure_ascii=False, indent=2)
     print(f"\n  [scraper] Done — {len(all_posts)} posts written to xhs_posts.json")
@@ -170,11 +163,10 @@ def scrape_live_xhs(brand: str, slug: str, scroll_times: int = 1) -> bool:
 # ── Module 1 config ────────────────────────────────────────────────────────────
 
 def write_module1_config() -> None:
-    """Write run_config.json for module 1. brand=ALL so all posts pass through."""
     config_path = Path("module_1/data/run_config.json")
     config = {
         "brand": "ALL",
-        "category": "",   # empty = no category filter; module 2 handles brand filtering
+        "category": "",
         "time_window": {"start_date": "2026-01-01", "end_date": "2026-03-31"},
         "max_posts": 100,
         "top_k_trends": 8,
@@ -198,42 +190,35 @@ def write_module1_config() -> None:
     print(f"  [config] Wrote module 1 run config")
 
 
-# ── Module 1 → 2 handoff ───────────────────────────────────────────────────────
-
-def copy_module1_to_module2() -> bool:
-    src = Path("module_1/outputs/trend_objects.json")
-    dst = Path("module_2/data/trend_objects.json")
-    if not src.exists():
-        print("  [handoff] No module 1 output — module 2 keeps its existing data")
-        return False
-    dst.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy(src, dst)
-    print(f"  [handoff] module_1/outputs/trend_objects.json → module_2/data/trend_objects.json")
-    return True
-
-
 # ── Subprocess runner ──────────────────────────────────────────────────────────
 
 def run_module(module_dir, script_name, *args):
-    print(f"\n--- Running {module_dir}/{script_name} ---")
-    if not os.path.exists(os.path.join(module_dir, script_name)):
-        print(f"Script not found. Skipping.")
+    print(f"\n{'='*60}")
+    print(f"Running {module_dir}/{script_name}")
+    print(f"{'='*60}")
+    script_path = os.path.join(module_dir, script_name)
+    if not os.path.exists(script_path):
+        print(f"Script {script_path} not found. Skipping.")
         return False
 
     env = os.environ.copy()
+    env["OPENROUTER_API_KEY"] = OPENROUTER_API_KEY
+    env["OPENAI_API_KEY"] = OPENROUTER_API_KEY
+    env["ANTHROPIC_API_KEY"] = OPENROUTER_API_KEY
     env["DEFAULT_MODEL"] = DEFAULT_MODEL
+    env["BRAND"] = BRAND
 
     try:
         subprocess.run(
-            [sys.executable, script_name, *args],
+            [sys.executable, script_path, *args],
             cwd=module_dir,
             env=env,
             check=True
         )
-        print(f"--- Finished {module_dir}/{script_name} successfully ---")
+        print(f"✓ Finished {module_dir}/{script_name}")
         return True
     except subprocess.CalledProcessError as e:
-        print(f"--- Error running {module_dir}/{script_name}: {e} ---")
+        print(f"✗ Error in {module_dir}/{script_name}: {e}")
         return False
 
 
@@ -254,22 +239,24 @@ def main():
 
     # ── Module 1: cluster posts → trend_objects.json ───────────────────────────
     write_module1_config()
-    m1_ok = run_module("module_1", "xhs_trend_builder.py")
-
-    # ── Handoff: M1 output → M2 input (only if M1 succeeded) ──────────────────
-    if m1_ok:
-        copy_module1_to_module2()
-    else:
-        print("  [handoff] Skipped — module 2 will use its existing trend data")
+    run_module("module_1", "xhs_trend_builder.py")
 
     # ── Module 2: filter + score trends for the brand ──────────────────────────
-    run_module("module_2", "agent.py", "--brand", slug)
+    run_module("module_2", "agent.py")
 
     # ── Module 3: trend briefs + persona matching ───────────────────────────────
     run_module("module_3/trend_brief_agent", "agent.py", "--brand", brand, "--city", city)
 
-    print("\nPipeline complete.")
-    print(f"Output → module_3/trend_brief_agent/trend_cards_{slug}_{city.lower()}.md")
+    # ── Module 4: client memory structurer ─────────────────────────────────────
+    run_module("module_4", "First_Run.py")
+
+    # ── Module 5: outreach angle agent ─────────────────────────────────────────
+    run_module("module_5", "agent.py")
+
+    print("\n" + "="*60)
+    print(f"  Pipeline complete: Modules 1 → 2 → 3 → 4 → 5")
+    print("="*60)
+    print(f"\n  Trend cards → module_3/trend_brief_agent/trend_cards_{slug}_{city.lower()}.html")
 
 
 if __name__ == "__main__":
