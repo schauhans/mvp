@@ -9,8 +9,8 @@
   "top_k_trends": 8,
   "min_posts_per_trend": 2,
   "llm": {
-    "enabled": false,
-    "model": "claude-haiku-4-5-20251001"
+    "enabled": true,
+    "model": "openai/gpt-4o-mini"
   },
   "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts."
 }

@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Union
 
+import argparse
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -42,7 +44,11 @@ RUN_LOG_FILE = BASE_DIR / "outputs" / "run_log.json"
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 AGENT_NAME = "Trend Relevance & Materiality Filter"
-BRAND = os.environ.get("BRAND", "Celine")
+# --brand CLI arg overrides BRAND env var (set by main.py per-run)
+_parser = argparse.ArgumentParser(add_help=False)
+_parser.add_argument("--brand", default=None)
+_parsed, _ = _parser.parse_known_args()
+BRAND = _parsed.brand or os.environ.get("BRAND", "Celine")
 DEFAULT_CITY = os.environ.get("DEFAULT_CITY", "Shanghai")
 MAX_SHORTLIST = 5
 
@@ -227,6 +233,7 @@ def convert_to_module3_format(
             "trending_hashtags": hashtags[:5],
             "brand_relevance": brand_relevance,
             "week_on_week_growth": wow_growth,
+            "city_distribution": metrics.get("city_distribution", {}),
             # Extra M2 fields for downstream enrichment
             "m2_composite_score": composite,
             "m2_confidence": ev.get("confidence", "medium"),

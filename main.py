@@ -131,11 +131,11 @@ def scrape_live_xhs(brand: str, slug: str, scroll_times: int = 1) -> bool:
         try:
             subprocess.run(
                 [sys.executable, "xhs_scraper_live.py",
-                 "--keywords", *keywords,
-                 "--times",    str(scroll_times),
-                 "--category", category,
-                 "--no-caption",
-                 "--no-detail"],
+                 "--keywords",    *keywords,
+                 "--times",       str(scroll_times),
+                 "--category",    category,
+                 "--max-detail",  "5",
+                 "--no-caption"],
                 cwd="module_1",
                 env=env,
                 check=True
@@ -171,7 +171,7 @@ def write_module1_config() -> None:
         "max_posts": 100,
         "top_k_trends": 8,
         "min_posts_per_trend": 2,
-        "llm": {"enabled": False, "model": DEFAULT_MODEL},
+        "llm": {"enabled": True, "model": DEFAULT_MODEL if "/" in DEFAULT_MODEL else "openai/gpt-4o-mini"},
         "prompt": (
             "You are the decision engine for Module 1: XHS Trend Object Builder. "
             "Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. "
@@ -210,7 +210,7 @@ def run_module(module_dir, script_name, *args):
 
     try:
         subprocess.run(
-            [sys.executable, script_path, *args],
+            [sys.executable, script_name, *args],
             cwd=module_dir,
             env=env,
             check=True
@@ -242,7 +242,7 @@ def main():
     run_module("module_1", "xhs_trend_builder.py")
 
     # ── Module 2: filter + score trends for the brand ──────────────────────────
-    run_module("module_2", "agent.py")
+    run_module("module_2", "agent.py", "--brand", brand)
 
     # ── Module 3: trend briefs + persona matching ───────────────────────────────
     run_module("module_3/trend_brief_agent", "agent.py", "--brand", brand, "--city", city)

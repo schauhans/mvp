@@ -1,0 +1,15 @@
+{"timestamp_utc": "2026-03-28T13:00:43.176718+00:00", "level": "stage", "step": "Prompt", "message": "Loading prompt + config + retrieval sources", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.272101+00:00", "level": "ok", "step": "Prompt", "message": "Completed in 0.10s", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.272216+00:00", "level": "stage", "step": "Retrieve", "message": "Normalizing and filtering XHS posts", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.368308+00:00", "level": "ok", "step": "Retrieve", "message": "Completed in 0.10s", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.368457+00:00", "level": "ok", "step": "Retrieve", "message": "Retrieved 34 posts from 38 loaded records", "meta": {"max_posts": 100, "posts_path": "data/xhs_posts.json"}}
+{"timestamp_utc": "2026-03-28T13:00:43.368514+00:00", "level": "stage", "step": "Decide", "message": "Clustering semantically similar posts into trend candidates", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.468740+00:00", "level": "ok", "step": "Decide", "message": "Completed in 0.10s", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.468973+00:00", "level": "ok", "step": "Decide", "message": "Selected 2 trend clusters", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.471719+00:00", "level": "ok", "step": "Prompt", "message": "Assignment prompt found and will be used in decision flow", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:43.471839+00:00", "level": "info", "step": "Decide", "message": "LLM labeling enabled (claude-haiku-4-5-20251001)", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:44.417769+00:00", "level": "ok", "step": "Decide", "message": "Trend objects built (2 total, 0 LLM-labeled)", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:44.418023+00:00", "level": "warn", "step": "Decide", "message": "LLM enabled but 0 labels used. First issue: openai call failed: Error code: 400 - {'error': {'message': 'claude-haiku-4-5-20251001 is not a valid model ID', 'code': 400}, 'user_id': 'user_3BWAB2kwZtkC1K26OL5lPcpeOyI'}", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:44.418104+00:00", "level": "stage", "step": "Output", "message": "Building structured Type-B trend object JSON", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:44.430336+00:00", "level": "ok", "step": "Trace/Log", "message": "Saved run log to outputs/runs/run_0025_run_log.json", "meta": {}}
+{"timestamp_utc": "2026-03-28T13:00:44.431169+00:00", "level": "ok", "step": "Feedback", "message": "Saved reviewer feedback template to outputs/runs/run_0025_feedback.json", "meta": {}}

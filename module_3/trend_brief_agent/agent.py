@@ -20,7 +20,10 @@ JSON_PATH = SCRIPT_DIR / "trend_shortlist.json"
 RUN_LOG_PATH = SCRIPT_DIR / "run_log.json"
 PERSONAS_DIR = SCRIPT_DIR / "personas"
 
-MODEL = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
+_raw_model = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
+# OpenRouter requires "provider/model" format. If the env var is a bare Anthropic
+# model ID (no slash), fall back to a known-good OpenRouter model.
+MODEL = _raw_model if "/" in _raw_model else "openai/gpt-4o-mini"
 
 # System prompt: role, card format, rules
 SYSTEM_PROMPT = (
@@ -96,7 +99,8 @@ CARD_TEMPLATE = (
     "Confidence (use this exact value in the card): {confidence}\n"
     "Confidence methodology: {confidence_method}\n"
     "Top post example: {top_post_example}\n"
-    "Trending hashtags: {trending_hashtags}\n\n"
+    "Trending hashtags: {trending_hashtags}\n"
+    "City signal: {city_signal}\n\n"
     "--- CLIENT PERSONA MATCH ---\n"
     "Best-fit persona: {persona_name}\n"
     "Persona summary: {persona_summary}\n"
@@ -186,11 +190,12 @@ def normalise_from_module2(shortlist_item):
         "category": shortlist_item.get("category", ""),
         "cluster_summary": shortlist_item.get("why_selected", ""),
         "post_count": metrics.get("post_count", 0),
-        "engagement_rate": metrics.get("avg_engagement", 0) / 100000 if metrics.get("avg_engagement") else 0,
+        "engagement_rate": round(min(metrics.get("avg_engagement", 0) / 10000, 1.0), 4) if metrics.get("avg_engagement") else 0,
         "week_on_week_growth": "+20%",  # module 2 does not provide WoW growth
         "top_post_example": evidence[0] if evidence else "",
         "trending_hashtags": evidence[1:] if len(evidence) > 1 else [],
         "brand_relevance": shortlist_item.get("confidence", "medium"),
+        "city_distribution": shortlist_item.get("city_distribution", {}),
     }
 
 
@@ -202,24 +207,29 @@ def _detect_data_note():
     return "synthetic data (prototype — not live XHS data)"
 
 
-def load_trends():
-    # Try module 2 pipeline output first
+def load_trends(brand: str = ""):
+    # Try module 2 pipeline output first — but only if it was generated for this brand
     if MODULE2_OUTPUT.exists():
-        print(f"Loading trends from module 2 output: {MODULE2_OUTPUT}")
         with open(MODULE2_OUTPUT, "r", encoding="utf-8") as f:
             data = json.load(f)
-        trends = [normalise_from_module2(t) for t in data.get("shortlist", [])]
-        # Wrap in same structure the rest of the code expects
-        return {
-            "query_context": {
-                "brand": data.get("brand", "Christian Dior"),
-                "market": "China luxury fashion",
-                "source": "module_2/output_shortlist.json",
-                "week": data.get("generated_at", "")[:10],
-                "data_note": _detect_data_note(),
-            },
-            "trends": trends,
-        }
+        cached_brand = data.get("brand", "")
+        brand_slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
+        cached_slug = cached_brand.lower().strip().replace(" ", "_").replace("-", "_")
+        if brand and cached_slug and brand_slug not in cached_slug and cached_slug not in brand_slug:
+            print(f"Module 2 cache is for '{cached_brand}', not '{brand}' — skipping stale cache.")
+        else:
+            print(f"Loading trends from module 2 output: {MODULE2_OUTPUT}")
+            trends = [normalise_from_module2(t) for t in data.get("shortlist", [])]
+            return {
+                "query_context": {
+                    "brand": cached_brand,
+                    "market": "China luxury fashion",
+                    "source": "module_2/output_shortlist.json",
+                    "week": data.get("generated_at", "")[:10],
+                    "data_note": _detect_data_note(),
+                },
+                "trends": trends,
+            }
     # Fallback to local file for standalone testing
     if not JSON_PATH.exists():
         raise FileNotFoundError(
@@ -250,16 +260,33 @@ def get_user_inputs():
     return brand, city
 
 
-def compute_composite_score(trend):
-    """Weighted composite score for ranking trends."""
+def compute_composite_score(trend, city: str = ""):
+    """Weighted composite score for ranking trends.
+
+    Adds a city relevance bonus (up to +5) when city_distribution data is available
+    and the selected city has posts in this trend cluster.
+    """
     growth_pct = int(trend["week_on_week_growth"].replace("%", "").replace("+", ""))
     # Normalise post_count: treat 10,000 as max reference
     post_norm = min(trend["post_count"] / 10000, 1.0)
-    return (
+    base = (
         trend["engagement_rate"] * 40
         + (growth_pct / 100) * 30
         + post_norm * 30
     )
+    # City relevance bonus: map English city name to Chinese for lookup
+    CITY_ZH = {
+        "Shanghai": "上海", "Beijing": "北京", "Chengdu": "成都",
+        "Guangzhou": "广州", "Shenzhen": "深圳", "Hangzhou": "杭州",
+    }
+    city_dist = trend.get("city_distribution", {})
+    if city and city_dist:
+        city_zh = CITY_ZH.get(city, city)
+        city_posts = city_dist.get(city_zh, 0)
+        total_located = sum(city_dist.values()) or 1
+        city_share = city_posts / total_located  # 0.0–1.0
+        base += city_share * 5  # max +5 bonus for 100% city match
+    return base
 
 
 def assess_confidence(trend):
@@ -305,6 +332,28 @@ def get_confidence_method(trend, confidence, data_note="synthetic data (prototyp
         )
 
 
+CITY_ZH_MAP = {
+    "Shanghai": "上海", "Beijing": "北京", "Chengdu": "成都",
+    "Guangzhou": "广州", "Shenzhen": "深圳", "Hangzhou": "杭州",
+}
+
+
+def _format_city_signal(city_distribution: dict, selected_city: str) -> str:
+    """Return a human-readable city signal string for the LLM prompt and card."""
+    if not city_distribution:
+        return "No city breakdown available (engagement data not captured in this scrape)"
+    total = sum(city_distribution.values())
+    city_zh = CITY_ZH_MAP.get(selected_city, selected_city)
+    city_posts = city_distribution.get(city_zh, 0)
+    sorted_cities = sorted(city_distribution.items(), key=lambda x: x[1], reverse=True)
+    breakdown = ", ".join(f"{c}: {n}" for c, n in sorted_cities[:5])
+    if city_posts:
+        pct = round(city_posts / total * 100)
+        return f"{city_posts}/{total} posts from {selected_city} ({pct}%) | Top cities: {breakdown}"
+    else:
+        return f"0 posts geolocated to {selected_city} | Top cities: {breakdown}"
+
+
 def select_trends(trends, city, top_n=3):
     """B3: Apply decision logic — filter by city, run failure checks, rank, return top N.
 
@@ -340,8 +389,8 @@ def select_trends(trends, city, top_n=3):
         pool = high_relevance + medium_relevance
         used_fallback = True
 
-    # Step 5: rank by composite score, take top N
-    ranked = sorted(pool, key=compute_composite_score, reverse=True)[:top_n]
+    # Step 5: rank by composite score (with city relevance bonus), take top N
+    ranked = sorted(pool, key=lambda t: compute_composite_score(t, city), reverse=True)[:top_n]
 
     return ranked, used_fallback, failed
 
@@ -463,6 +512,7 @@ def generate_trend_card(client, trend, brand, city, persona_match=None, data_not
         brand_relevance=trend["brand_relevance"],
         confidence=confidence,
         confidence_method=confidence_method_str,
+        city_signal=_format_city_signal(trend.get("city_distribution", {}), city),
         persona_name=persona_name,
         persona_summary=persona_summary,
         match_rationale=match_rationale,
@@ -855,8 +905,8 @@ def main():
     else:
         brand, city = get_user_inputs()
 
-    # B2: Retrieve context from trend_shortlist.json
-    data = load_trends()
+    # B2: Retrieve context — skip stale Module 2 cache if it's for a different brand
+    data = load_trends(brand)
     context = data["query_context"]
     all_trends = data["trends"]
     all_ids = [t["trend_id"] for t in all_trends]

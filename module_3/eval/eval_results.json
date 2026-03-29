@@ -1,0 +1,223 @@
+{
+  "summary": {
+    "total_cards": 10,
+    "check_1_pass_count": 0,
+    "check_1_pass_rate_pct": 0.0,
+    "check_2_avg_score": 4.4,
+    "check_2_scored_cards": 10,
+    "check_3_avg_score": 5.0,
+    "check_3_scored_cards": 10
+  },
+  "cards": [
+    {
+      "brand": "Amiri",
+      "city": "Shanghai",
+      "trend_id": "t18",
+      "trend_label": "Top Handle Bag Elegance",
+      "category": "leather goods",
+      "file": "trend_cards_amiri_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 4,
+        "reason": "The casual tone and reference to popular culture make it feel more personal and engaging, though it could still benefit from a slightly more conversational touch."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale specifically references the trend's details by mentioning cultural status markers, formal occasion framing, and the appeal to collectors, all of which align directly with the trend's evidence and category."
+      }
+    },
+    {
+      "brand": "Amiri",
+      "city": "Shanghai",
+      "trend_id": "t20",
+      "trend_label": "Lady Dior Heritage and Contemporary Styling",
+      "category": "leather goods",
+      "file": "trend_cards_amiri_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Week-on-week growth: +20%' — missing: benchmark, sample size, date | '- Total engagement: 158,000 · Total saves: 26,200' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 5,
+        "reason": "The starter combines personal observation with a relatable cultural reference, making it sound genuine and conversational, like a trusted friend discussing shared interests."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale directly references the trend's 30-year heritage narrative, social engagement metrics, and the cultural significance tied to the Lady Dior bag."
+      }
+    },
+    {
+      "brand": "Amiri",
+      "city": "Shanghai",
+      "trend_id": "t19",
+      "trend_label": "Cannage Quilting Detail Focus",
+      "category": "leather goods",
+      "file": "trend_cards_amiri_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 4,
+        "reason": "The conversation starter is engaging and personalized, reflecting a casual yet informed tone that feels like a friend sharing insights rather than a corporate pitch."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale specifically references Cannage quilting's cultural heritage and connection to Monsieur Dior's design, aligning closely with the trend's evidence and category."
+      }
+    },
+    {
+      "brand": "Bottega Veneta",
+      "city": "Shanghai",
+      "trend_id": "t18",
+      "trend_label": "Top Handle Bag Elegance",
+      "category": "leather goods",
+      "file": "trend_cards_bottega_veneta_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 4,
+        "reason": "This message feels personalized and intimate while maintaining a conversational tone, although it slightly leans toward a curated approach."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale directly cites the trend details by referencing the emphasis on heritage, appropriateness, and cultural sophistication associated with top handle bags."
+      }
+    },
+    {
+      "brand": "Bottega Veneta",
+      "city": "Shanghai",
+      "trend_id": "t20",
+      "trend_label": "Lady Dior Styling and Heritage",
+      "category": "leather goods",
+      "file": "trend_cards_bottega_veneta_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date | '- Total saves: 26,200 across cluster' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 5,
+        "reason": "The conversation starter is personal and engaging, reflecting a genuine interest in sharing and discussing the brand's story in a relatable manner."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale directly cites the trend's evidence of sustained engagement and specific influencers, linking them to the persona's appreciation for heritage narrative and craft-forward storytelling."
+      }
+    },
+    {
+      "brand": "Bottega Veneta",
+      "city": "Shanghai",
+      "trend_id": "t19",
+      "trend_label": "Cannage Quilting Detail Focus",
+      "category": "leather goods",
+      "file": "trend_cards_bottega_veneta_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Week-on-week growth: +20%' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 4,
+        "reason": "The conversation starter feels personal and engaging, but the initial reference may come across as slightly formal and not entirely casual."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale directly references the Cannage quilting's connection to Monsieur Dior's chair and discusses the engagement sources in relation to the trend."
+      }
+    },
+    {
+      "brand": "Dior",
+      "city": "Shanghai",
+      "trend_id": "t18",
+      "trend_label": "Top Handle Bag Elegance",
+      "category": "leather goods",
+      "file": "trend_cards_dior_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 4,
+        "reason": "The conversation starter feels personal and engaging, reflecting a genuine interest in the recipient's perspective while still incorporating relevant insights from social media."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale directly references the Lady Dior bag's heritage and its role in formal occasions, aligning closely with the trend's details."
+      }
+    },
+    {
+      "brand": "Dior",
+      "city": "Shanghai",
+      "trend_id": "t20",
+      "trend_label": "Lady Dior Styling and Heritage",
+      "category": "leather goods",
+      "file": "trend_cards_dior_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 5,
+        "reason": "The message feels personal and engaging, referencing shared interests and inviting a genuine conversation about a meaningful topic."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale specifically references the Lady Dior bag's 30-year heritage, its connection to Princess Diana, and aligns it with the values of the Heritage Loyalist persona."
+      }
+    },
+    {
+      "brand": "Dior",
+      "city": "Shanghai",
+      "trend_id": "t19",
+      "trend_label": "Cannage Quilting Detail Focus",
+      "category": "Leather Goods",
+      "file": "trend_cards_dior_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 4,
+        "reason": "This conversation starter feels personal and engaging, as it references a specific discussion and invites the recipient to share their thoughts, resembling a friendly chat rather than a corporate script."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale explicitly references the Cannage quilting pattern's origin in Monsieur Dior's chair design and highlights the emphasis on cultural narrative and heritage craftsmanship."
+      }
+    },
+    {
+      "brand": "Loewe",
+      "city": "Shanghai",
+      "trend_id": "t01",
+      "trend_label": "Loewe Fashion Highlights",
+      "category": "Fashion",
+      "file": "trend_cards_loewe_shanghai.md",
+      "check_1_metric_context": {
+        "result": "FAIL",
+        "score": 0,
+        "reason": "'- Post growth: +20% (week-on-week)' — missing: benchmark, sample size, date"
+      },
+      "check_2_starter_quality": {
+        "score": 5,
+        "reason": "The conversation starter uses personal observation and invites a genuine opinion, making it feel natural and intimate."
+      },
+      "check_3_persona_specificity": {
+        "score": 5,
+        "reason": "The rationale directly cites specific items like the Amazona180 and pleated skirts, closely aligning with the trend's evidence and category."
+      }
+    }
+  ]
+}

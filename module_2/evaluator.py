@@ -35,7 +35,8 @@ def _get_client():
 
 
 def _get_model() -> str:
-    return os.environ.get("DEFAULT_MODEL", "anthropic/claude-3-5-sonnet")
+    raw = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
+    return raw if "/" in raw else "openai/gpt-4o-mini"
 
 
 def _call_llm(client, model: str, prompt: str, attempt: int = 1) -> Optional[str]:

@@ -262,7 +262,7 @@ class XHSLiveScraper:
         url = XHS_SEARCH_URL.format(keyword=encoded) + "&type=51"
         print(f"  [SEARCH] {url}")
         self._get_safe(self.main_tab, url)
-        time.sleep(4)  # give XHS time to fully render
+        time.sleep(2)  # give XHS time to fully render
 
         cards: list[dict] = []
         seen_links: set[str] = set()
@@ -345,16 +345,16 @@ class XHSLiveScraper:
         detail_tab = None
         try:
             detail_tab = self.browser.new_tab(link)
-            time.sleep(3)
+            time.sleep(1.5)
 
             # ── stats ──
-            date_el = detail_tab.ele(".date", timeout=4)
+            date_el = detail_tab.ele(".date", timeout=2)
             post["date"] = date_el.text if date_el else ""
 
-            saves_el = detail_tab.ele(".collect-wrapper .count", timeout=3)
+            saves_el = detail_tab.ele(".collect-wrapper .count", timeout=2)
             post["saves"] = _parse_count(saves_el.text if saves_el else "0")
 
-            comments_el = detail_tab.ele(".chat-wrapper .count", timeout=3)
+            comments_el = detail_tab.ele(".chat-wrapper .count", timeout=2)
             post["comments"] = _parse_count(comments_el.text if comments_el else "0")
 
             # ── caption + hashtags ──
@@ -402,8 +402,8 @@ class XHSLiveScraper:
             else:
                 post["video_url"] = ""
 
-            # ── comments + replies ──
-            post["raw_comments"] = self._scrape_comments(detail_tab)
+            # ── comments: skip scrolling (count already captured above) ──
+            post["raw_comments"] = []
 
         except Exception as e:
             print(f"    [WARN] Detail fetch failed for {link}: {e.__class__.__name__}")
@@ -637,6 +637,10 @@ def main():
                              'e.g. --filter "LV" "Dior" "包" "穿搭" "奢"')
     parser.add_argument("--no-detail", action="store_true",
                         help="Skip detail-page visits (faster, but no caption/hashtag/date/images)")
+    parser.add_argument("--max-detail", type=int, default=None,
+                        help="Only visit detail pages for the top N posts (by likes) per keyword. "
+                             "Keeps runs fast while still collecting real engagement data. "
+                             "e.g. --max-detail 5 visits only the 5 most-liked posts per keyword.")
     parser.add_argument("--no-caption", action="store_true",
                         help="Skip AI image captioning")
     args = parser.parse_args()
@@ -647,7 +651,7 @@ def main():
     print(f"Scroll×   : {args.times} per keyword")
     print(f"Category  : {args.category}")
     print(f"Filter    : {args.filter_words or 'none (all results kept)'}")
-    print(f"Detail    : {not args.no_detail}")
+    print(f"Detail    : {not args.no_detail} (max per keyword: {args.max_detail or 'all'})")
     print(f"AI caption: {not args.no_caption}")
     print("=" * 60)
 
@@ -662,11 +666,17 @@ def main():
                                filter_words=args.filter_words or None)
 
         if not args.no_detail:
+            # Sort by likes descending so the most-engaged posts are visited first
+            cards_sorted = sorted(cards, key=lambda c: c.get("likes", 0), reverse=True)
+            detail_pool = cards_sorted[:args.max_detail] if args.max_detail else cards_sorted
+            skipped = len(cards_sorted) - len(detail_pool)
+            if skipped:
+                print(f"  [DETAIL] Capping at {args.max_detail} posts ({skipped} skipped — lower engagement)")
             enriched = []
-            for i, card in enumerate(cards, 1):
-                print(f"  [DETAIL] {i}/{len(cards)} — {card.get('title','')[:40]}")
+            for i, card in enumerate(detail_pool, 1):
+                print(f"  [DETAIL] {i}/{len(detail_pool)} — {card.get('title','')[:40]}")
                 enriched.append(scraper.fetch_detail(card))
-                time.sleep(2)  # polite rate limit
+                time.sleep(1)  # polite rate limit
             all_raw.extend(enriched)
         else:
             all_raw.extend(cards)

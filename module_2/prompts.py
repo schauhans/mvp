@@ -4,6 +4,16 @@ prompts.py — LLM prompt templates for Module 2 Trend Relevance & Materiality F
 Brand name and profile details are injected at runtime so the module works for any luxury brand.
 """
 
+# Generic system prompt used as a fallback when no brand profile is available at import time.
+# evaluator.py imports this constant; at runtime it is overridden by build_system_prompt().
+SYSTEM_PROMPT = (
+    "You are a senior luxury retail trend analyst specializing in Chinese consumer behavior "
+    "on Xiaohongshu. You evaluate trend signals and decide which trends are truly material, "
+    "brand-appropriate, and actionable for Client Advisors. "
+    "You are evidence-grounded and precise. "
+    "Return only valid JSON — no markdown, no explanation."
+)
+
 import json
 
 

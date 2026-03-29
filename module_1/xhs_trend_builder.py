@@ -509,8 +509,11 @@ def maybe_label_with_llm(
     )
     try:
         client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
-        response = client.responses.create(model=llm_model, input=prompt)
-        output_text = getattr(response, "output_text", "") or ""
+        response = client.chat.completions.create(
+            model=llm_model,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        output_text = response.choices[0].message.content or ""
         parsed = extract_json_object(output_text)
         if not parsed:
             if llm_errors is not None:
@@ -645,6 +648,22 @@ def to_trend_object(
     total_comments_scraped = len(flat_comment_texts)
     total_replies_scraped  = len(flat_reply_texts)
 
+    # Extract city distribution from post date strings (e.g. "03-14 上海", "昨天 14:57 广东")
+    # XHS appends the poster's province/city to the date field — we use this to flag
+    # which cities this trend is strongest in, for downstream city-relevance ranking.
+    KNOWN_CITIES = [
+        "上海", "北京", "成都", "广州", "深圳", "杭州", "南京", "武汉", "重庆",
+        "西安", "苏州", "天津", "青岛", "厦门", "宁波", "无锡", "长沙", "郑州",
+        "广东", "浙江", "江苏", "四川", "湖北", "湖南", "山东",
+    ]
+    city_counts: dict = {}
+    for p in posts:
+        date_str = p.date or ""
+        for city in KNOWN_CITIES:
+            if city in date_str:
+                city_counts[city] = city_counts.get(city, 0) + 1
+                break  # one city per post
+
     metrics = {
         "post_count":       post_count,
         "total_engagement": total_engagement,
@@ -655,6 +674,7 @@ def to_trend_object(
         "top_keywords":     top_tokens[:5],
         "video_post_count": video_count,
         "image_count":      len(all_cluster_images),
+        "city_distribution": city_counts,
     }
 
     return {
@@ -784,7 +804,8 @@ def run(
         )
     llm_config = config.get("llm", {}) or {}
     llm_enabled = bool(llm_config.get("enabled", False))
-    llm_model = os.environ.get("DEFAULT_MODEL", str(llm_config.get("model", "gpt-4.1-mini")).strip() or "gpt-4.1-mini")
+    _raw_model = os.environ.get("DEFAULT_MODEL", str(llm_config.get("model", "openai/gpt-4o-mini")).strip() or "openai/gpt-4o-mini")
+    llm_model = _raw_model if "/" in _raw_model else "openai/gpt-4o-mini"
     llm_errors: List[str] = []
 
     if llm_test and llm_enabled:
@@ -798,9 +819,9 @@ def run(
             else:
                 def _llm_ping() -> None:
                     client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
-                    _ = client.responses.create(
+                    _ = client.chat.completions.create(
                         model=llm_model,
-                        input='Return valid JSON exactly: {"ok": true}',
+                        messages=[{"role": "user", "content": 'Return valid JSON exactly: {"ok": true}'}],
                     )
 
                 cli.run_stage("Decide", f"Testing live LLM connectivity ({llm_model})", _llm_ping)
