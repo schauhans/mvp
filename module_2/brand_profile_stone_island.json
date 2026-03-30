@@ -1,0 +1,14 @@
+{
+  "brand_name": "Stone Island",
+  "aesthetic": "Technical military-inspired sportswear, fabric innovation through garment dyeing and special treatments, utilitarian precision with insider material knowledge, the Compass badge as a mark of applied craft credibility",
+  "clientele": "fashion-literate men 22-42 with deep interest in technical fabric innovation and subcultural authenticity; values material insider knowledge over brand visibility, seeks the garment story and dyeing process over logo recognition",
+  "preferred_sources": ["technical streetwear and sportswear KOL", "outdoor and workwear culture creators", "Stone Island brand accounts", "fabric and material innovation accounts", "football terrace culture and casual wear communities"],
+  "avoided_sources": ["traditional luxury editorial", "conservative fashion accounts", "fast fashion influencers", "logo-first luxury content", "celebrity red carpet coverage", "mainstream athleisure accounts"],
+  "active_categories": ["ready-to-wear", "accessories"],
+  "category_cadence": {
+    "ready-to-wear": "fast",
+    "accessories": "medium"
+  },
+  "brand_taboos": ["traditional luxury codes without technical grounding", "logomania as primary appeal", "conservative formal dressing", "fast fashion references", "generic sportswear aesthetics", "heritage signaling without material substance"],
+  "clienteling_tone": "peer-to-peer knowledge sharing, technically fluent on fabric and dyeing treatments, subcultural awareness — never patronising, always assume the client knows their garments, lead with material story not brand status"
+}

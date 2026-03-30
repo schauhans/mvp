@@ -37,7 +37,10 @@ def build_system_prompt(brand_profile: dict) -> str:
     )
 
 
-def build_batch_evaluation_prompt(brand_profile: dict, trend_objects: list, today: str = "2026-03-25") -> str:
+def build_batch_evaluation_prompt(brand_profile: dict, trend_objects: list, today: str = None) -> str:
+    from datetime import date
+    if today is None:
+        today = date.today().isoformat()
     """
     Build a batch evaluation prompt for up to 5 trend objects at once.
     Returns a prompt asking the LLM to return a JSON array of evaluations.
@@ -73,7 +76,7 @@ Dimensions:
 
 3. CATEGORY FIT (0–10): Is this trend appropriate for this specific product category? Ready-to-wear moves {rtw_pace} — recency and momentum matter most. Leather goods moves at {lg_pace} pace — sustained signal across multiple weeks matters more than single viral moments.
 
-4. MATERIALITY (0–10): Is total_engagement strong enough to be meaningful for a luxury brand audience on XHS? Is engagement spread across multiple posts rather than one viral outlier? Does post_count show real sustained interest over time?
+4. MATERIALITY (0–10): Is total_engagement strong enough to be meaningful for a luxury brand audience on XHS? Is engagement spread across multiple posts rather than one viral outlier? Does post_count show real sustained interest over time? NOTE: This pipeline scrapes ~40 posts per run (a small prototype sample), so engagement numbers will be proportionally smaller than a full XHS trend scan — do not reject solely because the absolute numbers are low compared to viral benchmarks. If total_engagement=0 it likely means the scraper failed to extract counts, not that the trend has no engagement; in that case score materiality based on post_count and snippet quality alone.
 
 5. ACTIONABILITY (0–10): Can a {brand_name} CA mention this trend naturally in a refined client conversation? Is it specific enough to be useful — not just "feminine dressing is trending" but something concrete a CA can reference with a specific {brand_name} product or look? Would an affluent {brand_name} client respond positively and feel the CA is knowledgeable?
 
@@ -81,8 +84,8 @@ Compute composite_score as:
 (freshness × 0.20) + (brand_fit × 0.30) + (category_fit × 0.20) + (materiality × 0.15) + (actionability × 0.15)
 
 A trend is shortlisted ONLY if:
-- composite_score >= 6.5
-- No individual dimension score is below 4
+- composite_score >= 5.5
+- No individual dimension score is below 3
 - You judge it genuinely usable for {brand_name} CAs right now
 
 Return ONLY a valid JSON array with no markdown and no text outside the JSON. One object per trend, in the same order as the input batch:

@@ -196,10 +196,11 @@ def convert_to_module3_format(
         # Normalise to a 0–1 engagement rate: 10k avg engagement ≈ 1.0
         engagement_rate = round(min(avg_eng / 10000, 1.0), 4)
 
-        # Week-on-week growth — use momentum_signal if present, otherwise compute from post dates
-        wow_growth = original.get("momentum_signal", "+0%")
-        if not wow_growth or wow_growth == "+0%":
-            wow_growth = "+15%"  # default for shortlisted trends (they passed pre-filter)
+        # Week-on-week growth — use momentum_signal computed by Module 1 from post date buckets.
+        # Falls back to "+15%" only when the field is absent (e.g. synthetic/fallback data).
+        # "+0%" is a valid real value (all posts from this week, no prior-week baseline) and
+        # is passed through unchanged — we no longer overwrite it with the default.
+        wow_growth = original.get("momentum_signal") or "+15%"
 
         # Top post example from snippets or first post title
         top_post_example = snippets[0] if snippets else (posts[0].get("title", "") if posts else "")

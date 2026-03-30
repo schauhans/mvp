@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Stone Island Shanghai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 60px; }
+    .brief-header { padding: 22px 20px 18px; border-radius: 10px; }
+    .brief-header h1 { font-size: 22px; }
+    .brief-meta { font-size: 12px; gap: 12px; }
+    .card { border-radius: 10px; margin-bottom: 20px; }
+    .card-header { padding: 18px 20px 14px; }
+    .card-title { font-size: 17px; }
+    .section { padding: 16px 20px; }
+    .section p { font-size: 14px; }
+    .section-overview p { font-size: 15px; }
+    .section-data li { font-size: 13px; }
+    .starter-chinese { font-size: 15px; padding: 12px 14px; }
+    .starter-english { font-size: 13px; padding: 12px 14px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Stone Island · Shanghai</span>
+      <span>Week of 2026-W13</span>
+      <span>Source: synthetic prototype — pre-crafted high-confidence data for standalone testing</span>
+      <span>Generated 30 Mar 2026, 15:19</span>
+    </div>
+  </div>
+  
+  <div class="card" id="t01"><div class="card-header"><div class="card-title">Stone Island Compass Badge Technical Outerwear</div><div class="card-meta"><strong>Category:</strong> ready-to-wear | <strong>Relevance:</strong> Stone Island · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>There&#x27;s a significant increase on XHS in posts related to Stone Island&#x27;s AW25 Compass Badge collection, especially focusing on the Nylon Metal and Crinkle Reps outerwear. Content creators are highlighting unique fabric properties like color shifts under light and tactile contrasts, appealing to an audience that values the technical depth of the Compass badge.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 11.5% (vs. XHS fashion category avg ~4.5% · 6,200 posts · October 2023)</li>
+<li>Post growth: +27% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>HIGH — Engagement rate of 11.5% and a post count of 6,200 exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Technical Explorer</p>
+<p><strong>Who they are:</strong> Drawn to Stone Island through its fabric R&amp;D — the dyeing labs, the Compass badge research archive, the treatment processes. May have arrived through a YouTube deep-dive or XHS post explaining how Ice Jacket works. Fashion is secondary to materials science for this client, and he responds to conversation that treats a garment as an engineering problem solved beautifully.</p>
+<p><strong>Why this trend fits:</strong> The trend emphasizes the transformative fabric properties of the Stone Island Compass Badge collection, appealing directly to The Technical Explorer&#x27;s interest in material science and garment engineering. With a focus on the tactile texture and color shift under light, this persona will appreciate the insider language and technical depth that the trend embodies.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prefer broad styling advice and casual trend discussions without technical grounding.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「石头岛最近的AW25系列真是不可思议，尤其是那些尼龙金属面料的外套，颜色在光线下的变化让人着迷。它们的科技感是前所未有的，你觉得这个系列如何能够提升我的日常穿搭体验呢？」</div><div class="starter-label">English</div><div class="starter-english">"The new AW25 collection from Stone Island is fascinating, especially those Nylon Metal pieces. The color shifts under light are captivating, and the technical nature of the garments is unparalleled. How do you think this collection could elevate your everyday style?"</div></div></div>
+<div class="card" id="t02"><div class="card-header"><div class="card-title">Ghost Piece &amp; Garment Dyeing Process Content</div><div class="card-meta"><strong>Category:</strong> ready-to-wear | <strong>Relevance:</strong> Stone Island · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>XHS creators are showcasing Stone Island&#x27;s signature garment dyeing process, particularly highlighting the Ghost Piece collections. The content is rich with technical detail, featuring before/after images, fabric care rituals, and in-depth explanations of dyeing techniques that appeal to a knowledgeable audience.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 10.2% (vs. XHS fashion category avg ~4.5% · 5,800 posts · October 2023)</li>
+<li>Post growth: +23% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>HIGH — Engagement rate (10.2%) and post count (5,800) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Technical Explorer</p>
+<p><strong>Who they are:</strong> Drawn to Stone Island through its fabric R&amp;D — the dyeing labs, the Compass badge research archive, the treatment processes. May have arrived through a YouTube deep-dive or XHS post explaining how Ice Jacket works. Fashion is secondary to materials science for this client, and he responds to conversation that treats a garment as an engineering problem solved beautifully.</p>
+<p><strong>Why this trend fits:</strong> The trend surrounding Ghost Piece and the garment dyeing process aligns perfectly with The Technical Explorer&#x27;s deep interest in the science and engineering behind fabrics. The detailed explanations and focus on material transformations are exactly what this persona seeks, making them likely to engage deeply with this content.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who are not interested in discussing technical details or prefer styling advice over material science.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近看到很多人分享Stone Island的Ghost Piece染色工艺，讨论到它的颜色变化和面料的护理方式，非常吸引。你对这种科学和材料的结合怎么看？有没有想尝试的款式？」</div></div></div>
+<div class="card" id="t03"><div class="card-header"><div class="card-title">Stone Island Technical Knitwear Layering</div><div class="card-meta"><strong>Category:</strong> Ready-to-wear | <strong>Relevance:</strong> Stone Island · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>A wave of interest is building around Stone Island&#x27;s AW25 knitwear, particularly cable and intarsia knitwear used as layering pieces under technical shells. Posts highlight detailed styling tips, focusing on material weight and the interplay between structured outerwear and softer knit fabrics, appealing to a knowledgeable audience that appreciates the brand&#x27;s layered system.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 9.7% (vs. XHS fashion category avg ~4.5% · 5,100 posts · October 2023)</li>
+<li>Post growth: +21% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>HIGH — Engagement rate (9.7%) and post count (5,100) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Compass Completist</p>
+<p><strong>Who they are:</strong> Deep Stone Island collector who has been following the brand since at least the Raf Simons-adjacent era. Tracks season numbers, knows the difference between a Nylon Metal and a Crinkle Reps piece on sight, and treats the Compass badge as a credential — not a logo. He comes to the CA with a specific item already in mind and wants confirmation that it&#x27;s the right call, not a pitch.</p>
+<p><strong>Why this trend fits:</strong> The trend of Stone Island&#x27;s AW25 knitwear layering will resonate strongly with The Compass Completist, as they value the depth of the brand&#x27;s seasonal narratives and the technical details of the pieces. Their sophisticated understanding of the brand&#x27;s layering language makes them particularly receptive to innovative knitwear that enhances their carefully curated collections.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prefer broad, generalized discussions about brands rather than in-depth exploration of technical details.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近我发现用石头岛的针织衣物作为外层夹克下的搭配方式非常流行，尤其是那些独特的底层部分。这条趋势完美地衬托了品牌的设计理念。你觉得这些新季针织品是否能提升你的收藏呢？」</div><div class="starter-label">English</div><div class="starter-english">"I&#x27;ve been seeing a lot of interest in using Stone Island&#x27;s knitwear as a layering piece beneath outer shells, especially with those unique foundational pieces. This trend beautifully reflects the brand&#x27;s design ethos. Do you think these new season knits could elevate your collection?"</div></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,258 @@
+{
+  "run_id": "run_0027",
+  "agent": {
+    "name": "XHS Trend Object Builder",
+    "module": "Module 1 - Trend Object Builder",
+    "owner": "Manny"
+  },
+  "decision": "From XHS posts in a brand/category/time window, produce distinct trend objects with evidence and metrics.",
+  "output_type": "Type B - Reviewable output",
+  "mvp_outcome_statement": "If our MVP works, trend signals from Xiaohongshu become faster to validate and easier for downstream teams to reuse, because the system converts raw API/XHS inputs into strict, evidence-backed Trend Objects.",
+  "brand": "ALL",
+  "category": "",
+  "time_window": {
+    "start_date": "2026-01-01",
+    "end_date": "2026-03-31"
+  },
+  "retrieval": {
+    "sources": [
+      "data/xhs_posts.json",
+      "data/run_config.json"
+    ],
+    "records_loaded": 38,
+    "records_retrieved": 30
+  },
+  "prompt": "You are the decision engine for Module 1: XHS Trend Object Builder. Turn retrieved Xiaohongshu posts into reviewable Type-B trend objects. Work only with the provided posts. Identify semantically similar clusters by recurring themes, aesthetics, usage scenarios, product angles, behaviour patterns, or language signals. Ensure trend distinctness — merge overlapping clusters rather than forcing extra trends. For each trend generate: a concise label, a one-sentence summary, evidence from real posts, metrics (post_count, total_engagement), and confidence (low/medium/high). Confidence is high only when evidence is coherent and sufficient. Include ai_reasoning explaining why posts belong together. Never invent evidence not present in the retrieved posts.",
+  "prompt_in_use_for_decision": true,
+  "generated_at_utc": "2026-03-29T06:31:52.555126+00:00",
+  "decision_logic": {
+    "mode": "rules-first with optional LLM label/summary",
+    "llm_enabled": true,
+    "llm_model": "openai/gpt-4o-mini",
+    "llm_label_calls_succeeded": 1,
+    "llm_label_calls_total": 1,
+    "llm_errors": []
+  },
+  "trend_objects": [
+    {
+      "trend_id": "t01",
+      "label": "Celine Summer Collection Highlights",
+      "category": "",
+      "summary": "This cluster features a selection of posts showcasing the latest Celine summer collection items and their stylistic details, appealing to fashion enthusiasts.",
+      "ai_reasoning": "The titles all relate to Celine's summer collection, highlighting new clothing items and accessories, and discussing their aesthetics and appeal. The presence of phrases like '新款' (new arrivals) and references to specific pieces solidifies the connection among these posts, focusing on Celine's fashion trends.",
+      "confidence": "high",
+      "labeling_source": "llm",
+      "evidence": {
+        "post_ids": [
+          "live_0001",
+          "live_0019",
+          "live_0020",
+          "live_0006",
+          "live_0009"
+        ],
+        "snippets": [
+          "CELINE 26夏季新款 松弛洋气的男装夹克",
+          "一眼爱上",
+          "CELINE 26夏季新款 垂褶黑白拼接半裙🎹",
+          "CELINE｜新款Polo🖤",
+          "秀场穿搭 | Celine 2021秋冬 | 秀场回顾"
+        ],
+        "posts": [
+          {
+            "post_id": "live_0001",
+            "title": "CELINE 26夏季新款 松弛洋气的男装夹克",
+            "date": "编辑于 2天前 上海",
+            "brand": "Celine成衣",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_f55a698e",
+            "post_link": "https://www.xiaohongshu.com/explore/69c4dd13000000001a0245ff",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603291415/592b2f7bf56ecbecaf480140f89529f0/notes_pre_post/1040g3k831u5th1542o005q755r0ttu8ekj80gno!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603291415/3aee1d3cbd8bc952951b168a3d8beb3b/notes_pre_post/1040g3k831u5th1542o2g5q755r0ttu8evm7qhl0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291415/7bc5d3db2ebafeb019b27a639fa86893/notes_pre_post/1040g3k831u5th1542o005q755r0ttu8ekj80gno!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291415/e486aba2f29b54129540505fdec39ef4/notes_pre_post/1040g3k831u5th1542o0g5q755r0ttu8erifmkl8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291415/73971495150588c8d4e80ea2ffdd6a31/notes_pre_post/1040g3k831u5th1542o105q755r0ttu8e3ps6e40!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291415/5ed8f62605ca744997ad8c888616db07/notes_pre_post/1040g3k831u5th1542o1g5q755r0ttu8eojl6rbo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291415/37067c173023ea6a70d9509002a6493a/notes_pre_post/1040g3k831u5th1542o205q755r0ttu8egljecrg!nd_dft_wlteh_webp_3"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0019",
+            "title": "一眼爱上",
+            "date": "编辑于 02-15",
+            "brand": "Celine新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_12e89b3f",
+            "post_link": "https://www.xiaohongshu.com/explore/6990f41900000000150222de",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603291419/fd2a3496db529936bcf701e56e778a16/1040g00831sj7ft415m004a1dekf6eu38ba72lcg!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603291421/87583b59e010ac247472ef0d73f18b4b/1040g00831sj7ft415m0g4a1dekf6eu38k5l685o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/3732d4d5025394059b184be7fb132947/1040g00831sj7ft415m004a1dekf6eu38ba72lcg!nd_dft_wlteh_webp_3",
+              "http://sns-webpic-qc.xhscdn.com/202603291421/3732d4d5025394059b184be7fb132947/1040g00831sj7ft415m004a1dekf6eu38ba72lcg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/12936da959e8648543c5be27ed0da8a6/notes_uhdr/1040g3qg31sj7nafjlm004a1dekf6eu382k5m4io!nd_dft_wlteh_webp_3",
+              "https://picasso-static.xiaohongshu.com/fe-platform/fd82d69014a4a50397e20fc6b23ae8dba1c74998.png",
+              "http://sns-webpic-qc.xhscdn.com/202603291421/e1d8b6e092fe4c48e50ed1c1a12cfe23/comment/1040g4b831u1ut7rcgs405oicgn6k1kktv4gnka0!nc_n_webp_mw_1",
+              "https://picasso-static.xiaohongshu.com/fe-platform/c255f0ae809f8045561a80737b6aec25139f7607.png",
+              "https://picasso-static.xiaohongshu.com/fe-platform/913a9e2c42916a338b9fa20cf780ae435f51acac.png"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/b2a7b4c7-2331-4916-93d2-912e3bd94613",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0020",
+            "title": "CELINE 26夏季新款 垂褶黑白拼接半裙🎹",
+            "date": "4小时前 上海",
+            "brand": "Celine新款",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_f55a698e",
+            "post_link": "https://www.xiaohongshu.com/explore/69c88b73000000002101139c",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603291419/f334ac2688dc436d2884b62e71357c65/notes_pre_post/1040g3k831u8uubh52oug5q755r0ttu8e429ui08!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603291421/b644fb96c8b87593748e47ab58c99573/note_pre_post_uhdr/1040g3r031u8v056kio1g5q755r0ttu8es51nat8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/684028fb9e35eb6b48c0aadd1c437a40/notes_pre_post/1040g3k831u8uubh52oug5q755r0ttu8e429ui08!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/a382ee08e743558b7abac35ef0a10461/notes_pre_post/1040g3k831u8uubh52ov05q755r0ttu8e8p3op98!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/bf1c9e22b5f442db84880e8b776ab73b/notes_pre_post/1040g3k831u8uubh52ovg5q755r0ttu8e4dvjgro!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/d882ce09fc5ba1513b0403212d947c6e/notes_pre_post/1040g3k831u8uubh52p005q755r0ttu8e51uqh88!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/9c01c7cc70657a38392d37516802725a/note_pre_post_uhdr/1040g3r031u8v056kio105q755r0ttu8e2cr7rr8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291421/bc9e7459624de9ec31c9ee3ecbe5da2a/notes_pre_post/1040g3k831u8uubh52p0g5q755r0ttu8e41e91k0!nd_dft_wlteh_webp_3",
+              "data:image/png;base64,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"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0006",
+            "title": "CELINE｜新款Polo🖤",
+            "date": "03-02 上海",
+            "brand": "Celine穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_0a25dc01",
+            "post_link": "https://www.xiaohongshu.com/explore/69a4d531000000001a0353a4",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603291416/43af777ae29427982e99f636f29678e1/1040g00831t6l710tm8005pjl36j1ojj64g7os8o!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603291417/0e13845bff9bd3a5de7b26bb5ffc14e8/1040g00831t6l710tm8005pjl36j1ojj64g7os8o!nd_dft_wlteh_webp_3",
+              "http://sns-webpic-qc.xhscdn.com/202603291417/0e13845bff9bd3a5de7b26bb5ffc14e8/1040g00831t6l710tm8005pjl36j1ojj64g7os8o!nd_dft_wlteh_webp_3",
+              "https://picasso-static.xiaohongshu.com/fe-platform/d1a34cf8aeac526d36890d3e8f727192a6808ecf.png"
+            ],
+            "is_video": true,
+            "video_url": "blob:https://www.xiaohongshu.com/1a287b55-0122-44da-8b84-70e988ad6c54",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          },
+          {
+            "post_id": "live_0009",
+            "title": "秀场穿搭 | Celine 2021秋冬 | 秀场回顾",
+            "date": "编辑于 2025-12-15",
+            "brand": "Celine穿搭",
+            "likes": 0,
+            "comments": 0,
+            "saves": 0,
+            "creator": "user_8053f9c1",
+            "post_link": "https://www.xiaohongshu.com/explore/693f56f3000000001d0387f7",
+            "cover_url": "https://sns-webpic-qc.xhscdn.com/202603291416/4ad8a2241ed1341c781ad2c08b0296d6/1040g00831q3hhacf02105n8cr0n5ml61c87gqoo!nc_n_webp_mw_1",
+            "all_image_urls": [
+              "https://sns-webpic-qc.xhscdn.com/202603291417/daaf3c4ca4713da566563c6555e21555/1040g00831q3hhacf02605n8cr0n5ml61v5are88!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/9da97e805e5067c2d460fd5cd857976b/1040g00831q3hhacf02105n8cr0n5ml61c87gqoo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/2d635098e6915cd6305305bfea44ef5c/1040g00831q3hhacf02305n8cr0n5ml610hk1fb0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/23f106fbb26dc11cdfd1159bfa87d6dc/1040g00831q3hhacf023g5n8cr0n5ml6110m4bmg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/fa3a7fbcfa4326c9defddd0deeee8d14/1040g00831q3hhacf022g5n8cr0n5ml61d15rsv0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/fbf65a9cdfdfd19f0fe1298538d8606e/1040g00831q3hhacf02005n8cr0n5ml61t7i28a0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/6c8bf37e92e53991f46f4cc92da69474/1040g00831q3hhacf02405n8cr0n5ml61pdvf7pg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/4e0121929f3a38ad426599d5afae4e00/1040g00831q3hhacf024g5n8cr0n5ml61jkc14oo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/f72def4dee0d2912704192bb9777e035/1040g00831q3hhacf02205n8cr0n5ml61qvhd03g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/7e92398c65f417e18eb4d5d1c17fe896/1040g00831q3hhacf020g5n8cr0n5ml614g4inr8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/d3ffac463e7200aa991e1612a7ec6450/1040g00831q3hhacf021g5n8cr0n5ml61gprlar8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/aa522ce0142972b122fc25ddd761e4d7/1040g00831q3hhacf02505n8cr0n5ml613o6p928!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/5c29da71e91ee0fb2d19fe02336c4943/1040g00831q3hhacf025g5n8cr0n5ml6158se2d0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/c96f433f1f76138762644a4adfe205f2/1040g00831q3hhacf026g5n8cr0n5ml614m88irg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/a55b90637fc8934b3e0d2761741f4857/1040g00831q3hjf7jn20g5n8cr0n5ml61vos4g2o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202603291417/ada851f721031377118f952e07b6d8ef/1040g00831q3hjf7jn2005n8cr0n5ml619nsmqlo!nd_dft_wlteh_webp_3",
+              "https://picasso-static.xiaohongshu.com/fe-platform/81cedd016ad9d8bef38b2cd0c1e725454df53598.png",
+              "https://picasso-static.xiaohongshu.com/fe-platform/d6125900d5de3969a1bb075e23d361c4bd78b0eb.png"
+            ],
+            "is_video": false,
+            "video_url": "",
+            "image_caption": "",
+            "comments_scraped": [],
+            "comments_count_scraped": 0
+          }
+        ]
+      },
+      "metrics": {
+        "post_count": 15,
+        "total_engagement": 0,
+        "avg_engagement": 0.0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "total_saves": 0,
+        "top_keywords": [
+          "celine",
+          "skp",
+          "新款",
+          "成都",
+          "质感包包"
+        ],
+        "video_post_count": 3,
+        "image_count": 166,
+        "city_distribution": {
+          "上海": 7,
+          "北京": 1,
+          "四川": 2
+        }
+      },
+      "timestamp": "2026-03-29T06:31:52.554966+00:00",
+      "visual_assets": {
+        "all_image_urls": [
+          "https://sns-webpic-qc.xhscdn.com/202603291415/3aee1d3cbd8bc952951b168a3d8beb3b/notes_pre_post/1040g3k831u5th1542o2g5q755r0ttu8evm7qhl0!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291415/7bc5d3db2ebafeb019b27a639fa86893/notes_pre_post/1040g3k831u5th1542o005q755r0ttu8ekj80gno!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291415/e486aba2f29b54129540505fdec39ef4/notes_pre_post/1040g3k831u5th1542o0g5q755r0ttu8erifmkl8!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291415/73971495150588c8d4e80ea2ffdd6a31/notes_pre_post/1040g3k831u5th1542o105q755r0ttu8e3ps6e40!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291415/5ed8f62605ca744997ad8c888616db07/notes_pre_post/1040g3k831u5th1542o1g5q755r0ttu8eojl6rbo!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291415/37067c173023ea6a70d9509002a6493a/notes_pre_post/1040g3k831u5th1542o205q755r0ttu8egljecrg!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/87583b59e010ac247472ef0d73f18b4b/1040g00831sj7ft415m0g4a1dekf6eu38k5l685o!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/3732d4d5025394059b184be7fb132947/1040g00831sj7ft415m004a1dekf6eu38ba72lcg!nd_dft_wlteh_webp_3",
+          "http://sns-webpic-qc.xhscdn.com/202603291421/3732d4d5025394059b184be7fb132947/1040g00831sj7ft415m004a1dekf6eu38ba72lcg!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/12936da959e8648543c5be27ed0da8a6/notes_uhdr/1040g3qg31sj7nafjlm004a1dekf6eu382k5m4io!nd_dft_wlteh_webp_3",
+          "https://picasso-static.xiaohongshu.com/fe-platform/fd82d69014a4a50397e20fc6b23ae8dba1c74998.png",
+          "http://sns-webpic-qc.xhscdn.com/202603291421/e1d8b6e092fe4c48e50ed1c1a12cfe23/comment/1040g4b831u1ut7rcgs405oicgn6k1kktv4gnka0!nc_n_webp_mw_1",
+          "https://picasso-static.xiaohongshu.com/fe-platform/c255f0ae809f8045561a80737b6aec25139f7607.png",
+          "https://picasso-static.xiaohongshu.com/fe-platform/913a9e2c42916a338b9fa20cf780ae435f51acac.png",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/b644fb96c8b87593748e47ab58c99573/note_pre_post_uhdr/1040g3r031u8v056kio1g5q755r0ttu8es51nat8!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/684028fb9e35eb6b48c0aadd1c437a40/notes_pre_post/1040g3k831u8uubh52oug5q755r0ttu8e429ui08!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/a382ee08e743558b7abac35ef0a10461/notes_pre_post/1040g3k831u8uubh52ov05q755r0ttu8e8p3op98!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/bf1c9e22b5f442db84880e8b776ab73b/notes_pre_post/1040g3k831u8uubh52ovg5q755r0ttu8e4dvjgro!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/d882ce09fc5ba1513b0403212d947c6e/notes_pre_post/1040g3k831u8uubh52p005q755r0ttu8e51uqh88!nd_dft_wlteh_webp_3",
+          "https://sns-webpic-qc.xhscdn.com/202603291421/9c01c7cc70657a38392d37516802725a/note_pre_post_uhdr/1040g3r031u8v056kio105q755r0ttu8e2cr7rr8!nd_dft_wlteh_webp_3"
+        ],
+        "image_captions": [],
+        "video_post_count": 3
+      },
+      "comment_signals": {
+        "total_comments_scraped": 0,
+        "total_replies_scraped": 0,
+        "all_comments": []
+      }
+    }
+  ],
+  "schema_file": "outputs/trend_object_schema.json"
+}

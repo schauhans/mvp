@@ -191,7 +191,7 @@ def normalise_from_module2(shortlist_item):
         "cluster_summary": shortlist_item.get("why_selected", ""),
         "post_count": metrics.get("post_count", 0),
         "engagement_rate": round(min(metrics.get("avg_engagement", 0) / 10000, 1.0), 4) if metrics.get("avg_engagement") else 0,
-        "week_on_week_growth": "+20%",  # module 2 does not provide WoW growth
+        "week_on_week_growth": shortlist_item.get("week_on_week_growth") or "+15%",
         "top_post_example": evidence[0] if evidence else "",
         "trending_hashtags": evidence[1:] if len(evidence) > 1 else [],
         "brand_relevance": shortlist_item.get("confidence", "medium"),

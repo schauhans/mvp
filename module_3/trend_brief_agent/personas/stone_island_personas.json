@@ -1,0 +1,45 @@
+{
+  "brand": "Stone Island",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Compass Completist",
+      "age_range": "25-38",
+      "summary": "Deep Stone Island collector who has been following the brand since at least the Raf Simons-adjacent era. Tracks season numbers, knows the difference between a Nylon Metal and a Crinkle Reps piece on sight, and treats the Compass badge as a credential — not a logo. He comes to the CA with a specific item already in mind and wants confirmation that it's the right call, not a pitch.",
+      "values": ["season knowledge depth", "material literacy", "subcultural authenticity", "collector discipline"],
+      "shopping_behavior": "Arrives knowing what he wants. Examines construction details, internal labels, and fabric hand before anything else. Appreciates when the CA can match his knowledge level — will disengage immediately if the conversation stays surface-level. Often has an archive of previous seasons to compare against.",
+      "trend_receptivity": "New seasonal releases with fabric story depth, limited dyeing treatments, Ghost Piece and Ice Jacket special editions, documented production process innovations",
+      "avoid": "Generic 'great brand' framing, surface-level trend talk, upselling obvious entry pieces to someone clearly at collector level, anything that reads as a rehearsed pitch rather than genuine knowledge"
+    },
+    {
+      "id": "p02",
+      "name": "The Technical Explorer",
+      "age_range": "22-35",
+      "summary": "Drawn to Stone Island through its fabric R&D — the dyeing labs, the Compass badge research archive, the treatment processes. May have arrived through a YouTube deep-dive or XHS post explaining how Ice Jacket works. Fashion is secondary to materials science for this client, and he responds to conversation that treats a garment as an engineering problem solved beautifully.",
+      "values": ["material innovation", "applied craft", "process over aesthetics", "technical fluency"],
+      "shopping_behavior": "Asks about dye processes, washing instructions, how the fabric behaves over time. Interested in provenance of materials. Likely to buy one technically distinct piece per season rather than building a broad wardrobe. Responds to factual information about garment behaviour more than styling guidance.",
+      "trend_receptivity": "Garment dyeing process content, fabric treatment explainers, Ghost Piece behaviour documentation, new seasonal material innovations — particularly anything with visible or tactile transformation",
+      "avoid": "Styling advice he didn't ask for, trend language without technical grounding, treating the Compass badge as decoration rather than a material marker"
+    },
+    {
+      "id": "p03",
+      "name": "The Terrace Convert",
+      "age_range": "28-45",
+      "summary": "Originally connected to Stone Island through European football terrace and casual culture — may have grown up in the UK, Italy, or with access to that subculture through media. Sees SI as authentic workwear-derived sportswear with genuine subcultural roots, not a luxury cosplay. Values the brand's unglamorous, functional history as much as its current fashion credibility.",
+      "values": ["subcultural authenticity", "heritage utility", "functional design", "casual culture roots"],
+      "shopping_behavior": "Drawn to outerwear and classic shell pieces that connect to the terrace heritage. Practical buyer — asks how a jacket performs in wind and rain before asking about styling. May mix SI with workwear or technical outdoor brands rather than luxury labels.",
+      "trend_receptivity": "Outerwear with functional credentials, classic SI shell shapes in seasonal colourways, military-adjacent pieces with a utilitarian reading, styling content that references sport or outdoor contexts",
+      "avoid": "High-fashion editorial framing that erases the subcultural context, luxury positioning that ignores the brand's working-class terrace roots, pushing the more fashion-forward runway pieces without gauging receptivity first"
+    },
+    {
+      "id": "p04",
+      "name": "The Elevated Streetwear Crossover",
+      "age_range": "22-32",
+      "summary": "Moving up from streetwear — has likely come through Supreme, Stüssy, or Japanese technical brands and is discovering Stone Island as the step where fashion literacy meets genuine material craft. Follows drop culture but is starting to value longevity over hype. Sees SI as a credibility signal within the circles he cares about, and is hungry to learn the brand's language quickly.",
+      "values": ["credibility within peer circles", "craft discovery", "brand narrative depth", "considered upgrade from streetwear"],
+      "shopping_behavior": "Often starts with a hoodie or sweatshirt as entry point, then wants guidance on the next piece that shows deeper knowledge. Follows releases closely and may have tried to buy via drops. Responds to storytelling about what makes SI different from technical streetwear. Open to being educated without feeling talked down to.",
+      "trend_receptivity": "Entry points with material depth (graphic-free knitwear, clean shells), seasonal colour narratives, limited edition releases that reward research, styling content that bridges technical streetwear and SI codes",
+      "avoid": "Treating him as a streetwear client rather than someone mid-transition, assuming knowledge gaps he may not have, pushing obvious pieces that feel like a starter kit rather than considered recommendations"
+    }
+  ]
+}

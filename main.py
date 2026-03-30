@@ -45,6 +45,10 @@ BRAND_KEYWORDS = {
         "ready-to-wear": ["Gucci成衣", "古驰穿搭", "Gucci新款", "Gucci时装"],
         "leather goods": ["Gucci包包", "Gucci Dionysus", "古驰手袋", "Gucci皮具"],
     },
+    "stone_island": {
+        "ready-to-wear": ["Stone Island外套", "石头岛穿搭", "石岛新款", "Stone Island成衣"],
+        "accessories": ["Stone Island配件", "石头岛帽子", "Stone Island包", "石岛配饰"],
+    },
 }
 
 

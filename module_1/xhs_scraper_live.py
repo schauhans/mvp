@@ -71,6 +71,12 @@ PROCESSED_OUTPUT_PATH = DATA_DIR / "xhs_posts.json"
 XHS_LOGIN_URL  = "https://www.xiaohongshu.com/explore"
 XHS_SEARCH_URL = "https://www.xiaohongshu.com/search_result?keyword={keyword}"
 
+# Chrome session directory — persists the XHS login cookie across runs.
+# First run: headed mode (browser window visible so you can scan the QR code).
+# Subsequent runs: headless mode (no browser window at all).
+# Delete this directory to force a fresh login.
+XHS_SESSION_DIR = Path.home() / ".xhs_chrome_session"
+
 
 # ─────────────────────────────────────────────────────────────────
 # Anonymization
@@ -209,6 +215,26 @@ class XHSLiveScraper:
             sys.exit(1)
 
         opts = ChromiumOptions()
+        opts.set_user_data_path(str(XHS_SESSION_DIR))
+
+        # Prevent Chrome from throttling JS/rendering when the window is off-screen.
+        # Without these flags, macOS backgrounds the process and XHS pages stop loading,
+        # causing PageDisconnectedError on scroll and detail fetches.
+        opts.set_argument("--disable-background-throttling")
+        opts.set_argument("--disable-backgrounding-occluded-windows")
+        opts.set_argument("--disable-renderer-backgrounding")
+
+        # Move the window off-screen so it doesn't steal focus while scraping.
+        # We deliberately avoid headless mode — XHS detects headless Chrome and
+        # disconnects pages. Off-screen headed mode looks like a normal browser.
+        # On first run ever the window needs to be visible for QR login.
+        has_session = XHS_SESSION_DIR.exists() and any(XHS_SESSION_DIR.rglob("*"))
+        if has_session:
+            opts.set_argument("--window-position=9999,9999")
+            print("[SCRAPER] Saved session found — browser running off-screen")
+        else:
+            print("[SCRAPER] No saved session — browser window will open for QR code login")
+
         self.browser  = ChromiumPage(addr_or_opts=opts)  # the browser / main tab
         self.main_tab = self.browser                     # alias — used for search page
 
@@ -280,7 +306,11 @@ class XHSLiveScraper:
                         continue
                 seen_links.add(c["post_link"])
                 cards.append(c)
-            self.main_tab.scroll.to_bottom()
+            try:
+                self.main_tab.scroll.to_bottom()
+            except Exception as e:
+                print(f"  [WARN] Scroll failed ({e.__class__.__name__}) — using cards collected so far")
+                break
             time.sleep(2.5)
 
         print(f"  [FOUND] {len(cards)} cards for '{keyword}'")
@@ -317,7 +347,11 @@ class XHSLiveScraper:
                     title = t.text if t else ""
                     n = footer.ele(".name", timeout=1)
                     creator = n.text if n else ""
-                    lw = footer.ele(".like-wrapper", timeout=1)
+                    # .like-wrapper .count confirmed from XHS HTML inspection
+                    lw = (
+                        footer.ele(".like-wrapper .count",   timeout=1) or
+                        footer.ele(".like-wrapper",          timeout=1)
+                    )
                     likes = lw.text if lw else "0"
 
                 results.append({
@@ -345,16 +379,43 @@ class XHSLiveScraper:
         detail_tab = None
         try:
             detail_tab = self.browser.new_tab(link)
-            time.sleep(1.5)
+            time.sleep(3)  # wait for initial content
 
             # ── stats ──
-            date_el = detail_tab.ele(".date", timeout=2)
+            date_el = detail_tab.ele(".date", timeout=3)
             post["date"] = date_el.text if date_el else ""
 
-            saves_el = detail_tab.ele(".collect-wrapper .count", timeout=2)
+            # XHS lazy-loads the interaction bar (likes/saves/comments).
+            # Scroll to the bottom of the page to force it to render, then wait.
+            try:
+                detail_tab.scroll.to_bottom()
+                time.sleep(2)
+            except Exception:
+                pass
+
+            # Likes — try .count child first, then the wrapper with unique ID as fallback
+            like_el = (
+                detail_tab.ele(".like-wrapper .count",    timeout=4) or
+                detail_tab.ele(".like-wrapper",           timeout=2)
+            )
+            print(f"    [DEBUG] like: '{like_el.text if like_el else 'NONE'}'")
+            post["likes"] = _parse_count(like_el.text if like_el else "0")
+
+            # Saves — try .count child, then ID-based anchor (id confirmed from HTML inspection)
+            saves_el = (
+                detail_tab.ele(".collect-wrapper .count",             timeout=4) or
+                detail_tab.ele("#note-page-collect-board-guide .count", timeout=2) or
+                detail_tab.ele(".collect-wrapper",                    timeout=2)
+            )
+            print(f"    [DEBUG] saves: '{saves_el.text if saves_el else 'NONE'}'")
             post["saves"] = _parse_count(saves_el.text if saves_el else "0")
 
-            comments_el = detail_tab.ele(".chat-wrapper .count", timeout=2)
+            # Comments
+            comments_el = (
+                detail_tab.ele(".chat-wrapper .count", timeout=4) or
+                detail_tab.ele(".chat-wrapper",        timeout=2)
+            )
+            print(f"    [DEBUG] comments: '{comments_el.text if comments_el else 'NONE'}'")
             post["comments"] = _parse_count(comments_el.text if comments_el else "0")
 
             # ── caption + hashtags ──
@@ -601,7 +662,7 @@ def build_records(
             "caption":        post.get("caption", ""),      # raw — UNCHANGED
             "hashtags":       post.get("hashtags", []),     # raw — UNCHANGED
             "likes":          post.get("likes", 0),
-            "comment_count":  post.get("comments", 0),     # total count shown on post
+            "comments":       post.get("comments", 0),     # total count shown on post
             "saves":          post.get("saves", 0),
             "creator":        creator_anon,                 # anonymized
             "post_link":      post.get("post_link", ""),

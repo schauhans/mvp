@@ -1,39 +1,92 @@
 {
   "query_context": {
-    "brand": "Loewe",
+    "brand": "Stone Island",
     "market": "China luxury fashion",
-    "categories": [
-      "ready-to-wear",
-      "leather goods"
-    ],
-    "source": "Xiaohongshu",
-    "cities": [
-      "Shanghai",
-      "Beijing"
-    ],
-    "week": "2026-W12",
-    "module1_run_id": "run_latest",
-    "module2_generated_at": "2026-03-28T13:03:29.301677+00:00"
+    "categories": ["ready-to-wear", "accessories"],
+    "source": "synthetic prototype — pre-crafted high-confidence data for standalone testing",
+    "cities": ["Shanghai", "Beijing"],
+    "week": "2026-W13",
+    "module1_run_id": "synthetic_si_v1",
+    "module2_generated_at": "2026-03-30T00:00:00"
   },
   "trends": [
     {
       "trend_id": "t01",
-      "trend_label": "Loewe Fashion Highlights",
-      "city": "Shanghai",
-      "category": "",
-      "target_age_range": "28–45",
-      "cluster_summary": "This cluster is focused on various popular Loewe items and collections, showcasing their appeal and practical wearability.",
-      "post_count": 17,
-      "engagement_rate": 0.0,
-      "top_post_example": "Loewe系列热门款合集｜早秋新款宝藏店铺❕",
+      "trend_label": "Stone Island Compass Badge Technical Outerwear",
+      "city": null,
+      "category": "ready-to-wear",
+      "cluster_summary": "A surge in XHS posts featuring Stone Island's AW25 Compass Badge collection, particularly the Nylon Metal and Crinkle Reps outerwear. Creators are emphasising fabric-transformative properties — colour shift under light, tactile texture contrast, and the material story behind each piece. High-knowledge posts are driving strong saves and comments from an audience that values the insider language of the Compass badge over conventional luxury signals.",
+      "post_count": 6200,
+      "engagement_rate": 0.115,
+      "week_on_week_growth": "+27%",
+      "top_post_example": "石头岛AW25指南针外套 尼龙金属面料的颜色会随光线变化，这才是真正的技术奢侈品 不需要大logo 行家自然懂 #StoneIsland #石头岛 #指南针 #技术面料 #尼龙金属",
       "trending_hashtags": [
-        "#Loewe Fashion Highlights"
+        "#石头岛",
+        "#StoneIsland",
+        "#指南针外套",
+        "#技术面料",
+        "#尼龙金属",
+        "#AW25成衣"
       ],
       "brand_relevance": "high",
-      "week_on_week_growth": "+15%",
-      "m2_composite_score": 7.65,
-      "m2_confidence": "high",
-      "m2_why_selected": "The trend showcases popular Loewe items and collections, emphasizing wearable fashion such as the Amazona180 and pleated skirts, reflected in snippets like 'LOEWE 没人能拒绝这条百褶裙！' dated 03-17. It aligns well with Loewe's craft-led aesthetic and design-literate clientele, evidenced by the preferred creator types noted. The engagement, while currently low, spreads across multiple posts demonstrating sustained interest, making it actionable for a client conversation around practical Loewe items."
+      "city_distribution": {
+        "上海": 2480,
+        "北京": 1860,
+        "广州": 1240,
+        "成都": 620
+      }
+    },
+    {
+      "trend_id": "t02",
+      "trend_label": "Ghost Piece & Garment Dyeing Process Content",
+      "city": null,
+      "category": "ready-to-wear",
+      "cluster_summary": "XHS creators are documenting Stone Island's signature garment dyeing process, focusing on Ghost Piece collections and the ageing properties of SI's proprietary dye treatments. Posts feature before/after comparisons, fabric care rituals, and detailed explanations of dyeing techniques. This educational content is generating high saves from a technically-fluent audience discovering SI for the first time, with comment threads that read more like material science discussions than fashion commentary.",
+      "post_count": 5800,
+      "engagement_rate": 0.102,
+      "week_on_week_growth": "+23%",
+      "top_post_example": "为什么Stone Island的Ghost Piece会随时间变色？深度解读SI的染色工艺——这不是设计失误，这就是设计 记录我的Ghost外套从第一天到两年后的变化 #GhostPiece #石头岛 #染色工艺 #StoneIsland",
+      "trending_hashtags": [
+        "#GhostPiece",
+        "#石头岛染色",
+        "#染色工艺",
+        "#StoneIsland",
+        "#面料故事",
+        "#老化之美"
+      ],
+      "brand_relevance": "high",
+      "city_distribution": {
+        "上海": 2320,
+        "北京": 1740,
+        "广州": 1160,
+        "成都": 580
+      }
+    },
+    {
+      "trend_id": "t03",
+      "trend_label": "Stone Island Technical Knitwear Layering",
+      "city": null,
+      "category": "ready-to-wear",
+      "cluster_summary": "Growing signal around Stone Island's AW25 knitwear as a layering anchor — specifically cable and intarsia knit pieces worn beneath SI's signature technical shells. Posts feature detailed styling breakdowns with commentary on material weight, proportion, and the visual tension between structured outerwear and softer knitwear underneath. The trend resonates with SI's core audience of technically-literate dressers who understand the brand's layering language and are building complete systems rather than standalone pieces.",
+      "post_count": 5100,
+      "engagement_rate": 0.097,
+      "week_on_week_growth": "+21%",
+      "top_post_example": "石头岛AW25针织衫叠穿教程 尼龙外壳 + 粗针编织毛衣 = SI标准搭配公式 一旦你学会这个逻辑 其他牌子的外套就很难看了 #石头岛 #叠穿 #StoneIsland针织 #AW25穿搭",
+      "trending_hashtags": [
+        "#石头岛针织",
+        "#叠穿教程",
+        "#StoneIsland",
+        "#技术运动装",
+        "#AW25穿搭",
+        "#针织外套组合"
+      ],
+      "brand_relevance": "high",
+      "city_distribution": {
+        "上海": 2040,
+        "北京": 1530,
+        "广州": 1020,
+        "成都": 510
+      }
     }
   ]
 }

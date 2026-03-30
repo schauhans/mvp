@@ -1,38 +1,10 @@
 {
-  "run_id": "m2_20260328_130329",
-  "generated_at": "2026-03-28T13:03:29.301677+00:00",
-  "brand": "Loewe",
+  "run_id": "m2_20260329_070552",
+  "generated_at": "2026-03-29T07:05:52.259238+00:00",
+  "brand": "Celine",
   "module1_run_id": "run_latest",
   "total_evaluated": 2,
   "total_prefilter_rejected": 1,
-  "total_shortlisted": 1,
-  "shortlist": [
-    {
-      "rank": 1,
-      "trend_id": "t01",
-      "label": "Loewe Fashion Highlights",
-      "category": "",
-      "composite_score": 7.65,
-      "scores": {
-        "freshness": 8,
-        "brand_fit": 9,
-        "category_fit": 8,
-        "materiality": 6,
-        "actionability": 7
-      },
-      "confidence": "high",
-      "why_selected": "The trend showcases popular Loewe items and collections, emphasizing wearable fashion such as the Amazona180 and pleated skirts, reflected in snippets like 'LOEWE 没人能拒绝这条百褶裙！' dated 03-17. It aligns well with Loewe's craft-led aesthetic and design-literate clientele, evidenced by the preferred creator types noted. The engagement, while currently low, spreads across multiple posts demonstrating sustained interest, making it actionable for a client conversation around practical Loewe items.",
-      "evidence_references": [
-        "LOEWE 没人能拒绝这条百褶裙！",
-        "Amazona180",
-        "posts dated 03-14 and 03-17"
-      ],
-      "metric_signal": {
-        "total_engagement": 0,
-        "post_count": 17,
-        "avg_engagement": 0.0
-      },
-      "disqualifying_reason": null
-    }
-  ]
+  "total_shortlisted": 0,
+  "shortlist": []
 }

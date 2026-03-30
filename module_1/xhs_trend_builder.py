@@ -20,7 +20,7 @@ import threading
 import time
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 UTC = timezone.utc  # datetime.UTC requires Python 3.11+; this is equivalent
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
@@ -346,6 +346,63 @@ def build_clusters(posts: List[Post], token_map: Dict[str, List[str]]) -> List[L
     return clusters
 
 
+# ── Week-on-week growth (Module 1, added 2026-03-29) ──────────────────────────
+# XHS doesn't expose historical data, so we approximate WoW post-count growth
+# by splitting each cluster's posts into "this week" (0–7 days ago) vs
+# "last week" (8–14 days ago) using the date string already scraped per post.
+# The result is stored as `momentum_signal` in metrics and passed through
+# Module 2 → Module 3, replacing the hardcoded "+15%" / "+20%" defaults.
+# If there are no last-week posts to compare against, we return "+0%" rather
+# than guessing. Relative date formats handled: "昨天", "N天前", "MM-DD [city]".
+
+def _parse_xhs_date_approx(date_str: str, now: datetime) -> "datetime | None":
+    """Parse an XHS post date string into a datetime. Returns None if unparseable."""
+    s = (date_str or "").strip()
+    if not s:
+        return None
+    if "昨天" in s:
+        return now - timedelta(days=1)
+    m = re.match(r"(\d+)天前", s)
+    if m:
+        return now - timedelta(days=int(m.group(1)))
+    # "03-14 上海" or "03-14" — strip trailing city/time, parse as MM-DD
+    m = re.match(r"(\d{2})-(\d{2})", s)
+    if m:
+        month, day = int(m.group(1)), int(m.group(2))
+        year = now.year if month <= now.month else now.year - 1
+        try:
+            return datetime(year, month, day, tzinfo=timezone.utc)
+        except ValueError:
+            return None
+    return None
+
+
+def _compute_wow_growth(posts: "List[Post]", now: "datetime | None" = None) -> str:
+    """
+    Compute week-on-week post count growth for a cluster.
+    Splits posts into this-week (0–7 days) vs last-week (8–14 days) buckets
+    using scraped date strings. Posts with unparseable dates are skipped.
+    Returns a signed percentage string like "+33%" or "-20%".
+    Returns "+0%" when there are no last-week posts to compare against.
+    """
+    now = now or datetime.now(timezone.utc)
+    this_week = 0
+    last_week = 0
+    for p in posts:
+        dt = _parse_xhs_date_approx(getattr(p, "date", "") or "", now)
+        if dt is None:
+            continue
+        age_days = (now - dt).days
+        if age_days <= 7:
+            this_week += 1
+        elif age_days <= 14:
+            last_week += 1
+    if last_week == 0:
+        return "+0%"
+    pct = round((this_week - last_week) / last_week * 100)
+    return f"+{pct}%" if pct >= 0 else f"{pct}%"
+
+
 def label_from_tokens(tokens: List[str]) -> str:
     joined = " ".join(tokens)
     if any(k in joined for k in ["y3k", "液态金属", "全息", "chrome", "偏光"]):
@@ -664,6 +721,11 @@ def to_trend_object(
                 city_counts[city] = city_counts.get(city, 0) + 1
                 break  # one city per post
 
+    # Week-on-week growth — computed from post date strings in this cluster.
+    # Module 2 reads this as `momentum_signal` and passes it to Module 3
+    # as `week_on_week_growth`, replacing the hardcoded "+15%" default.
+    wow_growth = _compute_wow_growth(posts)
+
     metrics = {
         "post_count":       post_count,
         "total_engagement": total_engagement,
@@ -675,6 +737,7 @@ def to_trend_object(
         "video_post_count": video_count,
         "image_count":      len(all_cluster_images),
         "city_distribution": city_counts,
+        "momentum_signal":  wow_growth,
     }
 
     return {

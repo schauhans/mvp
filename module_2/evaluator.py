@@ -14,7 +14,8 @@ from typing import Optional
 from prompts import SYSTEM_PROMPT, build_batch_evaluation_prompt
 
 BATCH_SIZE = 5
-TODAY = "2026-03-25"
+from datetime import date as _date
+TODAY = _date.today().isoformat()
 
 
 def _get_client():

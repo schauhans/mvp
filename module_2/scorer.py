@@ -5,13 +5,13 @@ Rejects trends immediately without calling the LLM if they fail hard structural 
 This keeps LLM costs low and response time fast by removing obvious non-qualifiers early.
 """
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Optional
 
 # Reference date: the run date
-TODAY = datetime.fromisoformat("2026-03-25").replace(tzinfo=timezone.utc)
+TODAY = datetime.now(timezone.utc)
 STALENESS_CUTOFF_DAYS = 21  # reject if last post is older than this
-STALENESS_CUTOFF_DATE = datetime(2026, 3, 4, tzinfo=timezone.utc)  # 2026-03-25 minus 21 days
+STALENESS_CUTOFF_DATE = TODAY - timedelta(days=STALENESS_CUTOFF_DAYS)
 
 MIN_POST_COUNT = 5
 MIN_TOTAL_ENGAGEMENT = 0  # Lowered from 3000 for pipeline integration testing (see DATA_CARD.md)
@@ -83,7 +83,7 @@ def pre_filter(trend: dict, brand_profile: dict) -> "tuple[bool, Optional[str]]"
     if total_engagement < MIN_TOTAL_ENGAGEMENT:
         return False, f"total_engagement={total_engagement} is below minimum threshold of {MIN_TOTAL_ENGAGEMENT}"
 
-    # Rule 4: Freshness — last post must be within 21 days of today (2026-03-25)
+    # Rule 4: Freshness — last post must be within 21 days of today (rolling, computed at import time)
     # NOTE: XHS scraper returns Chinese-format date strings (e.g. "03-14 广东", "昨天 14:57")
     # which cannot be parsed by fromisoformat. When no parseable date is found we assume
     # the data is fresh (scraped live today) rather than rejecting — see DATA_CARD.md constraint 8.

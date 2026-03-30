@@ -25,16 +25,15 @@ These are the fields Module 3 reads via `normalise_from_module2()`. Fields not l
 | `category` | string | Optional | Card header; may be empty string if Module 1 ran without a category filter |
 | `confidence` | string | Optional | Used as `brand_relevance` proxy (high/medium/low) for trend selection |
 | `why_selected` | string | Required | Maps to `cluster_summary` — used in Trend Overview LLM prompt |
-| `evidence_references` | string[] | Optional | `evidence_references[0]` → `top_post_example`; `[1:]` → `trending_hashtags` |
+| `evidence_references` | string[] | Optional | `[0]` → `top_post_example`; `[1:]` → `trending_hashtags` |
 | `metric_signal.post_count` | int | Required | `assess_confidence()` threshold check; DATA SIGNAL display |
 | `metric_signal.avg_engagement` | float | Required | Converted to `engagement_rate` via `min(avg_engagement / 10000, 1.0)` |
 | `brand` | string | Required | Brand check — if this doesn't match the current run's brand, the cache is skipped |
-
-| `city_distribution` | dict | Optional | e.g. `{"上海": 4, "广东": 3}` — extracted by Module 1 from post date strings; passed through Module 2 unchanged; used by Module 3 for city relevance ranking and card display |
+| `city_distribution` | dict | Optional | e.g. `{"上海": 4, "广东": 3}` — used for city relevance ranking and card display |
 
 **Fields NOT passed from Module 2:**
-- `city` — Module 2 does not attach a city. Module 3 stamps the user-selected city onto all trends at runtime via `select_trends()`. Trends with `city=None` are treated as city-agnostic and included in any city run. City relevance is surfaced instead via `city_distribution`.
-- `week_on_week_growth` — Module 2 does not output WoW growth. Module 3 hardcodes `"+20%"` for all Module 2 shortlist items in `normalise_from_module2()`.
+- `city` — Module 2 does not attach a city. Module 3 stamps the user-selected city onto all trends at runtime via `select_trends()`. City relevance is surfaced instead via `city_distribution`.
+- `week_on_week_growth` — Module 1 computes this from post date buckets and stores it as `momentum_signal`. Module 2 passes it through as `week_on_week_growth`. Falls back to `"+15%"` only when absent. The fallback path in `normalise_from_fallback` hardcodes `"+20%"` for standalone testing.
 
 ### From `module_3/trend_brief_agent/personas/{brand}_personas.json` → `personas[]`
 
@@ -50,7 +49,7 @@ These are the fields Module 3 reads via `normalise_from_module2()`. Fields not l
 
 | Argument | Required | Description |
 |---|---|---|
-| `--brand` | Required | Brand name passed from `main.py`; used for brand cache check and persona file selection |
+| `--brand` | Required | Brand name; used for brand cache check and persona file selection |
 | `--city` | Required | Store city; stamped onto all trends and controls city tone guideline |
 
 ---
@@ -69,13 +68,13 @@ If fewer than 3 trends pass all checks, the agent lowers the `brand_relevance` t
 
 ### City Relevance Ranking
 
-`compute_composite_score()` now accepts the selected city and applies a bonus of up to +5 points based on `city_distribution`. A trend where 100% of geolocated posts are from the selected city scores +5; a trend with no posts from that city scores +0. This means trends with strong local signal rise above equally-scored national trends when ranking the final shortlist.
+`compute_composite_score()` accepts the selected city and applies a bonus of up to +5 points based on `city_distribution`. A trend where 100% of geolocated posts are from the selected city scores +5; a trend with no posts from that city scores +0.
 
-The city relevance signal is also passed to the LLM prompt as a `City signal:` line (e.g. `"4/17 posts from Shanghai (24%) | Top cities: 上海: 4, 广东: 3"`) so the LLM can reference local traction in the card text.
+The city signal is also passed to the LLM prompt as a `City signal:` line (e.g. `"4/17 posts from Shanghai (24%) | Top cities: 上海: 4, 广东: 3"`).
 
-City name mapping used (English → Chinese): Shanghai → 上海, Beijing → 北京, Chengdu → 成都, Guangzhou → 广州, Shenzhen → 深圳, Hangzhou → 杭州. Cities not in this map fall back to the raw string.
+City name mapping (English → Chinese): Shanghai → 上海, Beijing → 北京, Chengdu → 成都, Guangzhou → 广州, Shenzhen → 深圳, Hangzhou → 杭州.
 
-When `city_distribution` is empty (e.g. engagement data not captured, or synthetic fallback), the city signal line reads `"No city breakdown available"` and no ranking bonus is applied.
+When `city_distribution` is empty, the city signal reads `"No city breakdown available"` and no ranking bonus is applied.
 
 ### `assess_confidence()` Thresholds
 
@@ -83,12 +82,12 @@ When `city_distribution` is empty (e.g. engagement data not captured, or synthet
 |---|---|
 | `post_count < 3,000` OR `engagement_rate < 0.08` | `LOW` |
 | Neither LOW condition triggered, score ≥ 3 | `HIGH` |
-| Neither LOW condition triggered, score 2 | `MEDIUM` |
+| Neither LOW condition triggered, score = 2 | `MEDIUM` |
 | Neither LOW condition triggered, score < 2 | `LOW` |
 
 Score increments: `post_count ≥ 5,000` (+1), `engagement_rate ≥ 0.095` (+1), `week_on_week_growth ≥ +20%` (+1), `brand_relevance == "high"` (+1).
 
-**Note:** All live-scraped cards currently return LOW confidence because the XHS scraper's `.like-wrapper` CSS selector no longer returns like counts, producing `engagement_rate = 0%`. See DATA_CARD.md constraint 1.
+All live-scraped cards currently return LOW confidence because the XHS scraper's like-count CSS selector is broken, producing `engagement_rate = 0%`. See DATA_CARD.md constraint 1.
 
 ### Data Source Detection
 
@@ -107,14 +106,14 @@ Score increments: `post_count ≥ 5,000` (+1), `engagement_rate ≥ 0.095` (+1),
 | `category` | Module 2 | Optional | May be empty if Module 1 ran without category filter |
 | `brand` / `city` | CLI args | Required | Card header: `# CA Trend Brief — Loewe Shanghai` |
 | `source` | `load_trends()` | Required | `module_2/output_shortlist.json` (full pipeline) or `Xiaohongshu` (fallback) |
-| `week` | `generated_at` from M2 or ISO week | Required | e.g. `2026-03-28` or `2026-W12` |
+| `week` | `generated_at` from M2 or ISO week | Required | e.g. `2026-03-28` |
 | `generated` | Runtime | Required | Timestamp of card generation |
 | `model` | `MODEL` env var | Required | OpenRouter model ID used for generation |
 | `confidence` | `assess_confidence()` | Required | LOW / MEDIUM / HIGH |
 | `trend_overview` | LLM-generated | Required | 2–3 sentences describing the XHS signal |
 | `engagement_rate_pct` | Computed from `avg_engagement` | Required | Displayed with benchmark (~4.5%) and sample size |
-| `week_on_week_growth` | Hardcoded `+20%` (M2 path) | Required | Module 2 does not output WoW growth |
-| `city_signal` | `_format_city_signal()` | Optional | e.g. `"4/17 posts from Shanghai (24%) | Top cities: 上海: 4, 广东: 3"`; `"No city breakdown available"` when data absent |
+| `week_on_week_growth` | From `momentum_signal` (M1→M2) or `"+15%"` fallback | Required | Real value from Module 1 date-bucket calculation; fallback for synthetic data only |
+| `city_signal` | `_format_city_signal()` | Optional | e.g. `"4/17 posts from Shanghai (24%)"`; `"No city breakdown available"` when absent |
 | `confidence_note` | `get_confidence_method()` | Required | Includes threshold values and data source |
 | `conversation_starter_zh` | LLM-generated | Required | Chinese-language WeChat-register CA opener |
 | `conversation_starter_en` | LLM-generated | Required | English-language CA opener |
@@ -141,14 +140,6 @@ Generated by a secondary LLM call (`match_persona_to_trend()`).
 
 ---
 
-## Module 2 Contract Changes (2026-03-29)
-
-Module 2's `agent.py` now accepts a `--brand` CLI argument passed from `main.py`. This replaced the previous behaviour where `BRAND` was read only from the `BRAND` env var, which always resolved to the `.env` default regardless of what brand the user entered at the `main.py` prompt. The `--brand` arg takes priority over the env var.
-
-Module 2's `evaluator.py` now applies the same `/` check as all other modules: if `DEFAULT_MODEL` does not contain `/`, it falls back to `openai/gpt-4o-mini`. This prevents 400 errors when `DEFAULT_MODEL` is set to a bare Anthropic model ID.
-
----
-
 ## Supabase Table Schema
 
 Table name: `trend_cards`
@@ -157,7 +148,7 @@ Table name: `trend_cards`
 |---|---|---|
 | `id` | uuid | Primary key, auto-generated |
 | `run_timestamp` | timestamptz | When the pipeline run executed |
-| `brand` | text | e.g. "Dior", "Loewe" |
+| `brand` | text | e.g. "Dior", "Loewe", "Celine", "Amiri", "Bottega Veneta" |
 | `city` | text | e.g. "Shanghai", "Beijing" |
 | `model` | text | OpenRouter model ID used |
 | `trend_id` | text | From Module 2 output |
@@ -165,7 +156,7 @@ Table name: `trend_cards`
 | `category` | text | "ready-to-wear" or "leather goods" (may be empty for live-scraped runs) |
 | `confidence` | text | "LOW", "MEDIUM", or "HIGH" |
 | `engagement_rate_pct` | float4 | As a percentage, e.g. 6.2; currently 0.0 for all live-scraped cards |
-| `week_on_week_growth` | text | Hardcoded "+20%" for Module 2 path |
+| `week_on_week_growth` | text | Real value from Module 1 date-bucket calc; "+15%" fallback for synthetic data |
 | `city_signal` | text | Formatted city distribution string, e.g. "4/17 posts from Shanghai (24%)" |
 | `data_source` | text | "module_2/output_shortlist.json" or "trend_shortlist.json (fallback)" |
 | `trend_overview` | text | LLM-generated trend description |
@@ -177,3 +168,17 @@ Table name: `trend_cards`
 | `match_rationale` | text | LLM match explanation |
 | `match_score` | int2 | 1–10 |
 | `not_for` | text | Client type to exclude |
+
+---
+
+## What Upstream Modules Need to Provide for Module 3 to Work at Full Quality
+
+Module 3 is complete and handles all current upstream gaps gracefully (fallbacks, skipped checks, LOW confidence flagging). The following changes in upstream modules would unlock MEDIUM/HIGH confidence output and 3–5 cards per brief.
+
+| # | Requirement | Module | Why It Matters for Module 3 |
+|---|---|---|---|
+| 1 | **Fix the XHS like-count CSS selector** so `likes`, `saves`, `comments` are non-zero on scraped posts | Module 1 (scraper) | `engagement_rate` is currently always 0%, forcing every card to LOW confidence. Fixing this is the single highest-leverage unblock. |
+| 2 | **Normalize post date strings to ISO 8601** (e.g. `"03-14 广东"` → `"2026-03-14"`) before writing `xhs_posts.json` | Module 1 (scraper) | Module 2's staleness check currently skips trends with unparseable dates. ISO dates would make the freshness filter accurate, producing a cleaner shortlist. |
+| 3 | **Increase scrape volume to ≥200 posts** across 2+ keyword sets or categories | Module 1 (scraper) | More posts → more clusters pass Module 2 threshold → Module 3 receives 3–5 trends per brief instead of 1 |
+| 4 | **Set a default category in `run_config.json`** (e.g. `"ready-to-wear"`) | Module 1 (config) | Currently `"category": ""` causes Module 2 to skip brand profile category filtering. Setting a real category restores proper filtering before trends reach Module 3. |
+| 5 | **Restore `MIN_TOTAL_ENGAGEMENT = 3,000` in scorer.py** once the scraper is fixed | Module 2 (scorer) | Currently set to 0 for integration testing. Restoring it ensures only trends with real signal reach Module 3. |
