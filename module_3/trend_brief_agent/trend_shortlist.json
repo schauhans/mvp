@@ -1,58 +1,32 @@
 {
   "query_context": {
-    "brand": "Stone Island",
+    "brand": "Loewe",
     "market": "China luxury fashion",
-    "categories": ["ready-to-wear", "accessories"],
+    "categories": ["ready-to-wear", "leather goods"],
     "source": "synthetic prototype — pre-crafted high-confidence data for standalone testing",
     "cities": ["Shanghai", "Beijing"],
     "week": "2026-W13",
-    "module1_run_id": "synthetic_si_v1",
-    "module2_generated_at": "2026-03-30T00:00:00"
+    "module1_run_id": "synthetic_loewe_v1",
+    "module2_generated_at": "2026-03-31T00:00:00"
   },
   "trends": [
     {
       "trend_id": "t01",
-      "trend_label": "Stone Island Compass Badge Technical Outerwear",
+      "trend_label": "Jonathan Anderson Sculptural RTW — Balloon & Volume Silhouettes",
       "city": null,
       "category": "ready-to-wear",
-      "cluster_summary": "A surge in XHS posts featuring Stone Island's AW25 Compass Badge collection, particularly the Nylon Metal and Crinkle Reps outerwear. Creators are emphasising fabric-transformative properties — colour shift under light, tactile texture contrast, and the material story behind each piece. High-knowledge posts are driving strong saves and comments from an audience that values the insider language of the Compass badge over conventional luxury signals.",
-      "post_count": 6200,
-      "engagement_rate": 0.115,
-      "week_on_week_growth": "+27%",
-      "top_post_example": "石头岛AW25指南针外套 尼龙金属面料的颜色会随光线变化，这才是真正的技术奢侈品 不需要大logo 行家自然懂 #StoneIsland #石头岛 #指南针 #技术面料 #尼龙金属",
-      "trending_hashtags": [
-        "#石头岛",
-        "#StoneIsland",
-        "#指南针外套",
-        "#技术面料",
-        "#尼龙金属",
-        "#AW25成衣"
-      ],
-      "brand_relevance": "high",
-      "city_distribution": {
-        "上海": 2480,
-        "北京": 1860,
-        "广州": 1240,
-        "成都": 620
-      }
-    },
-    {
-      "trend_id": "t02",
-      "trend_label": "Ghost Piece & Garment Dyeing Process Content",
-      "city": null,
-      "category": "ready-to-wear",
-      "cluster_summary": "XHS creators are documenting Stone Island's signature garment dyeing process, focusing on Ghost Piece collections and the ageing properties of SI's proprietary dye treatments. Posts feature before/after comparisons, fabric care rituals, and detailed explanations of dyeing techniques. This educational content is generating high saves from a technically-fluent audience discovering SI for the first time, with comment threads that read more like material science discussions than fashion commentary.",
+      "cluster_summary": "A concentrated signal around Loewe's SS26 ready-to-wear silhouettes — specifically Jonathan Anderson's balloon sleeve dresses, oversized knit co-ords, and sculptural coat shapes. XHS creators are framing these pieces as wearable art, drawing explicit comparisons to ceramics and installation sculpture. The posts that perform best are not styling guides but analytical breakdowns of proportion and craft intention, attracting an audience that wants to understand the design thinking, not just the look.",
       "post_count": 5800,
-      "engagement_rate": 0.102,
-      "week_on_week_growth": "+23%",
-      "top_post_example": "为什么Stone Island的Ghost Piece会随时间变色？深度解读SI的染色工艺——这不是设计失误，这就是设计 记录我的Ghost外套从第一天到两年后的变化 #GhostPiece #石头岛 #染色工艺 #StoneIsland",
+      "engagement_rate": 0.112,
+      "week_on_week_growth": "+24%",
+      "top_post_example": "Loewe SS26的气球袖裙 不是在追时髦 是JW Anderson在用布料重新定义人体轮廓 你会怎么佩戴一件雕塑？ #Loewe #罗意威 #JWAnderson #廓形设计 #可穿戴艺术 #SS26成衣",
       "trending_hashtags": [
-        "#GhostPiece",
-        "#石头岛染色",
-        "#染色工艺",
-        "#StoneIsland",
-        "#面料故事",
-        "#老化之美"
+        "#Loewe",
+        "#罗意威",
+        "#JWAnderson",
+        "#廓形设计",
+        "#可穿戴艺术",
+        "#SS26成衣"
       ],
       "brand_relevance": "high",
       "city_distribution": {
@@ -63,29 +37,55 @@
       }
     },
     {
-      "trend_id": "t03",
-      "trend_label": "Stone Island Technical Knitwear Layering",
+      "trend_id": "t02",
+      "trend_label": "Loewe Puzzle Bag SS26 Colourway Surge",
       "city": null,
-      "category": "ready-to-wear",
-      "cluster_summary": "Growing signal around Stone Island's AW25 knitwear as a layering anchor — specifically cable and intarsia knit pieces worn beneath SI's signature technical shells. Posts feature detailed styling breakdowns with commentary on material weight, proportion, and the visual tension between structured outerwear and softer knitwear underneath. The trend resonates with SI's core audience of technically-literate dressers who understand the brand's layering language and are building complete systems rather than standalone pieces.",
-      "post_count": 5100,
-      "engagement_rate": 0.097,
-      "week_on_week_growth": "+21%",
-      "top_post_example": "石头岛AW25针织衫叠穿教程 尼龙外壳 + 粗针编织毛衣 = SI标准搭配公式 一旦你学会这个逻辑 其他牌子的外套就很难看了 #石头岛 #叠穿 #StoneIsland针织 #AW25穿搭",
+      "category": "leather goods",
+      "cluster_summary": "Strong, sustained engagement around the Loewe Puzzle Bag in SS26's new seasonal colourways — particularly Sand, Dusty Rose, and Deep Navy. Posts are splitting between unpacking-and-construction content (close-up seam and leather grain documentation) and editorial styling that emphasises the bag's geometric form against architectural settings. The craft angle is driving disproportionately high saves, with comment threads that read more like leather education than fashion discourse.",
+      "post_count": 6400,
+      "engagement_rate": 0.099,
+      "week_on_week_growth": "+22%",
+      "top_post_example": "Loewe Puzzle包的皮料是怎么选的？今天拆解一下SS26的Sand色 把同款包侧面的缝线放大来看 每一条缝都在力学上承重 这不是装饰性皮具 是三维工程 #Loewe #Puzzle包 #罗意威 #皮具工艺 #手工皮革 #SS26",
       "trending_hashtags": [
-        "#石头岛针织",
-        "#叠穿教程",
-        "#StoneIsland",
-        "#技术运动装",
-        "#AW25穿搭",
-        "#针织外套组合"
+        "#Loewe",
+        "#Puzzle包",
+        "#罗意威",
+        "#皮具工艺",
+        "#手工皮革",
+        "#SS26"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2040,
-        "北京": 1530,
-        "广州": 1020,
-        "成都": 510
+        "上海": 2560,
+        "北京": 1920,
+        "广州": 1280,
+        "成都": 640
+      }
+    },
+    {
+      "trend_id": "t03",
+      "trend_label": "Loewe Craft Heritage & Artisan Storytelling",
+      "city": null,
+      "category": "leather goods",
+      "cluster_summary": "A growing content cluster built around Loewe's Spanish craft heritage — specifically posts documenting the brand's Madrid workshop lineage, hand-stitching processes, and the provenance of its calf and nappa leathers. This is creator-led education rather than brand marketing, with high-knowledge accounts breaking down how Loewe's interlaced leather panels are constructed. The trend is generating outsized saves from an audience that appears to be mid-consideration — researching before a first Loewe purchase.",
+      "post_count": 5200,
+      "engagement_rate": 0.096,
+      "week_on_week_growth": "+19%",
+      "top_post_example": "为什么罗意威的皮具比其他品牌贵？今天从西班牙工坊传承说起——Loewe 1846年成立 比LV还早 手工制皮的历史比你想象的更深 #Loewe #罗意威 #西班牙皮具 #手工传承 #奢侈品教育 #品牌故事",
+      "trending_hashtags": [
+        "#Loewe",
+        "#罗意威",
+        "#西班牙皮具",
+        "#手工传承",
+        "#奢侈品教育",
+        "#品牌故事"
+      ],
+      "brand_relevance": "high",
+      "city_distribution": {
+        "上海": 2080,
+        "北京": 1560,
+        "广州": 1040,
+        "成都": 520
       }
     }
   ]
