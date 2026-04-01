@@ -1,91 +1,91 @@
 {
   "query_context": {
-    "brand": "Loewe",
+    "brand": "Tiffany",
     "market": "China luxury fashion",
-    "categories": ["ready-to-wear", "leather goods"],
+    "categories": ["jewelry", "fine jewelry"],
     "source": "synthetic prototype — pre-crafted high-confidence data for standalone testing",
     "cities": ["Shanghai", "Beijing"],
     "week": "2026-W13",
-    "module1_run_id": "synthetic_loewe_v1",
-    "module2_generated_at": "2026-03-31T00:00:00"
+    "module1_run_id": "synthetic_tiffany_v1",
+    "module2_generated_at": "2026-04-01T00:00:00"
   },
   "trends": [
     {
       "trend_id": "t01",
-      "trend_label": "Jonathan Anderson Sculptural RTW — Balloon & Volume Silhouettes",
+      "trend_label": "Tiffany Lock — Couple's Ritual Jewelry",
       "city": null,
-      "category": "ready-to-wear",
-      "cluster_summary": "A concentrated signal around Loewe's SS26 ready-to-wear silhouettes — specifically Jonathan Anderson's balloon sleeve dresses, oversized knit co-ords, and sculptural coat shapes. XHS creators are framing these pieces as wearable art, drawing explicit comparisons to ceramics and installation sculpture. The posts that perform best are not styling guides but analytical breakdowns of proportion and craft intention, attracting an audience that wants to understand the design thinking, not just the look.",
-      "post_count": 5800,
-      "engagement_rate": 0.112,
-      "week_on_week_growth": "+24%",
-      "top_post_example": "Loewe SS26的气球袖裙 不是在追时髦 是JW Anderson在用布料重新定义人体轮廓 你会怎么佩戴一件雕塑？ #Loewe #罗意威 #JWAnderson #廓形设计 #可穿戴艺术 #SS26成衣",
+      "category": "jewelry",
+      "cluster_summary": "The Tiffany Lock bracelet has emerged as the defining couple's jewelry trend on XHS — driven not just by the product's aesthetic but by the ritual narrative around it. Posts centre on the moment of gifting, the Blue Box opening, and the symbolism of the lock mechanism. Content splits between emotional storytelling (anniversary, first gift, proposal adjacent) and practical evaluation (wear longevity, gold quality, whether it works as a self-purchase). The engagement across both content types is uniformly high, suggesting the Lock has reached cultural milestone status among 25-38 year olds in China's tier-one cities.",
+      "post_count": 6800,
+      "engagement_rate": 0.118,
+      "week_on_week_growth": "+28%",
+      "top_post_example": "Tiffany Lock手链一年使用报告——锁扣每天开合没有金属疲劳感 18K玫瑰金颜色变化极小 最重要的是每次低头看到它都会想起买它的那个时刻 这才是好珠宝的意义 #蒂芙尼 #TiffanyLock #情侣珠宝 #Tiffany #一年体验",
       "trending_hashtags": [
-        "#Loewe",
-        "#罗意威",
-        "#JWAnderson",
-        "#廓形设计",
-        "#可穿戴艺术",
-        "#SS26成衣"
+        "#蒂芙尼",
+        "#TiffanyLock",
+        "#情侣珠宝",
+        "#Tiffany",
+        "#蓝盒子",
+        "#手链推荐"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2320,
-        "北京": 1740,
-        "广州": 1160,
-        "成都": 580
+        "上海": 2720,
+        "北京": 2040,
+        "广州": 1360,
+        "成都": 680
       }
     },
     {
       "trend_id": "t02",
-      "trend_label": "Loewe Puzzle Bag SS26 Colourway Surge",
+      "trend_label": "T Collection Daily Stacking",
       "city": null,
-      "category": "leather goods",
-      "cluster_summary": "Strong, sustained engagement around the Loewe Puzzle Bag in SS26's new seasonal colourways — particularly Sand, Dusty Rose, and Deep Navy. Posts are splitting between unpacking-and-construction content (close-up seam and leather grain documentation) and editorial styling that emphasises the bag's geometric form against architectural settings. The craft angle is driving disproportionately high saves, with comment threads that read more like leather education than fashion discourse.",
-      "post_count": 6400,
-      "engagement_rate": 0.099,
+      "category": "jewelry",
+      "cluster_summary": "A sustained and growing signal around Tiffany's T collection worn as everyday fine jewelry — specifically T Wire and T1 pieces layered together across wrists and fingers. The discourse on XHS has shifted from 'Is Tiffany worth it?' to 'How do I build a T stack?' — a significant maturation that suggests brand trust is established and the conversation has moved to styling fluency. Posts by working professionals and creatives are driving disproportionate saves, with practical guidance on metal finishes, layering logic, and transitions from casual to formal dressing the most-saved content format.",
+      "post_count": 5900,
+      "engagement_rate": 0.104,
       "week_on_week_growth": "+22%",
-      "top_post_example": "Loewe Puzzle包的皮料是怎么选的？今天拆解一下SS26的Sand色 把同款包侧面的缝线放大来看 每一条缝都在力学上承重 这不是装饰性皮具 是三维工程 #Loewe #Puzzle包 #罗意威 #皮具工艺 #手工皮革 #SS26",
+      "top_post_example": "T1戒指 + T Wire手链 + T细手链三件叠戴——T系列的线条极简 叠在一起不会显乱 反而每条的宽细形成节奏感 上班通勤都可以戴 完全不浮夸 这就是quiet jewelry的正确答案 #蒂芙尼 #Tiffany #T系列 #手链叠戴 #日常珠宝",
       "trending_hashtags": [
-        "#Loewe",
-        "#Puzzle包",
-        "#罗意威",
-        "#皮具工艺",
-        "#手工皮革",
-        "#SS26"
+        "#蒂芙尼",
+        "#Tiffany",
+        "#T系列",
+        "#手链叠戴",
+        "#日常珠宝",
+        "#低调奢华"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2560,
-        "北京": 1920,
-        "广州": 1280,
-        "成都": 640
+        "上海": 2360,
+        "北京": 1770,
+        "广州": 1180,
+        "成都": 590
       }
     },
     {
       "trend_id": "t03",
-      "trend_label": "Loewe Craft Heritage & Artisan Storytelling",
+      "trend_label": "Blue Book & Diamond Provenance Storytelling",
       "city": null,
-      "category": "leather goods",
-      "cluster_summary": "A growing content cluster built around Loewe's Spanish craft heritage — specifically posts documenting the brand's Madrid workshop lineage, hand-stitching processes, and the provenance of its calf and nappa leathers. This is creator-led education rather than brand marketing, with high-knowledge accounts breaking down how Loewe's interlaced leather panels are constructed. The trend is generating outsized saves from an audience that appears to be mid-consideration — researching before a first Loewe purchase.",
-      "post_count": 5200,
-      "engagement_rate": 0.096,
-      "week_on_week_growth": "+19%",
-      "top_post_example": "为什么罗意威的皮具比其他品牌贵？今天从西班牙工坊传承说起——Loewe 1846年成立 比LV还早 手工制皮的历史比你想象的更深 #Loewe #罗意威 #西班牙皮具 #手工传承 #奢侈品教育 #品牌故事",
+      "category": "fine jewelry",
+      "cluster_summary": "A high-quality content cluster around Tiffany's exceptional stones and high jewelry archive — centred on the Blue Book collection, the Tiffany Setting's engineering, and the brand's diamond sourcing transparency. The posts are generating outsized saves from an audience that appears to be in active research mode — evaluating Tiffany against other high jewelers before a major purchase. Notable within this cluster is the sub-signal around Elsa Peretti archive pieces, with creators positioning them as overlooked design masterworks rather than heritage pieces. The Tiffany Setting as a craft argument — not just a symbol — is the most resonant narrative.",
+      "post_count": 5400,
+      "engagement_rate": 0.097,
+      "week_on_week_growth": "+20%",
+      "top_post_example": "Tiffany Setting 1886年发明的六爪镶嵌 今天仍然是钻戒设计的参照系——六个爪让光线从钻石六个方向进入和折射 最大化火彩 这不是传统 是一道工程题的正确答案 #蒂芙尼 #TiffanySetting #六爪镶嵌 #钻戒工艺 #高级珠宝",
       "trending_hashtags": [
-        "#Loewe",
-        "#罗意威",
-        "#西班牙皮具",
-        "#手工传承",
-        "#奢侈品教育",
-        "#品牌故事"
+        "#蒂芙尼",
+        "#Tiffany",
+        "#BlueBook",
+        "#TiffanySetting",
+        "#高级珠宝",
+        "#钻石来源"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2080,
-        "北京": 1560,
-        "广州": 1040,
-        "成都": 520
+        "上海": 2160,
+        "北京": 1620,
+        "广州": 1080,
+        "成都": 540
       }
     }
   ]

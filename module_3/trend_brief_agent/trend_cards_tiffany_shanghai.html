@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Trend Brief — Tiffany Shanghai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #f0ede8;
+    color: #111111;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .page { max-width: 840px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* Header */
+  .brief-header {
+    background: #111827;
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px 36px 28px;
+    margin-bottom: 32px;
+  }
+  .brief-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .brief-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    color: #9ca3af;
+    flex-wrap: wrap;
+  }
+  .brief-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* Banner */
+  .banner {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #92400e;
+    margin-bottom: 24px;
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  /* Card header */
+  .card-header {
+    background: #1c1c2e;
+    color: #fff;
+    padding: 24px 30px 20px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 7px;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: #94a3b8;
+  }
+  .card-meta strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Sections */
+  .section {
+    padding: 22px 30px;
+    border-bottom: 1px solid #eeecec;
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .section p { margin-bottom: 10px; color: #111111; font-size: 15px; line-height: 1.65; }
+  .section p:last-child { margin-bottom: 0; }
+  .section strong { color: #000; font-weight: 700; }
+
+  /* Trend overview — largest, most prominent */
+  .section-overview { background: #fff; border-left: 4px solid #1c1c2e; }
+  .section-overview .section-label { color: #1c1c2e; font-size: 12px; }
+  .section-overview p { font-size: 16px; color: #0f0f0f; line-height: 1.7; font-weight: 400; }
+
+  /* Data signal */
+  .section-data { background: #f7f6f4; }
+  .section-data .section-label { color: #374151; }
+  .section-data ul { list-style: none; padding: 0; }
+  .section-data li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e6e2;
+    font-size: 14px;
+    color: #111111;
+    font-weight: 500;
+  }
+  .section-data li:last-child { border-bottom: none; }
+  .section-data code {
+    background: #e8e6e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: "SF Mono", "Fira Code", monospace;
+    color: #111111;
+  }
+
+  /* Brand relevance pill inside data section */
+  .section-data li strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Client match */
+  .section-client { border-left: 4px solid #6366f1; }
+  .section-client .section-label { color: #4f46e5; }
+  .section-client p { font-size: 14px; color: #111111; }
+
+  /* Conversation starter */
+  .section-starter { background: #f8f7f4; }
+  .starter-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin: 14px 0 7px;
+  }
+  .starter-label:first-child { margin-top: 0; }
+  .starter-chinese {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #0f0f0f;
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .starter-english {
+    background: #fff;
+    border: 1px solid #d6d3ce;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #1f2937;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .page { padding: 16px 12px 60px; }
+    .brief-header { padding: 22px 20px 18px; border-radius: 10px; }
+    .brief-header h1 { font-size: 22px; }
+    .brief-meta { font-size: 12px; gap: 12px; }
+    .card { border-radius: 10px; margin-bottom: 20px; }
+    .card-header { padding: 18px 20px 14px; }
+    .card-title { font-size: 17px; }
+    .section { padding: 16px 20px; }
+    .section p { font-size: 14px; }
+    .section-overview p { font-size: 15px; }
+    .section-data li { font-size: 13px; }
+    .starter-chinese { font-size: 15px; padding: 12px 14px; }
+    .starter-english { font-size: 13px; padding: 12px 14px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: 1px solid #e5e7eb; break-inside: avoid; }
+    .brief-header { border-radius: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brief-header">
+    <h1>Client Advisor Trend Brief</h1>
+    <div class="brief-meta">
+      <span>Tiffany · Shanghai</span>
+      <span>Week of 2026-W13</span>
+      <span>Source: synthetic prototype — pre-crafted high-confidence data for standalone testing</span>
+      <span>Generated 01 Apr 2026, 12:57</span>
+    </div>
+  </div>
+  
+  <div class="card" id="t01"><div class="card-header"><div class="card-title">Tiffany Lock — Couple&#x27;s Ritual Jewelry</div><div class="card-meta"><strong>Category:</strong> jewelry | <strong>Relevance:</strong> Tiffany · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>The Tiffany Lock bracelet is capturing attention as the go-to couple&#x27;s jewelry trend on XHS. It’s not just the bracelet’s aesthetic appeal that draws interest; it&#x27;s the emotional stories surrounding moments like gifting and the unlocking symbolism that create a rich narrative.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 11.8% (vs. XHS fashion category avg ~4.5% · 6,800 posts · October 2023)</li>
+<li>Post growth: +28% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>HIGH — Engagement rate (11.8%) and post count (6,800) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Everyday Fine Jewelry Wearer</p>
+<p><strong>Who they are:</strong> For her, fine jewelry is not reserved for occasions — it&#x27;s part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.</p>
+<p><strong>Why this trend fits:</strong> The Tiffany Lock bracelet aligns perfectly with this persona&#x27;s desire for everyday fine jewelry that can be worn casually or formally. The ritual narrative surrounding the Lock, emphasized through gifting and personal significance, resonates with her lifestyle of integrating jewelry into daily wear rather than reserving it for special occasions.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Someone who prefers heavy bridal framing or feels uncomfortable with pieces that don&#x27;t stack or combine naturally.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「我最近看到很多关于Tiffany Lock手链的帖子，大家都在分享它作为情侣珠宝的意义和故事。这种情感性和日常佩戴的想法非常有吸引力。你有没有考虑为自己或特别的人选择这样一件首饰呢？」</div><div class="starter-label">English</div><div class="starter-english">"I’ve been inspired by the stories around the Tiffany Lock bracelet lately; so many people are sharing its meaning as couple&#x27;s jewelry. The blend of emotional significance with everyday wear is truly compelling. Have you thought about choosing something like this for yourself or someone special?"</div></div></div>
+<div class="card" id="t02"><div class="card-header"><div class="card-title">T Collection Daily Stacking</div><div class="card-meta"><strong>Category:</strong> Jewelry | <strong>Relevance:</strong> Tiffany · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>There&#x27;s a growing trend in Shanghai about everyday fine jewelry, particularly focusing on Tiffany&#x27;s T collection. The conversation has shifted from questioning the brand’s value to discussing how to layer and stack T Wire and T1 pieces, indicating strong brand trust and styling fluency among consumers.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 10.4% (vs. XHS fashion category avg ~4.5% · 5,900 posts · October 2023)</li>
+<li>Post growth: +22% (week-on-week)</li>
+<li>Brand relevance: High</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>HIGH — Engagement rate (10.4%) and post count (5,900) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The Everyday Fine Jewelry Wearer</p>
+<p><strong>Who they are:</strong> For her, fine jewelry is not reserved for occasions — it&#x27;s part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.</p>
+<p><strong>Why this trend fits:</strong> The trend of layering Tiffany&#x27;s T collection pieces, particularly for daily wear, aligns perfectly with the lifestyle of The Everyday Fine Jewelry Wearer. This persona appreciates versatility and the ability to style jewelry for various occasions, making her particularly receptive to the discourse around stacking T pieces and their seamless integration into everyday outfits.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Clients who prefer heavy bridal framing and resist pieces that don’t stack or combine naturally.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「最近Tiffany的T系列戴法实在有趣，很多人分享怎样叠戴这些优雅的珠宝。你有没有对搭配风格有新的想法？我们可以探讨一下怎样用这些周日珠宝来提升你的日常穿搭。」</div><div class="starter-label">English</div><div class="starter-english">"I came across some great ideas on how to showcase Tiffany&#x27;s T collection in everyday settings. Have you thought about how to layer your pieces in unique ways? It could really elevate your daily outfits!"</div></div></div>
+<div class="card" id="t03"><div class="card-header"><div class="card-title">Blue Book &amp; Diamond Provenance Storytelling</div><div class="card-meta"><strong>Category:</strong> fine jewelry | <strong>Relevance:</strong> Tiffany · October 2023</div></div><div class="section section-overview"><div class="section-label">TREND OVERVIEW</div><p>On XHS, there&#x27;s a significant conversation developing around Tiffany’s Blue Book collection and its diamond provenance storytelling. The audience is highly engaged and actively researching exceptional stones, particularly emphasizing the Tiffany Setting&#x27;s engineering and the transparency in diamond sourcing. Creative posts are showcasing not just the heritage but the craftsmanship behind iconic pieces, captivating a discerning clientele.</p></div><div class="section section-data"><div class="section-label">DATA SIGNAL</div><ul>
+<li>Engagement rate: 9.7% (vs. XHS fashion category avg ~4.5% · 5,400 posts · October 2023)</li>
+<li>Post growth: +20% (week-on-week)</li>
+<li>Brand relevance: high</li>
+</ul>
+<p><strong>CONFIDENCE NOTE</strong></p>
+<p>HIGH — Engagement rate (9.7%) and post count (5,400) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.</p></div><div class="section section-client"><div class="section-label">CLIENT MATCH</div><p><strong>Best-fit persona:</strong> The High Jewelry Connoisseur</p>
+<p><strong>Who they are:</strong> She has already owned Tiffany for decades and is now interested in the exceptional — the Blue Book, rare fancy-colour diamonds, and one-of-a-kind pieces from the high jewelry archive. She knows her stone grades, understands Tiffany&#x27;s responsible sourcing commitments, and is buying a piece that will outlast her. This is a long-term relationship, not a first purchase.</p>
+<p><strong>Why this trend fits:</strong> The trend of Blue Book &amp; Diamond Provenance Storytelling aligns perfectly with The High Jewelry Connoisseur&#x27;s appreciation for exceptional pieces and deep understanding of Tiffany&#x27;s commitment to quality and responsible sourcing. The focus on storytelling around unique stones and archives resonates with her desire for rarity and exclusivity, making her more likely to engage with this narrative.</p>
+<p><strong>Match score:</strong> 9/10</p>
+<p><strong>This trend is NOT for:</strong> Treating her as a new customer, leading with entry-level pieces, or underestimating her stone knowledge.</p></div><div class="section section-starter"><div class="section-label">CONVERSATION STARTER</div><div class="starter-label">Chinese</div><div class="starter-chinese">「我最近看到很多关于蒂芙尼蓝皮书系列的讨论，尤其是关于钻石来源和六爪镶嵌工艺的。对我来说，这是真正异常之美的体现，您觉得在这些独特设计中，有哪些您特别感兴趣的呢？」</div><div class="starter-label">English</div><div class="starter-english">"I’ve been captivated by the discussions around Tiffany&#x27;s Blue Book collection, especially regarding diamond sourcing and the craftsmanship of the Tiffany Setting. It truly highlights the beauty of rarity — what unique designs are you particularly drawn to in this narrative?"</div></div></div>
+</div>
+</body>
+</html>

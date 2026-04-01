@@ -1,0 +1,14 @@
+{
+  "brand_name": "Tiffany",
+  "aesthetic": "American diamond brilliance, architectural jewelry precision, Tiffany Blue as a cultural icon, craft legacy anchored in the 1837 Tiffany Setting with contemporary energy introduced under LVMH — celebratory, confident, and emotionally resonant",
+  "clientele": "milestone-driven women and couples 25-55 who associate Tiffany with life's most significant moments; a growing younger segment 22-38 entering fine jewelry through T and HardWear collections as a statement of personal taste, not occasion",
+  "preferred_sources": ["bridal and engagement KOL", "fine jewelry editorial", "Tiffany brand accounts", "lifestyle and gifting creators", "culturally credible campaign accounts", "diamond and gemology education creators"],
+  "avoided_sources": ["costume jewelry accounts", "fast fashion accessories", "mass-market gift guides", "unbranded jewelry tutorials", "dupe or lookalike culture accounts"],
+  "active_categories": ["jewelry", "fine jewelry"],
+  "category_cadence": {
+    "jewelry": "fast",
+    "fine jewelry": "medium"
+  },
+  "brand_taboos": ["costume jewelry comparisons", "discounting or deal language", "mass-market gifting without craft substance", "heavy baroque styling without diamond quality narrative", "dupe culture references"],
+  "clienteling_tone": "celebratory yet measured, knowledgeable about stone quality and craft heritage, personally significant rather than transactional — the Blue Box is the beginning of a story, not the end of a sale"
+}

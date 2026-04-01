@@ -1,0 +1,45 @@
+{
+  "brand": "Tiffany",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Milestone Celebrant",
+      "age_range": "28-45",
+      "summary": "The Tiffany Setting has been in her mind for years — possibly since she was a child. She isn't buying a ring, she's completing a story. The Blue Box is as important as what's inside it. She may know exactly what she wants, or she may need guidance to articulate it, but she knows she wants the Tiffany experience to match the moment she's buying it for.",
+      "values": ["emotional significance", "lasting quality", "the heritage of the moment", "the Blue Box ritual"],
+      "shopping_behavior": "Often visits more than once before committing. Brings her partner or a close friend. Responds to stone education — cut, colour, carat — and to the craft story behind the Tiffany Setting's six-prong design. The experience of the purchase matters as much as the piece itself.",
+      "trend_receptivity": "Tiffany Setting variations and new precious stone options, anniversary and milestone collections, bridal editorial content, diamond sourcing and certification stories",
+      "avoid": "Treating the purchase as a transaction rather than a ceremony, rushing the conversation, leading with price before value — this client wants to feel the significance of the moment matched"
+    },
+    {
+      "id": "p02",
+      "name": "The Everyday Fine Jewelry Wearer",
+      "age_range": "25-38",
+      "summary": "For her, fine jewelry is not reserved for occasions — it's part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.",
+      "values": ["wearability", "design intelligence", "personal expression through layering", "understated prestige"],
+      "shopping_behavior": "Shops with a specific style goal in mind — often building on a piece she already owns. Asks about metal weights, finishes, and how pieces interact when stacked. Responsive to styling guidance rather than stone education. May buy smaller pieces more frequently rather than one major investment.",
+      "trend_receptivity": "T collection new iterations, HardWear styling, bracelet and ring stacking combinations, mixed metal editorials, pieces that transition between casual and formal",
+      "avoid": "Heavy bridal framing, pushing pieces that don't stack or combine naturally, over-ceremonialising a purchase she wants to feel personal and spontaneous"
+    },
+    {
+      "id": "p03",
+      "name": "The High Jewelry Connoisseur",
+      "age_range": "35-55",
+      "summary": "She has already owned Tiffany for decades and is now interested in the exceptional — the Blue Book, rare fancy-colour diamonds, and one-of-a-kind pieces from the high jewelry archive. She knows her stone grades, understands Tiffany's responsible sourcing commitments, and is buying a piece that will outlast her. This is a long-term relationship, not a first purchase.",
+      "values": ["stone rarity and provenance", "archival design references", "GIA-certified quality", "heirloom investment"],
+      "shopping_behavior": "Deeply knowledgeable and expects the CA to match that level. Asks about specific stones, their origin country, and treatment status. Interested in design provenance — Elsa Peretti archive, Jean Schlumberger heritage. May be comparing across multiple high jewelers and will decide based on story as much as specification.",
+      "trend_receptivity": "Blue Book launches and exceptional stone introductions, archive revivals (Peretti, Schlumberger), responsible sourcing and provenance documentation, one-of-a-kind and limited pieces",
+      "avoid": "Treating her as a new customer, leading with entry-level pieces, underestimating her stone knowledge, any framing that implies volume or scale over rarity"
+    },
+    {
+      "id": "p04",
+      "name": "The Cultural Discovery Client",
+      "age_range": "22-35",
+      "summary": "She discovered Tiffany not through family tradition but through a campaign, a cultural moment, or a piece she saw styled in a way that reframed the brand for her. She may have come through the Beyoncé collaboration, a piece she saw in a magazine, or a friend's XHS post. She's building her first relationship with the brand and is drawn to Tiffany's contemporary positioning as much as its heritage.",
+      "values": ["cultural relevance", "brand discovery narrative", "self-gifting confidence", "first fine jewelry ownership"],
+      "shopping_behavior": "Arrives open to guidance. Often starts with a T or Lock piece as a first Tiffany purchase. Responds to brand storytelling — the history of the blue, 1837, the Setting — but needs it delivered as discovery, not lecture. Self-gifts or is shopping for a meaningful but non-bridal occasion.",
+      "trend_receptivity": "T collection entry points, Lock bracelet as personal statement, culturally referenced campaigns, styling content that shows Tiffany as everyday rather than only ceremonial",
+      "avoid": "Bridal framing before trust is built, overwhelming her with high jewelry options she hasn't signalled interest in, treating her as less serious because her purchase is smaller"
+    }
+  ]
+}

@@ -49,6 +49,10 @@ BRAND_KEYWORDS = {
         "ready-to-wear": ["Stone Island外套", "石头岛穿搭", "石岛新款", "Stone Island成衣"],
         "accessories": ["Stone Island配件", "石头岛帽子", "Stone Island包", "石岛配饰"],
     },
+    "tiffany": {
+        "jewelry": ["Tiffany新款", "蒂芙尼珠宝", "Tiffany项链", "蒂芙尼戒指"],
+        "fine jewelry": ["Tiffany钻戒", "蒂芙尼高级珠宝", "Tiffany订婚戒", "蒂芙尼Blue Book"],
+    },
 }
 
 
