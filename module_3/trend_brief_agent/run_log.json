@@ -1,9 +1,9 @@
 {
-  "run_timestamp": "2026-04-01T12:57:33.350893",
+  "run_timestamp": "2026-04-01T15:16:14.484863",
   "model": "openai/gpt-4o-mini",
-  "brand": "Tiffany",
+  "brand": "Fendi",
   "city": "Shanghai",
-  "week": "2026-W13",
+  "week": "2026-W14",
   "prompt_template": "You are a luxury retail trend intelligence assistant generating Client Insight Briefs for Client Advisors (CAs) at high-end fashion maisons in China.\n\nYour output is a structured trend card that a CA can scan in under 60 seconds and immediately act on in a client conversation. Everything you write must pass a single test: could a CA read this, pick up their phone, and open a WeChat conversation with a VIP client within 5 minutes?\n\nLANGUAGE RULE — CRITICAL: Write the entire card in English only. The ONE exception is the Conversation Starter section, which must include a Chinese version (first) followed by an English version. Do not use Chinese characters, bilingual labels, or Chinese text anywhere else in the card — not in section headers, not in data labels, not in the confidence note, not in the maison lens.\n\n## CARD FORMAT — OUTPUT EXACTLY THIS STRUCTURE:\n\n### [Trend Name in English]\n**Category:** [category] | **Relevance:** [brand] · [month, year]\n\n---\n\n**TREND OVERVIEW**\n[2–3 sentences. What is happening on XHS right now? Describe the visual or behavioral signal. Plain language a CA can repeat out loud. No jargon.]\n\n---\n\n**DATA SIGNAL**\n- Engagement rate: [X]% (vs. XHS fashion category avg ~4.5% · [N] posts · [month year])\n- Post growth: +[X]% (week-on-week)\n- Brand relevance: [high/medium/low]\n\n**CONFIDENCE NOTE**\n[use exactly the confidence level you are given] — [one sentence on methodology; if data is synthetic write: \"Synthetic data — for prototype testing only\"]\n\n---\n\n**CLIENT MATCH**\n**Best-fit persona:** [persona name from input]\n**Who they are:** [copy persona summary exactly from input]\n**Why this trend fits:** [copy match rationale exactly from input]\n**Match score:** [score]/10\n\n**This trend is NOT for:** [one sentence naming the client type to exclude — base this on the persona's avoid profile provided in the input]\n\n---\n\n**CONVERSATION STARTER**\n\nChinese:\n「[2–3 sentences in Chinese. WeChat-intimate register. Structure: personal observation → relevance to client → open question. Tactile/sensory language. Sound like a trusted friend, not a brand brief.]」\n\nEnglish:\n\"[Warm, specific. Never begin with 'I've noticed a lot of our clients...' or 'Many of our VIP customers...'. Sound like a real person.]\"\n\n---\n\n## RULES:\n- LANGUAGE: All content is in English. Only the Conversation Starter section contains Chinese (first) and English (second).\n- ALWAYS contextualize every metric: show figure + benchmark + sample size + date. No floating numbers.\n- The confidence level in CONFIDENCE NOTE must exactly match the value provided in the input — do not substitute your own assessment.\n- CONFIDENCE NOTE must explain the methodology, not just state the level.\n- The 'NOT for' statement is required — draw from the persona's avoid field provided.\n- Never write conversation starters that begin with 'I've noticed a lot of our clients...'\n- The persona summary and match rationale must be used as provided — do not rewrite them.\n- Do not pad. Every sentence must inform a decision or enable a conversation.\n",
   "retrieved_source": "trend_shortlist.json",
   "retrieved_record_ids": [
@@ -46,97 +46,97 @@
   "selected_trends": [
     {
       "trend_id": "t01",
-      "trend_label": "Tiffany Lock — Couple's Ritual Jewelry",
+      "trend_label": "Baguette Cultural Resurgence",
       "decision_output": "SELECTED",
       "confidence": "HIGH",
-      "composite_score": 33.52,
+      "composite_score": 31.32,
       "evidence_used": {
-        "post_count": 6800,
-        "engagement_rate": 0.118,
-        "week_on_week_growth": "+28%",
+        "post_count": 6500,
+        "engagement_rate": 0.108,
+        "week_on_week_growth": "+25%",
         "brand_relevance": "high",
-        "top_post_example": "Tiffany Lock手链一年使用报告——锁扣每天开合没有金属疲劳感 18K玫瑰金颜色变化极小 最重要的是每次低头看到它都会想起买它的那个时刻 这才是好珠宝的意义 #蒂芙尼 #TiffanyLock #情侣珠宝 #Tiffany #一年体验",
+        "top_post_example": "Fendi Baguette 2025回来了——这个包1997年出的时候彻底改变了手提包的定义 把「腋下夹住」变成了一种姿态 今年的复刻皮料比原版更厚实 FF扣件做工更精细 #Fendi #Baguette #法棍包 #Y2K复古 #芬迪",
         "trending_hashtags": [
-          "#蒂芙尼",
-          "#TiffanyLock",
-          "#情侣珠宝",
-          "#Tiffany",
-          "#蓝盒子",
-          "#手链推荐"
+          "#Fendi",
+          "#Baguette",
+          "#法棍包",
+          "#芬迪",
+          "#Y2K复古",
+          "#FF扣件"
         ]
       },
       "matched_persona": {
-        "persona_id": "p02",
-        "persona_name": "The Everyday Fine Jewelry Wearer",
-        "persona_summary": "For her, fine jewelry is not reserved for occasions — it's part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.",
-        "match_rationale": "The Tiffany Lock bracelet aligns perfectly with this persona's desire for everyday fine jewelry that can be worn casually or formally. The ritual narrative surrounding the Lock, emphasized through gifting and personal significance, resonates with her lifestyle of integrating jewelry into daily wear rather than reserving it for special occasions.",
+        "persona_id": "p01",
+        "persona_name": "The Baguette Devotee",
+        "persona_summary": "She came to Fendi through the Baguette — whether through its original 1997 moment, the SATC revival, or a more recent cultural re-emergence on XHS and global fashion media. The Baguette is her entry point and often her defining piece. She's aware of the bag's cultural weight and wears it as a deliberate statement of fashion literacy. She may be building toward a second Fendi piece but the Baguette always comes first.",
+        "match_rationale": "The Baguette Cultural Resurgence is perfectly aligned with The Baguette Devotee, who perceives the bag as not just a fashion item but a cultural statement steeped in history. This persona's deep appreciation for the Baguette's legacy makes her exceptionally receptive to the revival trend, as it reinforces her identity and investment in the brand.",
         "match_score": 9,
-        "avoid": "Heavy bridal framing, pushing pieces that don't stack or combine naturally, over-ceremonialising a purchase she wants to feel personal and spontaneous"
+        "avoid": "Positioning the Baguette as simply a trending item — she knows its history and wants that respected; treating her as someone who needs to be educated on the brand when she may know it better than expected"
       },
-      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Tiffany\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Tiffany Lock — Couple's Ritual Jewelry\nCategory: jewelry\nCluster summary: The Tiffany Lock bracelet has emerged as the defining couple's jewelry trend on XHS — driven not just by the product's aesthetic but by the ritual narrative around it. Posts centre on the moment of gifting, the Blue Box opening, and the symbolism of the lock mechanism. Content splits between emotional storytelling (anniversary, first gift, proposal adjacent) and practical evaluation (wear longevity, gold quality, whether it works as a self-purchase). The engagement across both content types is uniformly high, suggesting the Lock has reached cultural milestone status among 25-38 year olds in China's tier-one cities.\nPost count: 6,800\nEngagement rate: 11.8% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +28%\nBrand relevance: high\nConfidence (use this exact value in the card): HIGH\nConfidence methodology: Engagement rate (11.8%) and post count (6,800) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.\nTop post example: Tiffany Lock手链一年使用报告——锁扣每天开合没有金属疲劳感 18K玫瑰金颜色变化极小 最重要的是每次低头看到它都会想起买它的那个时刻 这才是好珠宝的意义 #蒂芙尼 #TiffanyLock #情侣珠宝 #Tiffany #一年体验\nTrending hashtags: #蒂芙尼, #TiffanyLock, #情侣珠宝, #Tiffany, #蓝盒子, #手链推荐\nCity signal: 2720/6800 posts from Shanghai (40%) | Top cities: 上海: 2720, 北京: 2040, 广州: 1360, 成都: 680\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Everyday Fine Jewelry Wearer\nPersona summary: For her, fine jewelry is not reserved for occasions — it's part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.\nWhy this trend fits: The Tiffany Lock bracelet aligns perfectly with this persona's desire for everyday fine jewelry that can be worn casually or formally. The ritual narrative surrounding the Lock, emphasized through gifting and personal significance, resonates with her lifestyle of integrating jewelry into daily wear rather than reserving it for special occasions.\nMatch score: 9/10\nPersona avoids: Heavy bridal framing, pushing pieces that don't stack or combine naturally, over-ceremonialising a purchase she wants to feel personal and spontaneous\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
+      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Fendi\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Baguette Cultural Resurgence\nCategory: leather goods\nCluster summary: The Fendi Baguette is having its clearest cultural moment since its original 1997 launch — driven by a convergence of Y2K revival, SATC nostalgia, and a new generation of XHS creators who understand its history and are treating it as a deliberate fashion statement rather than a trend item. Posts split between archive-literate analysis (the bag's place in fashion history), practical evaluation (size, colourway, wear longevity), and styling content that integrates it into contemporary dressing. The engagement breadth is notably wide — reaching both informed collectors and first-time Fendi buyers — suggesting the Baguette is currently serving as the brand's most effective acquisition piece.\nPost count: 6,500\nEngagement rate: 10.8% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +25%\nBrand relevance: high\nConfidence (use this exact value in the card): HIGH\nConfidence methodology: Engagement rate (10.8%) and post count (6,500) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.\nTop post example: Fendi Baguette 2025回来了——这个包1997年出的时候彻底改变了手提包的定义 把「腋下夹住」变成了一种姿态 今年的复刻皮料比原版更厚实 FF扣件做工更精细 #Fendi #Baguette #法棍包 #Y2K复古 #芬迪\nTrending hashtags: #Fendi, #Baguette, #法棍包, #芬迪, #Y2K复古, #FF扣件\nCity signal: 2600/6500 posts from Shanghai (40%) | Top cities: 上海: 2600, 北京: 1950, 广州: 1300, 成都: 650\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Baguette Devotee\nPersona summary: She came to Fendi through the Baguette — whether through its original 1997 moment, the SATC revival, or a more recent cultural re-emergence on XHS and global fashion media. The Baguette is her entry point and often her defining piece. She's aware of the bag's cultural weight and wears it as a deliberate statement of fashion literacy. She may be building toward a second Fendi piece but the Baguette always comes first.\nWhy this trend fits: The Baguette Cultural Resurgence is perfectly aligned with The Baguette Devotee, who perceives the bag as not just a fashion item but a cultural statement steeped in history. This persona's deep appreciation for the Baguette's legacy makes her exceptionally receptive to the revival trend, as it reinforces her identity and investment in the brand.\nMatch score: 9/10\nPersona avoids: Positioning the Baguette as simply a trending item — she knows its history and wants that respected; treating her as someone who needs to be educated on the brand when she may know it better than expected\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
     },
     {
       "trend_id": "t02",
-      "trend_label": "T Collection Daily Stacking",
+      "trend_label": "FF Monogram RTW — Logo as Design Language",
       "decision_output": "SELECTED",
       "confidence": "HIGH",
-      "composite_score": 28.46,
+      "composite_score": 26.98,
       "evidence_used": {
-        "post_count": 5900,
-        "engagement_rate": 0.104,
-        "week_on_week_growth": "+22%",
+        "post_count": 5600,
+        "engagement_rate": 0.097,
+        "week_on_week_growth": "+21%",
         "brand_relevance": "high",
-        "top_post_example": "T1戒指 + T Wire手链 + T细手链三件叠戴——T系列的线条极简 叠在一起不会显乱 反而每条的宽细形成节奏感 上班通勤都可以戴 完全不浮夸 这就是quiet jewelry的正确答案 #蒂芙尼 #Tiffany #T系列 #手链叠戴 #日常珠宝",
+        "top_post_example": "Kim Jones在Fendi做了一件聪明的事：把罗马雕塑的体量感翻译进成衣轮廓 AW25的大廓形外套带有「纪念碑式」的存在感 不是logo主导而是剪裁主导 #Fendi #芬迪 #KimJones #AW25 #成衣解读",
         "trending_hashtags": [
-          "#蒂芙尼",
-          "#Tiffany",
-          "#T系列",
-          "#手链叠戴",
-          "#日常珠宝",
-          "#低调奢华"
+          "#Fendi",
+          "#芬迪",
+          "#FFlogo",
+          "#KimJones",
+          "#FFReloaded",
+          "#AW25成衣"
         ]
       },
       "matched_persona": {
         "persona_id": "p02",
-        "persona_name": "The Everyday Fine Jewelry Wearer",
-        "persona_summary": "For her, fine jewelry is not reserved for occasions — it's part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.",
-        "match_rationale": "The trend of layering Tiffany's T collection pieces, particularly for daily wear, aligns perfectly with the lifestyle of The Everyday Fine Jewelry Wearer. This persona appreciates versatility and the ability to style jewelry for various occasions, making her particularly receptive to the discourse around stacking T pieces and their seamless integration into everyday outfits.",
-        "match_score": 9,
-        "avoid": "Heavy bridal framing, pushing pieces that don't stack or combine naturally, over-ceremonialising a purchase she wants to feel personal and spontaneous"
+        "persona_name": "The Roman Craft Client",
+        "persona_summary": "She chose Fendi for Rome — for the Via Condotti flagship, for Selleria's hand-stitched tradition, for Karl Lagerfeld's 54-year tenure as creative director and the depth of craft legacy that represents. She values the artisanal dimension of Fendi alongside its cultural confidence. The FF monogram is interesting to her as a design system, not just a logo. She buys deliberately and holds pieces for years.",
+        "match_rationale": "This trend resonates with The Roman Craft Client because it positions the FF monogram as a refined design choice, aligning with her appreciation for craftsmanship and the deeper narrative behind luxury pieces. The emphasis on styling the monogram with restraint speaks to her desire for deliberate aesthetics that reflect artistry rather than mere branding.",
+        "match_score": 8,
+        "avoid": "Reducing Fendi to the FF logo without acknowledging the craft underneath it, trend-forward pitching without craft grounding, making her feel rushed"
       },
-      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Tiffany\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: T Collection Daily Stacking\nCategory: jewelry\nCluster summary: A sustained and growing signal around Tiffany's T collection worn as everyday fine jewelry — specifically T Wire and T1 pieces layered together across wrists and fingers. The discourse on XHS has shifted from 'Is Tiffany worth it?' to 'How do I build a T stack?' — a significant maturation that suggests brand trust is established and the conversation has moved to styling fluency. Posts by working professionals and creatives are driving disproportionate saves, with practical guidance on metal finishes, layering logic, and transitions from casual to formal dressing the most-saved content format.\nPost count: 5,900\nEngagement rate: 10.4% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +22%\nBrand relevance: high\nConfidence (use this exact value in the card): HIGH\nConfidence methodology: Engagement rate (10.4%) and post count (5,900) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.\nTop post example: T1戒指 + T Wire手链 + T细手链三件叠戴——T系列的线条极简 叠在一起不会显乱 反而每条的宽细形成节奏感 上班通勤都可以戴 完全不浮夸 这就是quiet jewelry的正确答案 #蒂芙尼 #Tiffany #T系列 #手链叠戴 #日常珠宝\nTrending hashtags: #蒂芙尼, #Tiffany, #T系列, #手链叠戴, #日常珠宝, #低调奢华\nCity signal: 2360/5900 posts from Shanghai (40%) | Top cities: 上海: 2360, 北京: 1770, 广州: 1180, 成都: 590\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Everyday Fine Jewelry Wearer\nPersona summary: For her, fine jewelry is not reserved for occasions — it's part of how she dresses every day. She arrived at Tiffany through the T collection or HardWear, drawn by the clean architectural forms she could stack, layer, and wear with everything from tailoring to a white T-shirt. She sees the blue box as a marker of considered taste, not inherited tradition.\nWhy this trend fits: The trend of layering Tiffany's T collection pieces, particularly for daily wear, aligns perfectly with the lifestyle of The Everyday Fine Jewelry Wearer. This persona appreciates versatility and the ability to style jewelry for various occasions, making her particularly receptive to the discourse around stacking T pieces and their seamless integration into everyday outfits.\nMatch score: 9/10\nPersona avoids: Heavy bridal framing, pushing pieces that don't stack or combine naturally, over-ceremonialising a purchase she wants to feel personal and spontaneous\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
+      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Fendi\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: FF Monogram RTW — Logo as Design Language\nCategory: ready-to-wear\nCluster summary: A refined signal around Fendi's ready-to-wear under Kim Jones — specifically how the FF monogram is being worn and framed on XHS as a deliberate design choice rather than overt status signalling. The most-shared posts are styling guides that teach the proportion logic of wearing one FF piece with clean, neutral accompaniments — positioning the logo as an accent rather than the whole look. This content is attracting both existing Fendi clients expanding into ready-to-wear and logo-curious new clients who want the brand presence handled with restraint. The FF Reloaded deconstructed monogram is generating particular traction among fashion-forward creators.\nPost count: 5,600\nEngagement rate: 9.7% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +21%\nBrand relevance: high\nConfidence (use this exact value in the card): HIGH\nConfidence methodology: Engagement rate (9.7%) and post count (5,600) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.\nTop post example: Kim Jones在Fendi做了一件聪明的事：把罗马雕塑的体量感翻译进成衣轮廓 AW25的大廓形外套带有「纪念碑式」的存在感 不是logo主导而是剪裁主导 #Fendi #芬迪 #KimJones #AW25 #成衣解读\nTrending hashtags: #Fendi, #芬迪, #FFlogo, #KimJones, #FFReloaded, #AW25成衣\nCity signal: 2240/5600 posts from Shanghai (40%) | Top cities: 上海: 2240, 北京: 1680, 广州: 1120, 成都: 560\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Roman Craft Client\nPersona summary: She chose Fendi for Rome — for the Via Condotti flagship, for Selleria's hand-stitched tradition, for Karl Lagerfeld's 54-year tenure as creative director and the depth of craft legacy that represents. She values the artisanal dimension of Fendi alongside its cultural confidence. The FF monogram is interesting to her as a design system, not just a logo. She buys deliberately and holds pieces for years.\nWhy this trend fits: This trend resonates with The Roman Craft Client because it positions the FF monogram as a refined design choice, aligning with her appreciation for craftsmanship and the deeper narrative behind luxury pieces. The emphasis on styling the monogram with restraint speaks to her desire for deliberate aesthetics that reflect artistry rather than mere branding.\nMatch score: 8/10\nPersona avoids: Reducing Fendi to the FF logo without acknowledging the craft underneath it, trend-forward pitching without craft grounding, making her feel rushed\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
     },
     {
       "trend_id": "t03",
-      "trend_label": "Blue Book & Diamond Provenance Storytelling",
+      "trend_label": "Selleria Craft & Peekaboo Investment Narrative",
       "decision_output": "SELECTED",
       "confidence": "HIGH",
-      "composite_score": 26.08,
+      "composite_score": 25.44,
       "evidence_used": {
-        "post_count": 5400,
-        "engagement_rate": 0.097,
+        "post_count": 5200,
+        "engagement_rate": 0.096,
         "week_on_week_growth": "+20%",
         "brand_relevance": "high",
-        "top_post_example": "Tiffany Setting 1886年发明的六爪镶嵌 今天仍然是钻戒设计的参照系——六个爪让光线从钻石六个方向进入和折射 最大化火彩 这不是传统 是一道工程题的正确答案 #蒂芙尼 #TiffanySetting #六爪镶嵌 #钻戒工艺 #高级珠宝",
+        "top_post_example": "Fendi Peekaboo的精华在里面——打开的瞬间能看到双色对比内里 手工上色的皮革边 和Selleria马鞍针迹 这三样东西合在一起才是Fendi皮具传统的真正体现 外面多简单 里面都是功课 #Fendi #Peekaboo #Selleria #芬迪 #手工皮具",
         "trending_hashtags": [
-          "#蒂芙尼",
-          "#Tiffany",
-          "#BlueBook",
-          "#TiffanySetting",
-          "#高级珠宝",
-          "#钻石来源"
+          "#Fendi",
+          "#Peekaboo",
+          "#Selleria",
+          "#芬迪",
+          "#手工皮具",
+          "#马鞍缝"
         ]
       },
       "matched_persona": {
-        "persona_id": "p03",
-        "persona_name": "The High Jewelry Connoisseur",
-        "persona_summary": "She has already owned Tiffany for decades and is now interested in the exceptional — the Blue Book, rare fancy-colour diamonds, and one-of-a-kind pieces from the high jewelry archive. She knows her stone grades, understands Tiffany's responsible sourcing commitments, and is buying a piece that will outlast her. This is a long-term relationship, not a first purchase.",
-        "match_rationale": "The trend of Blue Book & Diamond Provenance Storytelling aligns perfectly with The High Jewelry Connoisseur's appreciation for exceptional pieces and deep understanding of Tiffany's commitment to quality and responsible sourcing. The focus on storytelling around unique stones and archives resonates with her desire for rarity and exclusivity, making her more likely to engage with this narrative.",
+        "persona_id": "p04",
+        "persona_name": "The Peekaboo Collector",
+        "persona_summary": "The Peekaboo is her bag — she may have one or several, across different sizes and leathers. She understands it as a serious investment in Italian craft, not just a luxury purchase. She knows that the Peekaboo's interior — the peek-through clasp, the colour-contrast lining, the hand-painted edges — is where the real artisanship is. She comes back for new iterations and sometimes for gifts for people she wants to introduce to Fendi.",
+        "match_rationale": "The Selleria Craft & Peekaboo Investment Narrative deeply resonates with this persona as it emphasizes the craftsmanship and value of the Peekaboo bag. Her appreciation for high-quality leather goods and the tradition of hand-stitching aligns perfectly with the content that highlights these aspects, making her more likely to engage with and invest in the brand based on these narratives.",
         "match_score": 9,
-        "avoid": "Treating her as a new customer, leading with entry-level pieces, underestimating her stone knowledge, any framing that implies volume or scale over rarity"
+        "avoid": "Suggesting the Baguette or entry-level pieces when she's clearly a Peekaboo client, treating each visit as a first encounter rather than a continuation of a relationship"
       },
-      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Tiffany\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Blue Book & Diamond Provenance Storytelling\nCategory: fine jewelry\nCluster summary: A high-quality content cluster around Tiffany's exceptional stones and high jewelry archive — centred on the Blue Book collection, the Tiffany Setting's engineering, and the brand's diamond sourcing transparency. The posts are generating outsized saves from an audience that appears to be in active research mode — evaluating Tiffany against other high jewelers before a major purchase. Notable within this cluster is the sub-signal around Elsa Peretti archive pieces, with creators positioning them as overlooked design masterworks rather than heritage pieces. The Tiffany Setting as a craft argument — not just a symbol — is the most resonant narrative.\nPost count: 5,400\nEngagement rate: 9.7% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +20%\nBrand relevance: high\nConfidence (use this exact value in the card): HIGH\nConfidence methodology: Engagement rate (9.7%) and post count (5,400) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.\nTop post example: Tiffany Setting 1886年发明的六爪镶嵌 今天仍然是钻戒设计的参照系——六个爪让光线从钻石六个方向进入和折射 最大化火彩 这不是传统 是一道工程题的正确答案 #蒂芙尼 #TiffanySetting #六爪镶嵌 #钻戒工艺 #高级珠宝\nTrending hashtags: #蒂芙尼, #Tiffany, #BlueBook, #TiffanySetting, #高级珠宝, #钻石来源\nCity signal: 2160/5400 posts from Shanghai (40%) | Top cities: 上海: 2160, 北京: 1620, 广州: 1080, 成都: 540\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The High Jewelry Connoisseur\nPersona summary: She has already owned Tiffany for decades and is now interested in the exceptional — the Blue Book, rare fancy-colour diamonds, and one-of-a-kind pieces from the high jewelry archive. She knows her stone grades, understands Tiffany's responsible sourcing commitments, and is buying a piece that will outlast her. This is a long-term relationship, not a first purchase.\nWhy this trend fits: The trend of Blue Book & Diamond Provenance Storytelling aligns perfectly with The High Jewelry Connoisseur's appreciation for exceptional pieces and deep understanding of Tiffany's commitment to quality and responsible sourcing. The focus on storytelling around unique stones and archives resonates with her desire for rarity and exclusivity, making her more likely to engage with this narrative.\nMatch score: 9/10\nPersona avoids: Treating her as a new customer, leading with entry-level pieces, underestimating her stone knowledge, any framing that implies volume or scale over rarity\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
+      "prompt_used": "Generate a Client Insight Brief card for the trend below.\n\nBRAND: Fendi\nCITY: Shanghai\nDATA NOTE: live XHS data scraped via DrissionPage\n\n--- TREND DATA ---\nTrend label: Selleria Craft & Peekaboo Investment Narrative\nCategory: leather goods\nCluster summary: A high-quality content cluster built around Fendi's Selleria hand-stitching tradition and the Peekaboo bag as a long-term craft investment. Posts are combining detailed construction analysis (saddle-stitch technique, edge painting process, double-tone interior) with a financial framing — treating the Peekaboo as a piece that holds or appreciates in value over time. The Karl Lagerfeld archive angle is generating strong saves, with creators positioning his 54-year tenure as a depth of creative continuity that justifies the price. Audience is skewing older (35+) and more loyal, with comment threads that read as conversations between existing Fendi clients rather than brand discovery.\nPost count: 5,200\nEngagement rate: 9.6% (XHS fashion category avg benchmark: ~4.5%)\nWeek-on-week growth: +20%\nBrand relevance: high\nConfidence (use this exact value in the card): HIGH\nConfidence methodology: Engagement rate (9.6%) and post count (5,200) exceed all thresholds with strong brand relevance. Source: live XHS data scraped via DrissionPage.\nTop post example: Fendi Peekaboo的精华在里面——打开的瞬间能看到双色对比内里 手工上色的皮革边 和Selleria马鞍针迹 这三样东西合在一起才是Fendi皮具传统的真正体现 外面多简单 里面都是功课 #Fendi #Peekaboo #Selleria #芬迪 #手工皮具\nTrending hashtags: #Fendi, #Peekaboo, #Selleria, #芬迪, #手工皮具, #马鞍缝\nCity signal: 2080/5200 posts from Shanghai (40%) | Top cities: 上海: 2080, 北京: 1560, 广州: 1040, 成都: 520\n\n--- CLIENT PERSONA MATCH ---\nBest-fit persona: The Peekaboo Collector\nPersona summary: The Peekaboo is her bag — she may have one or several, across different sizes and leathers. She understands it as a serious investment in Italian craft, not just a luxury purchase. She knows that the Peekaboo's interior — the peek-through clasp, the colour-contrast lining, the hand-painted edges — is where the real artisanship is. She comes back for new iterations and sometimes for gifts for people she wants to introduce to Fendi.\nWhy this trend fits: The Selleria Craft & Peekaboo Investment Narrative deeply resonates with this persona as it emphasizes the craftsmanship and value of the Peekaboo bag. Her appreciation for high-quality leather goods and the tradition of hand-stitching aligns perfectly with the content that highlights these aspects, making her more likely to engage with and invest in the brand based on these narratives.\nMatch score: 9/10\nPersona avoids: Suggesting the Baguette or entry-level pieces when she's clearly a Peekaboo client, treating each visit as a first encounter rather than a continuation of a relationship\n\n--- CITY TONE GUIDELINE ---\nShanghai cards should feel more understated and considered."
     }
   ],
-  "next_step_suggestion": "Share the 3 trend cards with the Tiffany Shanghai CA team for review. 3 card(s) are HIGH confidence and ready for client conversations. Run log_feedback.py after team review."
+  "next_step_suggestion": "Share the 3 trend cards with the Fendi Shanghai CA team for review. 3 card(s) are HIGH confidence and ready for client conversations. Run log_feedback.py after team review."
 }

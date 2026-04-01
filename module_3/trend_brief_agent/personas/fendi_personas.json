@@ -1,0 +1,45 @@
+{
+  "brand": "Fendi",
+  "personas": [
+    {
+      "id": "p01",
+      "name": "The Baguette Devotee",
+      "age_range": "24-38",
+      "summary": "She came to Fendi through the Baguette — whether through its original 1997 moment, the SATC revival, or a more recent cultural re-emergence on XHS and global fashion media. The Baguette is her entry point and often her defining piece. She's aware of the bag's cultural weight and wears it as a deliberate statement of fashion literacy. She may be building toward a second Fendi piece but the Baguette always comes first.",
+      "values": ["cultural fashion literacy", "iconic piece ownership", "Y2K heritage recontextualised", "bag as identity statement"],
+      "shopping_behavior": "Often comes in with a specific Baguette iteration in mind — a seasonal colourway, a material, or a collaboration. Knows the difference between the original silhouette and newer proportions. Responds to storytelling about the bag's archive history and current creative reinterpretation. May want help choosing between colourways or leathers.",
+      "trend_receptivity": "New Baguette iterations and seasonal colourways, Baguette collaborations and special editions, archive revival pieces, styling content that bridges the bag's heritage with contemporary dressing",
+      "avoid": "Positioning the Baguette as simply a trending item — she knows its history and wants that respected; treating her as someone who needs to be educated on the brand when she may know it better than expected"
+    },
+    {
+      "id": "p02",
+      "name": "The Roman Craft Client",
+      "age_range": "32-50",
+      "summary": "She chose Fendi for Rome — for the Via Condotti flagship, for Selleria's hand-stitched tradition, for Karl Lagerfeld's 54-year tenure as creative director and the depth of craft legacy that represents. She values the artisanal dimension of Fendi alongside its cultural confidence. The FF monogram is interesting to her as a design system, not just a logo. She buys deliberately and holds pieces for years.",
+      "values": ["Italian craft heritage", "artisanal leather mastery", "the Rome creative legacy", "brand depth over trend momentum"],
+      "shopping_behavior": "Drawn to Selleria pieces and the Peekaboo — appreciates being shown the saddle-stitching and the story of the Roman workshops. Asks about leather provenance and construction. Buys less frequently but with commitment. Responds to conversations that reference Karl's legacy and the continuity of the house's craft identity under Kim Jones and Silvia.",
+      "trend_receptivity": "Selleria collection new editions, Peekaboo in seasonal leathers and colours, craft-focused storytelling, limited pieces that reference the Karl Lagerfeld archive or Rome house heritage",
+      "avoid": "Reducing Fendi to the FF logo without acknowledging the craft underneath it, trend-forward pitching without craft grounding, making her feel rushed"
+    },
+    {
+      "id": "p03",
+      "name": "The FF Logo Wearer",
+      "age_range": "22-35",
+      "summary": "She wears the FF monogram the way it was always intended — confidently, stylishly, as a declaration. She's not embarrassed by visible branding; she sees it as the point. She follows Kim Jones's Fendi ready-to-wear closely and treats the logo pieces as the sharpest items in her wardrobe. She may mix Fendi logo pieces with other luxury brands, building looks that read as fashion-forward rather than label-driven.",
+      "values": ["brand confidence", "logo as design system", "fashion-forwardness", "cultural currency"],
+      "shopping_behavior": "Shops with energy — she knows what she wants and moves quickly. Attracted to new season FF pieces and limited collaborations. Responds well to a CA who shares her enthusiasm rather than modulating it. Often buys accessories alongside ready-to-wear to complete a look.",
+      "trend_receptivity": "FF monogram RTW new arrivals, logo accessories styling, Kim Jones-era collaborations, seasonal campaigns that reframe the FF as culturally alive rather than heritage",
+      "avoid": "Quiet luxury framing that implicitly critiques visible branding, treating her enthusiasm as superficial, suggesting she 'tone it down' — she's making a deliberate aesthetic choice"
+    },
+    {
+      "id": "p04",
+      "name": "The Peekaboo Collector",
+      "age_range": "35-55",
+      "summary": "The Peekaboo is her bag — she may have one or several, across different sizes and leathers. She understands it as a serious investment in Italian craft, not just a luxury purchase. She knows that the Peekaboo's interior — the peek-through clasp, the colour-contrast lining, the hand-painted edges — is where the real artisanship is. She comes back for new iterations and sometimes for gifts for people she wants to introduce to Fendi.",
+      "values": ["leather investment quality", "interior craft as equal to exterior design", "collection building", "gifting as brand introduction"],
+      "shopping_behavior": "Highly knowledgeable about the Peekaboo's range of sizes, leathers, and configurations. May ask about bespoke or made-to-order options. Interested in seasonal colour stories and exotic leather editions. Loyal to the SA she trusts — relationship-driven buyer who values continuity.",
+      "trend_receptivity": "Peekaboo seasonal launches and colour introductions, exotic leather editions, made-to-order or bespoke programmes, Selleria-finished versions with enhanced artisanal detailing",
+      "avoid": "Suggesting the Baguette or entry-level pieces when she's clearly a Peekaboo client, treating each visit as a first encounter rather than a continuation of a relationship"
+    }
+  ]
+}

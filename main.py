@@ -53,6 +53,10 @@ BRAND_KEYWORDS = {
         "jewelry": ["Tiffany新款", "蒂芙尼珠宝", "Tiffany项链", "蒂芙尼戒指"],
         "fine jewelry": ["Tiffany钻戒", "蒂芙尼高级珠宝", "Tiffany订婚戒", "蒂芙尼Blue Book"],
     },
+    "fendi": {
+        "ready-to-wear": ["Fendi新款", "芬迪穿搭", "Fendi成衣", "Fendi春夏"],
+        "leather goods": ["Fendi包包", "芬迪手袋", "Fendi Baguette", "芬迪皮具"],
+    },
 }
 
 

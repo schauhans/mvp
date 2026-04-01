@@ -1,0 +1,14 @@
+{
+  "brand_name": "Fendi",
+  "aesthetic": "Roman luxury craft with playful wit — the FF monogram as bold cultural statement, Selleria hand-stitching as artisanal counterweight, Karl Lagerfeld's irreverent legacy channelled through Kim Jones's contemporary precision and Silvia Venturini Fendi's accessories mastery",
+  "clientele": "brand-literate women 25-50 who balance the cultural confidence of the FF logo with appreciation for Selleria's craft depth; a younger cohort 22-35 drawn to the Baguette's cultural renaissance and the expressive energy of FF ready-to-wear",
+  "preferred_sources": ["Italian luxury fashion KOL", "leather goods craft editorial", "Fendi brand accounts", "Rome fashion and lifestyle creators", "Y2K and heritage revival content creators", "accessories and handbag culture accounts"],
+  "avoided_sources": ["fast fashion influencers", "replica or dupe culture accounts", "understated quiet luxury accounts that dismiss branding", "mass-market lifestyle bloggers", "unbranded leather goods tutorials"],
+  "active_categories": ["ready-to-wear", "leather goods"],
+  "category_cadence": {
+    "ready-to-wear": "medium",
+    "leather goods": "fast"
+  },
+  "brand_taboos": ["replica culture", "dupe references", "anti-logo minimalism framing", "fast fashion comparisons", "treating the FF monogram as gauche rather than culturally intentional"],
+  "clienteling_tone": "confident and brand-fluent, craft-knowledgeable on Selleria construction and leather provenance, warm Roman hospitality energy — the brand celebrates joy and wit alongside serious artisanship, never stiff"
+}

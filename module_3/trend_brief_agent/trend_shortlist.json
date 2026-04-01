@@ -1,91 +1,91 @@
 {
   "query_context": {
-    "brand": "Tiffany",
+    "brand": "Fendi",
     "market": "China luxury fashion",
-    "categories": ["jewelry", "fine jewelry"],
+    "categories": ["ready-to-wear", "leather goods"],
     "source": "synthetic prototype — pre-crafted high-confidence data for standalone testing",
     "cities": ["Shanghai", "Beijing"],
-    "week": "2026-W13",
-    "module1_run_id": "synthetic_tiffany_v1",
+    "week": "2026-W14",
+    "module1_run_id": "synthetic_fendi_v1",
     "module2_generated_at": "2026-04-01T00:00:00"
   },
   "trends": [
     {
       "trend_id": "t01",
-      "trend_label": "Tiffany Lock — Couple's Ritual Jewelry",
+      "trend_label": "Baguette Cultural Resurgence",
       "city": null,
-      "category": "jewelry",
-      "cluster_summary": "The Tiffany Lock bracelet has emerged as the defining couple's jewelry trend on XHS — driven not just by the product's aesthetic but by the ritual narrative around it. Posts centre on the moment of gifting, the Blue Box opening, and the symbolism of the lock mechanism. Content splits between emotional storytelling (anniversary, first gift, proposal adjacent) and practical evaluation (wear longevity, gold quality, whether it works as a self-purchase). The engagement across both content types is uniformly high, suggesting the Lock has reached cultural milestone status among 25-38 year olds in China's tier-one cities.",
-      "post_count": 6800,
-      "engagement_rate": 0.118,
-      "week_on_week_growth": "+28%",
-      "top_post_example": "Tiffany Lock手链一年使用报告——锁扣每天开合没有金属疲劳感 18K玫瑰金颜色变化极小 最重要的是每次低头看到它都会想起买它的那个时刻 这才是好珠宝的意义 #蒂芙尼 #TiffanyLock #情侣珠宝 #Tiffany #一年体验",
+      "category": "leather goods",
+      "cluster_summary": "The Fendi Baguette is having its clearest cultural moment since its original 1997 launch — driven by a convergence of Y2K revival, SATC nostalgia, and a new generation of XHS creators who understand its history and are treating it as a deliberate fashion statement rather than a trend item. Posts split between archive-literate analysis (the bag's place in fashion history), practical evaluation (size, colourway, wear longevity), and styling content that integrates it into contemporary dressing. The engagement breadth is notably wide — reaching both informed collectors and first-time Fendi buyers — suggesting the Baguette is currently serving as the brand's most effective acquisition piece.",
+      "post_count": 6500,
+      "engagement_rate": 0.108,
+      "week_on_week_growth": "+25%",
+      "top_post_example": "Fendi Baguette 2025回来了——这个包1997年出的时候彻底改变了手提包的定义 把「腋下夹住」变成了一种姿态 今年的复刻皮料比原版更厚实 FF扣件做工更精细 #Fendi #Baguette #法棍包 #Y2K复古 #芬迪",
       "trending_hashtags": [
-        "#蒂芙尼",
-        "#TiffanyLock",
-        "#情侣珠宝",
-        "#Tiffany",
-        "#蓝盒子",
-        "#手链推荐"
+        "#Fendi",
+        "#Baguette",
+        "#法棍包",
+        "#芬迪",
+        "#Y2K复古",
+        "#FF扣件"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2720,
-        "北京": 2040,
-        "广州": 1360,
-        "成都": 680
+        "上海": 2600,
+        "北京": 1950,
+        "广州": 1300,
+        "成都": 650
       }
     },
     {
       "trend_id": "t02",
-      "trend_label": "T Collection Daily Stacking",
+      "trend_label": "FF Monogram RTW — Logo as Design Language",
       "city": null,
-      "category": "jewelry",
-      "cluster_summary": "A sustained and growing signal around Tiffany's T collection worn as everyday fine jewelry — specifically T Wire and T1 pieces layered together across wrists and fingers. The discourse on XHS has shifted from 'Is Tiffany worth it?' to 'How do I build a T stack?' — a significant maturation that suggests brand trust is established and the conversation has moved to styling fluency. Posts by working professionals and creatives are driving disproportionate saves, with practical guidance on metal finishes, layering logic, and transitions from casual to formal dressing the most-saved content format.",
-      "post_count": 5900,
-      "engagement_rate": 0.104,
-      "week_on_week_growth": "+22%",
-      "top_post_example": "T1戒指 + T Wire手链 + T细手链三件叠戴——T系列的线条极简 叠在一起不会显乱 反而每条的宽细形成节奏感 上班通勤都可以戴 完全不浮夸 这就是quiet jewelry的正确答案 #蒂芙尼 #Tiffany #T系列 #手链叠戴 #日常珠宝",
+      "category": "ready-to-wear",
+      "cluster_summary": "A refined signal around Fendi's ready-to-wear under Kim Jones — specifically how the FF monogram is being worn and framed on XHS as a deliberate design choice rather than overt status signalling. The most-shared posts are styling guides that teach the proportion logic of wearing one FF piece with clean, neutral accompaniments — positioning the logo as an accent rather than the whole look. This content is attracting both existing Fendi clients expanding into ready-to-wear and logo-curious new clients who want the brand presence handled with restraint. The FF Reloaded deconstructed monogram is generating particular traction among fashion-forward creators.",
+      "post_count": 5600,
+      "engagement_rate": 0.097,
+      "week_on_week_growth": "+21%",
+      "top_post_example": "Kim Jones在Fendi做了一件聪明的事：把罗马雕塑的体量感翻译进成衣轮廓 AW25的大廓形外套带有「纪念碑式」的存在感 不是logo主导而是剪裁主导 #Fendi #芬迪 #KimJones #AW25 #成衣解读",
       "trending_hashtags": [
-        "#蒂芙尼",
-        "#Tiffany",
-        "#T系列",
-        "#手链叠戴",
-        "#日常珠宝",
-        "#低调奢华"
+        "#Fendi",
+        "#芬迪",
+        "#FFlogo",
+        "#KimJones",
+        "#FFReloaded",
+        "#AW25成衣"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2360,
-        "北京": 1770,
-        "广州": 1180,
-        "成都": 590
+        "上海": 2240,
+        "北京": 1680,
+        "广州": 1120,
+        "成都": 560
       }
     },
     {
       "trend_id": "t03",
-      "trend_label": "Blue Book & Diamond Provenance Storytelling",
+      "trend_label": "Selleria Craft & Peekaboo Investment Narrative",
       "city": null,
-      "category": "fine jewelry",
-      "cluster_summary": "A high-quality content cluster around Tiffany's exceptional stones and high jewelry archive — centred on the Blue Book collection, the Tiffany Setting's engineering, and the brand's diamond sourcing transparency. The posts are generating outsized saves from an audience that appears to be in active research mode — evaluating Tiffany against other high jewelers before a major purchase. Notable within this cluster is the sub-signal around Elsa Peretti archive pieces, with creators positioning them as overlooked design masterworks rather than heritage pieces. The Tiffany Setting as a craft argument — not just a symbol — is the most resonant narrative.",
-      "post_count": 5400,
-      "engagement_rate": 0.097,
+      "category": "leather goods",
+      "cluster_summary": "A high-quality content cluster built around Fendi's Selleria hand-stitching tradition and the Peekaboo bag as a long-term craft investment. Posts are combining detailed construction analysis (saddle-stitch technique, edge painting process, double-tone interior) with a financial framing — treating the Peekaboo as a piece that holds or appreciates in value over time. The Karl Lagerfeld archive angle is generating strong saves, with creators positioning his 54-year tenure as a depth of creative continuity that justifies the price. Audience is skewing older (35+) and more loyal, with comment threads that read as conversations between existing Fendi clients rather than brand discovery.",
+      "post_count": 5200,
+      "engagement_rate": 0.096,
       "week_on_week_growth": "+20%",
-      "top_post_example": "Tiffany Setting 1886年发明的六爪镶嵌 今天仍然是钻戒设计的参照系——六个爪让光线从钻石六个方向进入和折射 最大化火彩 这不是传统 是一道工程题的正确答案 #蒂芙尼 #TiffanySetting #六爪镶嵌 #钻戒工艺 #高级珠宝",
+      "top_post_example": "Fendi Peekaboo的精华在里面——打开的瞬间能看到双色对比内里 手工上色的皮革边 和Selleria马鞍针迹 这三样东西合在一起才是Fendi皮具传统的真正体现 外面多简单 里面都是功课 #Fendi #Peekaboo #Selleria #芬迪 #手工皮具",
       "trending_hashtags": [
-        "#蒂芙尼",
-        "#Tiffany",
-        "#BlueBook",
-        "#TiffanySetting",
-        "#高级珠宝",
-        "#钻石来源"
+        "#Fendi",
+        "#Peekaboo",
+        "#Selleria",
+        "#芬迪",
+        "#手工皮具",
+        "#马鞍缝"
       ],
       "brand_relevance": "high",
       "city_distribution": {
-        "上海": 2160,
-        "北京": 1620,
-        "广州": 1080,
-        "成都": 540
+        "上海": 2080,
+        "北京": 1560,
+        "广州": 1040,
+        "成都": 520
       }
     }
   ]
