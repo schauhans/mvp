@@ -1,92 +1,45 @@
 {
   "query_context": {
-    "brand": "Fendi",
+    "brand": "Tiffany & Co.",
     "market": "China luxury fashion",
-    "categories": ["ready-to-wear", "leather goods"],
-    "source": "synthetic prototype — pre-crafted high-confidence data for standalone testing",
-    "cities": ["Shanghai", "Beijing"],
-    "week": "2026-W14",
-    "module1_run_id": "synthetic_fendi_v1",
-    "module2_generated_at": "2026-04-01T00:00:00"
+    "categories": [
+      "ready-to-wear",
+      "leather goods"
+    ],
+    "source": "Xiaohongshu",
+    "cities": [
+      "Shanghai",
+      "Beijing"
+    ],
+    "week": "2026-W15",
+    "module1_run_id": "run_latest",
+    "module2_generated_at": "2026-04-18T09:47:49.922550+00:00"
   },
   "trends": [
     {
-      "trend_id": "t01",
-      "trend_label": "Baguette Cultural Resurgence",
-      "city": null,
-      "category": "leather goods",
-      "cluster_summary": "The Fendi Baguette is having its clearest cultural moment since its original 1997 launch — driven by a convergence of Y2K revival, SATC nostalgia, and a new generation of XHS creators who understand its history and are treating it as a deliberate fashion statement rather than a trend item. Posts split between archive-literate analysis (the bag's place in fashion history), practical evaluation (size, colourway, wear longevity), and styling content that integrates it into contemporary dressing. The engagement breadth is notably wide — reaching both informed collectors and first-time Fendi buyers — suggesting the Baguette is currently serving as the brand's most effective acquisition piece.",
-      "post_count": 6500,
-      "engagement_rate": 0.108,
-      "week_on_week_growth": "+25%",
-      "top_post_example": "Fendi Baguette 2025回来了——这个包1997年出的时候彻底改变了手提包的定义 把「腋下夹住」变成了一种姿态 今年的复刻皮料比原版更厚实 FF扣件做工更精细 #Fendi #Baguette #法棍包 #Y2K复古 #芬迪",
-      "trending_hashtags": [
-        "#Fendi",
-        "#Baguette",
-        "#法棍包",
-        "#芬迪",
-        "#Y2K复古",
-        "#FF扣件"
-      ],
-      "brand_relevance": "high",
-      "city_distribution": {
-        "上海": 2600,
-        "北京": 1950,
-        "广州": 1300,
-        "成都": 650
-      }
-    },
-    {
       "trend_id": "t02",
-      "trend_label": "FF Monogram RTW — Logo as Design Language",
-      "city": null,
-      "category": "ready-to-wear",
-      "cluster_summary": "A refined signal around Fendi's ready-to-wear under Kim Jones — specifically how the FF monogram is being worn and framed on XHS as a deliberate design choice rather than overt status signalling. The most-shared posts are styling guides that teach the proportion logic of wearing one FF piece with clean, neutral accompaniments — positioning the logo as an accent rather than the whole look. This content is attracting both existing Fendi clients expanding into ready-to-wear and logo-curious new clients who want the brand presence handled with restraint. The FF Reloaded deconstructed monogram is generating particular traction among fashion-forward creators.",
-      "post_count": 5600,
-      "engagement_rate": 0.097,
-      "week_on_week_growth": "+21%",
-      "top_post_example": "Kim Jones在Fendi做了一件聪明的事：把罗马雕塑的体量感翻译进成衣轮廓 AW25的大廓形外套带有「纪念碑式」的存在感 不是logo主导而是剪裁主导 #Fendi #芬迪 #KimJones #AW25 #成衣解读",
+      "trend_label": "Tiffany Jewelry & Relationships",
+      "city": "Shanghai",
+      "category": "",
+      "target_age_range": "28–45",
+      "cluster_summary": "This cluster revolves around the various use cases and emotional significance of Tiffany jewelry, particularly in the context of relationships and personal expression.",
+      "post_count": 22,
+      "engagement_rate": 0.6132,
+      "top_post_example": "求婚用Tiffany Setting 我为什么最终选了它",
       "trending_hashtags": [
-        "#Fendi",
-        "#芬迪",
-        "#FFlogo",
-        "#KimJones",
-        "#FFReloaded",
-        "#AW25成衣"
+        "#Tiffany Jewelry & Relationships"
       ],
       "brand_relevance": "high",
+      "week_on_week_growth": "+15%",
       "city_distribution": {
-        "上海": 2240,
-        "北京": 1680,
-        "广州": 1120,
-        "成都": 560
-      }
-    },
-    {
-      "trend_id": "t03",
-      "trend_label": "Selleria Craft & Peekaboo Investment Narrative",
-      "city": null,
-      "category": "leather goods",
-      "cluster_summary": "A high-quality content cluster built around Fendi's Selleria hand-stitching tradition and the Peekaboo bag as a long-term craft investment. Posts are combining detailed construction analysis (saddle-stitch technique, edge painting process, double-tone interior) with a financial framing — treating the Peekaboo as a piece that holds or appreciates in value over time. The Karl Lagerfeld archive angle is generating strong saves, with creators positioning his 54-year tenure as a depth of creative continuity that justifies the price. Audience is skewing older (35+) and more loyal, with comment threads that read as conversations between existing Fendi clients rather than brand discovery.",
-      "post_count": 5200,
-      "engagement_rate": 0.096,
-      "week_on_week_growth": "+20%",
-      "top_post_example": "Fendi Peekaboo的精华在里面——打开的瞬间能看到双色对比内里 手工上色的皮革边 和Selleria马鞍针迹 这三样东西合在一起才是Fendi皮具传统的真正体现 外面多简单 里面都是功课 #Fendi #Peekaboo #Selleria #芬迪 #手工皮具",
-      "trending_hashtags": [
-        "#Fendi",
-        "#Peekaboo",
-        "#Selleria",
-        "#芬迪",
-        "#手工皮具",
-        "#马鞍缝"
-      ],
-      "brand_relevance": "high",
-      "city_distribution": {
-        "上海": 2080,
-        "北京": 1560,
-        "广州": 1040,
-        "成都": 520
-      }
+        "广州": 3,
+        "上海": 8,
+        "北京": 6,
+        "成都": 2
+      },
+      "m2_composite_score": 7.85,
+      "m2_confidence": "high",
+      "m2_why_selected": "This trend around Tiffany jewelry captures a strong narrative around relationships and personal expression, aligning well with the romantic yet structured aesthetic of Christian Dior. The posts are recent, with the most recent being just five days old, demonstrating ongoing interest. Additionally, the trend resonates with affluent women and offers meaningful context for conversation, as seen in snippets such as '求婚用Tiffany Setting 我为什么最终选了它', making it easy for CAs to weave in discussions about gifting or personal style referencing Dior products. The total engagement of 134894 shows significant interest, sufficient for a luxury audience."
     }
   ]
 }

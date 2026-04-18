@@ -1,0 +1,96 @@
+{
+  "query_context": {
+    "brand": "Tiffany & Co.",
+    "market": "China luxury fine jewellery",
+    "categories": ["fine jewellery", "high jewellery"],
+    "source": "synthetic prototype — pre-crafted high-confidence data for standalone testing",
+    "cities": ["Shanghai", "Beijing", "Chengdu"],
+    "week": "2026-W16",
+    "module1_run_id": "synthetic_tiffany_v1",
+    "module2_generated_at": "2026-04-18T00:00:00",
+    "data_note": "synthetic data (prototype — not live XHS data)"
+  },
+  "trends": [
+    {
+      "trend_id": "t01",
+      "trend_label": "Tiffany T — Everyday Fine Jewellery Stacking",
+      "city": null,
+      "category": "fine jewellery",
+      "cluster_summary": "XHS creators are building content around the Tiffany T collection as a daily-wear fine jewellery system — showing how T bracelets, rings, and earrings combine across metal finishes (yellow gold, rose gold, white gold) to build a stacked look that reads as considered and personal rather than branded. The most-saved posts are layering tutorials that demonstrate how to mix T Wire with T Smile and T True proportions to avoid visual clutter. A strong self-gifting narrative is running underneath: creators are positioning the T piece as a reward-to-self purchase rather than a bridal or gifted milestone buy. This is broadening the brand's perceived accessibility among 25–35 clients who see fine jewellery as a daily wardrobe decision.",
+      "post_count": 7200,
+      "engagement_rate": 0.112,
+      "week_on_week_growth": "+28%",
+      "top_post_example": "Tiffany T手链叠戴公式——T Wire打底 T Smile收口 中间留一指空隙 黄金白金混搭是今年最对的选择 不需要成套买 按自己节奏加 这才是日常精品的玩法 #TiffanyT #蒂芙尼 #手链叠戴 #精品珠宝 #自我奖励",
+      "trending_hashtags": [
+        "#TiffanyT",
+        "#蒂芙尼",
+        "#手链叠戴",
+        "#精品珠宝",
+        "#自我奖励",
+        "#日常佩戴"
+      ],
+      "brand_relevance": "high",
+      "city_distribution": {
+        "上海": 2880,
+        "北京": 2160,
+        "成都": 1080,
+        "广州": 720,
+        "杭州": 360
+      }
+    },
+    {
+      "trend_id": "t02",
+      "trend_label": "Lock Bracelet as Personal Statement",
+      "city": null,
+      "category": "fine jewellery",
+      "cluster_summary": "The Tiffany Lock bracelet is generating a distinct content strand on XHS built around personal meaning over occasion — creators are sharing the context behind buying or receiving a Lock piece, and the framing is consistently about permanence, commitment, and self-defined milestones rather than traditional gifting events. Posts are showing the bracelet worn with contrasting textures — tailoring, denim, casual streetwear — positioning it as a piece with no dress code. A notable sub-thread is emerging around the hinged mechanism itself: close-up videos of the opening and closing gesture are accumulating high view counts, treating the functional detail as an ASMR-adjacent object of desire. The bracelet is attracting both self-purchasers and gift-seekers who want something more contemporary than the classic Tiffany Setting.",
+      "post_count": 6100,
+      "engagement_rate": 0.104,
+      "week_on_week_growth": "+22%",
+      "top_post_example": "Lock手镯这个开合的动作真的太治愈了 扣上去的声音和触感都很到位 我买这个不是为了纪念什么特别的日子 就是觉得这一刻值得被记住 #TiffanyLock #蒂芙尼Lock #手镯 #蒂芙尼 #精品首饰",
+      "trending_hashtags": [
+        "#TiffanyLock",
+        "#蒂芙尼Lock",
+        "#手镯",
+        "#蒂芙尼",
+        "#精品首饰",
+        "#个人风格"
+      ],
+      "brand_relevance": "high",
+      "city_distribution": {
+        "上海": 2440,
+        "北京": 1830,
+        "成都": 915,
+        "广州": 610,
+        "深圳": 305
+      }
+    },
+    {
+      "trend_id": "t03",
+      "trend_label": "Blue Box Gifting Ritual & Unboxing Culture",
+      "city": null,
+      "category": "fine jewellery",
+      "cluster_summary": "The Tiffany Blue Box remains one of the most-referenced luxury packaging objects on XHS, and a distinct content cluster has formed around the ritual of the unboxing moment itself — the unwrapping of the white ribbon, the reveal of the robin's-egg blue, and the anticipation before the jewellery is seen. Creators are framing the box as inseparable from the gift: posts that show the box before the piece consistently outperform posts that lead with the jewellery. A gifting-occasion spike is visible ahead of key Chinese calendar dates (520, Qixi, graduation season) with content coaching followers on how to present the blue box for maximum emotional impact. This is a strong signal for proactive CA outreach around milestone gifting conversations.",
+      "post_count": 5800,
+      "engagement_rate": 0.098,
+      "week_on_week_growth": "+18%",
+      "top_post_example": "蒂芙尼那个蓝盒子真的是礼物里的礼物 还没打开就已经赢了 今年520我研究了半天送什么 最后还是回到这个蓝色——有些经典不需要解释 #蒂芙尼蓝 #TiffanyBlue #520礼物 #蒂芙尼 #精品礼盒",
+      "trending_hashtags": [
+        "#蒂芙尼蓝",
+        "#TiffanyBlue",
+        "#520礼物",
+        "#蒂芙尼",
+        "#精品礼盒",
+        "#仪式感"
+      ],
+      "brand_relevance": "high",
+      "city_distribution": {
+        "上海": 2320,
+        "北京": 1740,
+        "成都": 870,
+        "广州": 580,
+        "杭州": 290
+      }
+    }
+  ]
+}

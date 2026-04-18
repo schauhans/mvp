@@ -1,0 +1,92 @@
+{
+  "fendi": {
+    "brand": "Fendi",
+    "heritage": "Founded in Rome in 1925 by Adele and Edoardo Fendi. Known for exceptional fur craftsmanship and Italian leather artistry.",
+    "creative_direction": "Kim Jones (RTW and Men's), Silvia Venturini Fendi (Accessories and Fur). Karl Lagerfeld served as creative director for 54 years until 2019.",
+    "signature_codes": "FF monogram, Selleria hand-stitching, Peekaboo bag, Baguette bag, intarsia fur",
+    "key_products": "Baguette bag (1997, revived 2019), Peekaboo bag, Selleria leather goods, FF monogram RTW and accessories, First bag",
+    "brand_positioning": "Roman luxury house combining artisanal craft heritage with contemporary fashion energy. Operates at the intersection of craft legacy and cultural relevance.",
+    "china_presence": "Strong in Shanghai, Beijing, Chengdu; the Baguette and FF monogram have significant XHS presence among 22-38 age group."
+  },
+  "dior": {
+    "brand": "Dior",
+    "heritage": "Founded in Paris in 1947 by Christian Dior. The New Look silhouette defined post-war fashion. House of couture with strong RTW and accessories presence.",
+    "creative_direction": "Maria Grazia Chiuri (Women's RTW and Couture). Kim Jones (Men's).",
+    "signature_codes": "Bar jacket, Toile de Jouy, Cannage quilting, CD logo, Saddle bag, Lady Dior bag",
+    "key_products": "Lady Dior bag, Saddle bag, Book Tote, 30 Montaigne bag, Bar jacket, Oblique canvas accessories",
+    "brand_positioning": "French couture house balancing archive femininity with contemporary relevance. Strong in accessories and the CD monogram.",
+    "china_presence": "One of the top-performing luxury brands in China; strong across all tier-1 cities."
+  },
+  "chanel": {
+    "brand": "Chanel",
+    "heritage": "Founded by Gabrielle 'Coco' Chanel in Paris. Defined modern luxury with the little black dress, No.5 perfume, and tweed suits.",
+    "creative_direction": "Do not reference current creative director — uncertain at time of this brief's generation.",
+    "signature_codes": "Double-C logo, tweed suiting, quilted lambskin, chain-strap bags, camellia flower",
+    "key_products": "Classic Flap bag, 2.55 bag, Boy Chanel bag, tweed jacket, No.5 perfume, Coco Crush jewellery",
+    "brand_positioning": "The apex French luxury house. Resists discounting and trend cycles. Clients buy into a value system, not a seasonal story.",
+    "china_presence": "Aspirational and aspirationally exclusive. Waitlists and price increases have become part of brand mythology in China."
+  },
+  "louis_vuitton": {
+    "brand": "Louis Vuitton",
+    "heritage": "Founded in Paris in 1854 as a luggage maker. The LV monogram (1896) is one of the most recognisable luxury codes in the world.",
+    "creative_direction": "Nicolas Ghesquière (Women's RTW). Pharrell Williams (Men's RTW).",
+    "signature_codes": "LV monogram, Damier check, Epi leather, Vuitton trunks, LVMH group flagship",
+    "key_products": "Neverfull tote, Speedy bag, Capucines bag, Twist bag, Dauphine bag, LV Trainer sneaker, Archlight sneaker",
+    "brand_positioning": "The world's highest-revenue luxury brand. Breadth of product from entry-level accessories to couture-adjacent RTW.",
+    "china_presence": "Dominant across all Chinese luxury segments; strong gifting culture around LV accessories."
+  },
+  "bottega_veneta": {
+    "brand": "Bottega Veneta",
+    "heritage": "Founded in 1966 in Vicenza, Italy. 'When your own initials are enough' — logo-free philosophy built on intricate craft.",
+    "creative_direction": "Matthieu Blazy (Creative Director).",
+    "signature_codes": "Intrecciato woven leather, no visible logo, Parachute bag, Andiamo bag, Jodie bag, woven textures",
+    "key_products": "Jodie bag, Andiamo bag, The Pouch, Intrecciato leather goods, woven sandals and mules",
+    "brand_positioning": "Quiet luxury benchmark. Appeals to clients who have 'moved past' logos. Craft and material quality are the entire conversation.",
+    "china_presence": "Growing rapidly among second-generation luxury consumers who want to signal sophistication without visible branding."
+  },
+  "celine": {
+    "brand": "Celine",
+    "heritage": "Founded in Paris in 1945. Repositioned as a minimalist luxury powerhouse under Phoebe Philo, then redefined again under Hedi Slimane.",
+    "creative_direction": "Hedi Slimane (Creative Director, Artistic, Creative and Image Director).",
+    "signature_codes": "Arc de Triomphe logo (current), Saint Laurent-influenced rock and preppy aesthetic, Triomphe canvas",
+    "key_products": "Triomphe bag, Classique 16 bag, Tabou bag, Triomphe canvas accessories, knit and tailoring RTW",
+    "brand_positioning": "French house with a strong visual identity and devoted following. Current direction is rock-inflected Parisian chic.",
+    "china_presence": "Strong among fashion-forward clients 25-40 who follow European runway closely."
+  },
+  "loewe": {
+    "brand": "Loewe",
+    "heritage": "Founded in Madrid in 1846. One of the oldest luxury leather goods houses in Europe. Joined LVMH in 1996.",
+    "creative_direction": "Jonathan Anderson (Creative Director).",
+    "signature_codes": "Puzzle bag, Hammock bag, Anagram logo, Spanish leather craft, art-adjacent campaigns and packaging",
+    "key_products": "Puzzle bag, Hammock bag, Basket bag, Flamenco bag, Gate bag, Anagram leather goods",
+    "brand_positioning": "Intellectual luxury. Attracts culturally curious clients who value craft alongside conceptual design. Jonathan Anderson's direction is design-forward and art-adjacent.",
+    "china_presence": "Fastest-growing luxury brand on XHS among 22-35 creatives and fashion insiders. Puzzle bag has strong cult status."
+  },
+  "stone_island": {
+    "brand": "Stone Island",
+    "heritage": "Founded in 1982 in Ravarino, Italy by Massimo Osti. Built around garment dyeing, technical fabrics, and functional outerwear.",
+    "creative_direction": "Carlo Rivetti (President). No single named creative director — design is collaborative and research-driven.",
+    "signature_codes": "Compass badge (removable arm badge), garment dyeing, Ghost piece dyeing, TC fabric, Nylon Metal",
+    "key_products": "Garment-dyed outerwear, Nylon Metal jacket, Ghost pieces, Ice Shell jacket, technical knitwear",
+    "brand_positioning": "Research-led technical outerwear. The badge is worn by those who understand what it represents. Sits at the intersection of sportswear culture and high craft.",
+    "china_presence": "Growing among male luxury consumers 22-38 in tier-1 cities, especially those with UK/European fashion awareness."
+  },
+  "tiffany": {
+    "brand": "Tiffany & Co.",
+    "heritage": "Founded in New York in 1837. Defined American luxury jewellery. The blue box is one of the most recognised luxury symbols globally.",
+    "creative_direction": "Acquired by LVMH in 2021. Alexandre Arnault (EVP Product and Communications). Do not reference a specific Creative Director.",
+    "signature_codes": "Tiffany Blue (PMS 1837), blue box, yellow diamond, Elsa Peretti designs, Jean Schlumberger archive",
+    "key_products": "Tiffany T collection, HardWear collection, Return to Tiffany, Elsa Peretti Bone cuff, engagement rings, yellow diamond jewellery",
+    "brand_positioning": "American luxury jewellery repositioned under LVMH for a younger, fashion-aware audience while protecting heritage codes.",
+    "china_presence": "Strong gifting occasion brand. Growing in fine jewellery among clients 25-40 who want American luxury with cultural cachet."
+  },
+  "amiri": {
+    "brand": "Amiri",
+    "heritage": "Founded in Los Angeles in 2014 by Mike Amiri. Rock and roll DNA, hand-distressed denim, American luxury with West Coast attitude.",
+    "creative_direction": "Mike Amiri (Founder and Creative Director).",
+    "signature_codes": "MX1 jeans, paint-splatter distressing, Sunset logo, bandana print, camo, eagle motif",
+    "key_products": "MX1 jeans, track jackets, MA-1 bomber, Skel sneaker, Arts District sneaker, bandana-print accessories",
+    "brand_positioning": "American luxury streetwear at couture price points. Rock sensibility, LA cool, hand-craft details. Appeals to clients who want edge alongside luxury.",
+    "china_presence": "Growing in tier-1 cities among male clients 22-38 who follow American streetwear and music culture."
+  }
+}

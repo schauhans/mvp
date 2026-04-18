@@ -19,6 +19,24 @@ MODULE2_OUTPUT = SCRIPT_DIR.parent.parent / "module_2" / "outputs" / "output_sho
 JSON_PATH = SCRIPT_DIR / "trend_shortlist.json"
 RUN_LOG_PATH = SCRIPT_DIR / "run_log.json"
 PERSONAS_DIR = SCRIPT_DIR / "personas"
+BRAND_PROFILES_PATH = SCRIPT_DIR / "brand_profiles.json"
+
+BRAND_ALIASES = {
+    "tiffany_co": "tiffany",       # "Tiffany & Co." / "Tiffany & Co"
+    "tiffany_and_co": "tiffany",
+    "lv": "louis_vuitton",
+    "bv": "bottega_veneta",
+    "bottega": "bottega_veneta",
+    "si": "stone_island",
+}
+
+
+def _brand_slug(brand: str) -> str:
+    """Normalise a brand name to a consistent slug for file lookups."""
+    slug = brand.lower().strip().replace("&", "").replace(".", "").replace("-", "_")
+    slug = "_".join(slug.split())  # collapse any multi-spaces from & removal
+    return BRAND_ALIASES.get(slug, slug)
+
 
 _raw_model = os.environ.get("DEFAULT_MODEL", "openai/gpt-4o-mini")
 # OpenRouter requires "provider/model" format. If the env var is a bare Anthropic
@@ -71,6 +89,12 @@ SYSTEM_PROMPT = (
     "\"[Warm, specific. Never begin with 'I've noticed a lot of our clients...' "
     "or 'Many of our VIP customers...'. Sound like a real person.]\"\n\n"
     "---\n\n"
+    "**PRODUCT SPOTLIGHT**\n"
+    "[If the trend directly promotes a specific product, name it here with a one-line description. "
+    "If the trend does not directly promote a specific product, name the most relevant product category "
+    "(e.g., 'structured top-handle bag') and list 1–3 products from the brand that fit that category. "
+    "Do not leave this section empty — every trend must connect to a concrete product or category.]\n\n"
+    "---\n\n"
     "## RULES:\n"
     "- LANGUAGE: All content is in English. Only the Conversation Starter section contains Chinese (first) and English (second).\n"
     "- ALWAYS contextualize every metric: show figure + benchmark + sample size + date. No floating numbers.\n"
@@ -80,6 +104,15 @@ SYSTEM_PROMPT = (
     "- Never write conversation starters that begin with 'I've noticed a lot of our clients...'\n"
     "- The persona summary and match rationale must be used as provided — do not rewrite them.\n"
     "- Do not pad. Every sentence must inform a decision or enable a conversation.\n"
+    "- CONVERSATION STARTER — OPENING LINE: The opening line must be open-ended (never a yes/no question). "
+    "It must sound like natural spoken language. Avoid brand-marketing phrasing such as 'This piece is a "
+    "timeless investment' or 'a wardrobe essential'. Good example: 'What kind of bags have you been "
+    "reaching for lately?'\n"
+    "- BRAND PROFILE: Before generating the card, reference the BRAND PROFILE provided in the input. "
+    "Do NOT assume who the current creative director is or reference specific campaigns unless explicitly "
+    "stated in the provided brand profile. If uncertain about any brand fact, omit it rather than guess.\n"
+    "- PRODUCT SPOTLIGHT is required on every card. If the trend does not map to a specific product, "
+    "suggest the closest product category and name matching products from the brand.\n"
 )
 
 # User message template: trend data + persona data
@@ -88,6 +121,8 @@ CARD_TEMPLATE = (
     "BRAND: {brand}\n"
     "CITY: {city}\n"
     "DATA NOTE: {data_note}\n\n"
+    "--- BRAND PROFILE ---\n"
+    "{brand_profile_block}\n\n"
     "--- TREND DATA ---\n"
     "Trend label: {trend_label}\n"
     "Category: {category}\n"
@@ -99,8 +134,7 @@ CARD_TEMPLATE = (
     "Confidence (use this exact value in the card): {confidence}\n"
     "Confidence methodology: {confidence_method}\n"
     "Top post example: {top_post_example}\n"
-    "Trending hashtags: {trending_hashtags}\n"
-    "City signal: {city_signal}\n\n"
+    "Trending hashtags: {trending_hashtags}\n\n"
     "--- CLIENT PERSONA MATCH ---\n"
     "Best-fit persona: {persona_name}\n"
     "Persona summary: {persona_summary}\n"
@@ -213,8 +247,8 @@ def load_trends(brand: str = ""):
         with open(MODULE2_OUTPUT, "r", encoding="utf-8") as f:
             data = json.load(f)
         cached_brand = data.get("brand", "")
-        brand_slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
-        cached_slug = cached_brand.lower().strip().replace(" ", "_").replace("-", "_")
+        brand_slug = _brand_slug(brand)
+        cached_slug = _brand_slug(cached_brand)
         if brand and cached_slug and brand_slug not in cached_slug and cached_slug not in brand_slug:
             print(f"Module 2 cache is for '{cached_brand}', not '{brand}' — skipping stale cache.")
         else:
@@ -230,11 +264,20 @@ def load_trends(brand: str = ""):
                 },
                 "trends": trends,
             }
-    # Fallback to local file for standalone testing
+    # Fallback: brand-specific shortlist file, then generic
+    brand_json = SCRIPT_DIR / f"trend_shortlist_{_brand_slug(brand)}.json" if brand else None
+    if brand_json and brand_json.exists():
+        print(f"Module 2 output not found — falling back to {brand_json.name}")
+        with open(brand_json, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if "query_context" in data and "data_note" not in data["query_context"]:
+            data["query_context"]["data_note"] = _detect_data_note()
+        return data
     if not JSON_PATH.exists():
         raise FileNotFoundError(
-            f"No input found. Expected module 2 output at {MODULE2_OUTPUT} "
-            f"or local fallback at {JSON_PATH}"
+            f"No input found. Expected module 2 output at {MODULE2_OUTPUT}, "
+            f"brand shortlist at trend_shortlist_{_brand_slug(brand)}.json, "
+            f"or generic fallback at {JSON_PATH}"
         )
     print(f"Module 2 output not found — falling back to {JSON_PATH}")
     with open(JSON_PATH, "r", encoding="utf-8") as f:
@@ -427,7 +470,7 @@ PERSONA_MATCH_PROMPT = (
 
 def load_personas(brand):
     """Load persona file for the given brand. Returns list of personas or None."""
-    slug = brand.lower().strip().replace(" ", "_").replace("-", "_")
+    slug = _brand_slug(brand)
     filename = f"{slug}_personas.json"
     persona_path = PERSONAS_DIR / filename
     if not persona_path.exists():
@@ -436,6 +479,28 @@ def load_personas(brand):
     with open(persona_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data.get("personas", [])
+
+
+def load_brand_profile(brand):
+    """Load brand profile for the given brand. Returns a formatted string block or a fallback note."""
+    if not BRAND_PROFILES_PATH.exists():
+        return f"No brand profile on file for {brand}. Do not assume brand facts — omit rather than guess."
+    with open(BRAND_PROFILES_PATH, "r", encoding="utf-8") as f:
+        profiles = json.load(f)
+    slug = _brand_slug(brand)
+    profile = profiles.get(slug)
+    if not profile:
+        return f"No brand profile on file for {brand}. Do not assume brand facts — omit rather than guess."
+    lines = [
+        f"Brand: {profile.get('brand', brand)}",
+        f"Heritage: {profile.get('heritage', '')}",
+        f"Creative direction: {profile.get('creative_direction', '')}",
+        f"Signature codes: {profile.get('signature_codes', '')}",
+        f"Key products: {profile.get('key_products', '')}",
+        f"Brand positioning: {profile.get('brand_positioning', '')}",
+        f"China presence: {profile.get('china_presence', '')}",
+    ]
+    return "\n".join(lines)
 
 
 def match_persona_to_trend(client, trend, personas):
@@ -501,6 +566,7 @@ def generate_trend_card(client, trend, brand, city, persona_match=None, data_not
         brand=brand,
         city=city,
         data_note=data_note,
+        brand_profile_block=load_brand_profile(brand),
         trend_label=trend["trend_label"],
         category=trend["category"],
         cluster_summary=trend["cluster_summary"],
@@ -512,7 +578,6 @@ def generate_trend_card(client, trend, brand, city, persona_match=None, data_not
         brand_relevance=trend["brand_relevance"],
         confidence=confidence,
         confidence_method=confidence_method_str,
-        city_signal=_format_city_signal(trend.get("city_distribution", {}), city),
         persona_name=persona_name,
         persona_summary=persona_summary,
         match_rationale=match_rationale,
@@ -592,7 +657,7 @@ def _card_to_html(trend_id, card_text):
                 f'</div>'
             )
         # Known labelled sections
-        elif re.match(r'^\*\*(TREND OVERVIEW|DATA SIGNAL|CLIENT MATCH|CONVERSATION STARTER)\*\*', first):
+        elif re.match(r'^\*\*(TREND OVERVIEW|DATA SIGNAL|CLIENT MATCH|CONVERSATION STARTER|PRODUCT SPOTLIGHT)\*\*', first):
             label = re.match(r'^\*\*(.+?)\*\*', first).group(1)
             body = re.sub(r'^\*\*[^*]+\*\*\n?', '', section, count=1)
 
@@ -616,6 +681,7 @@ def _card_to_html(trend_id, card_text):
                     'TREND OVERVIEW': 'section-overview',
                     'DATA SIGNAL': 'section-data',
                     'CLIENT MATCH': 'section-client',
+                    'PRODUCT SPOTLIGHT': 'section-product',
                 }.get(label, '')
                 parts.append(
                     f'<div class="section {css_class}">'
@@ -775,6 +841,11 @@ def write_html_report(brand, city, week, source, selected, cards, used_fallback)
   .section-client {{ border-left: 4px solid #6366f1; }}
   .section-client .section-label {{ color: #4f46e5; }}
   .section-client p {{ font-size: 14px; color: #111111; }}
+
+  /* Product spotlight */
+  .section-product {{ border-left: 4px solid #d97706; }}
+  .section-product .section-label {{ color: #92400e; }}
+  .section-product p {{ font-size: 14px; color: #111111; }}
 
   /* Conversation starter */
   .section-starter {{ background: #f8f7f4; }}

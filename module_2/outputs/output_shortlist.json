@@ -1,10 +1,38 @@
 {
-  "run_id": "m2_20260329_070552",
-  "generated_at": "2026-03-29T07:05:52.259238+00:00",
-  "brand": "Celine",
+  "run_id": "m2_20260418_094749",
+  "generated_at": "2026-04-18T09:47:49.922550+00:00",
+  "brand": "Tiffany & Co.",
   "module1_run_id": "run_latest",
-  "total_evaluated": 2,
-  "total_prefilter_rejected": 1,
-  "total_shortlisted": 0,
-  "shortlist": []
+  "total_evaluated": 6,
+  "total_prefilter_rejected": 4,
+  "total_shortlisted": 1,
+  "shortlist": [
+    {
+      "rank": 1,
+      "trend_id": "t02",
+      "label": "Tiffany Jewelry & Relationships",
+      "category": "",
+      "composite_score": 7.85,
+      "scores": {
+        "freshness": 8,
+        "brand_fit": 9,
+        "category_fit": 7,
+        "materiality": 8,
+        "actionability": 7
+      },
+      "confidence": "high",
+      "why_selected": "This trend around Tiffany jewelry captures a strong narrative around relationships and personal expression, aligning well with the romantic yet structured aesthetic of Christian Dior. The posts are recent, with the most recent being just five days old, demonstrating ongoing interest. Additionally, the trend resonates with affluent women and offers meaningful context for conversation, as seen in snippets such as '求婚用Tiffany Setting 我为什么最终选了它', making it easy for CAs to weave in discussions about gifting or personal style referencing Dior products. The total engagement of 134894 shows significant interest, sufficient for a luxury audience.",
+      "evidence_references": [
+        "求婚用Tiffany Setting 我为什么最终选了它",
+        "Total engagement: 134894",
+        "Top keywords include 'tiffany' and '蒂芙尼', indicating strong brand recognition"
+      ],
+      "metric_signal": {
+        "total_engagement": 134894,
+        "post_count": 22,
+        "avg_engagement": 6131.55
+      },
+      "disqualifying_reason": null
+    }
+  ]
 }
