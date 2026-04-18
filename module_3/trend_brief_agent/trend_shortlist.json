@@ -13,23 +13,23 @@
     ],
     "week": "2026-W15",
     "module1_run_id": "run_latest",
-    "module2_generated_at": "2026-04-18T09:47:49.922550+00:00"
+    "module2_generated_at": "2026-04-18T09:59:37.530840+00:00"
   },
   "trends": [
     {
       "trend_id": "t02",
-      "trend_label": "Tiffany Jewelry & Relationships",
+      "trend_label": "Tiffany Jewelry Experience",
       "city": "Shanghai",
       "category": "",
       "target_age_range": "28–45",
-      "cluster_summary": "This cluster revolves around the various use cases and emotional significance of Tiffany jewelry, particularly in the context of relationships and personal expression.",
+      "cluster_summary": "This cluster reflects personal experiences and sentiments related to various Tiffany jewelry pieces, emphasizing both romantic and individual ownership.",
       "post_count": 22,
       "engagement_rate": 0.6132,
       "top_post_example": "求婚用Tiffany Setting 我为什么最终选了它",
       "trending_hashtags": [
-        "#Tiffany Jewelry & Relationships"
+        "#Tiffany Jewelry Experience"
       ],
-      "brand_relevance": "high",
+      "brand_relevance": "medium",
       "week_on_week_growth": "+15%",
       "city_distribution": {
         "广州": 3,
@@ -37,9 +37,9 @@
         "北京": 6,
         "成都": 2
       },
-      "m2_composite_score": 7.85,
+      "m2_composite_score": 7.35,
       "m2_confidence": "high",
-      "m2_why_selected": "This trend around Tiffany jewelry captures a strong narrative around relationships and personal expression, aligning well with the romantic yet structured aesthetic of Christian Dior. The posts are recent, with the most recent being just five days old, demonstrating ongoing interest. Additionally, the trend resonates with affluent women and offers meaningful context for conversation, as seen in snippets such as '求婚用Tiffany Setting 我为什么最终选了它', making it easy for CAs to weave in discussions about gifting or personal style referencing Dior products. The total engagement of 134894 shows significant interest, sufficient for a luxury audience."
+      "m2_why_selected": "This trend displays strong freshness with posts such as '求婚用Tiffany Setting 我为什么最终选了它' from just 5 days ago. The brand fit is high as it aligns with the feminine, romantic codes valued by Dior's clientele. The luxury jewelry aspect is appropriate for Dior's category fit, appealing to affluent women. With a total engagement of 134894 and multiple posts showing sustained interest, this trend represents materiality that can be actionable for Christian Dior CAs in client conversations about jewelry and gifts."
     }
   ]
 }

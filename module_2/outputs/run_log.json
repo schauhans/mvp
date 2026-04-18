@@ -1,29 +1,29 @@
 {
-  "run_id": "m2_20260418_094749",
+  "run_id": "m2_20260418_095937",
   "agent_name": "Trend Relevance & Materiality Filter",
   "brand": "Tiffany & Co.",
   "module1_run_id": "run_latest",
-  "generated_at": "2026-04-18T09:47:49.922550+00:00",
+  "generated_at": "2026-04-18T09:59:37.530840+00:00",
   "total_input": 6,
   "prefilter_rejections": [
     {
       "trend_id": "t03",
-      "label": "CELINE Summer Menswear",
+      "label": "CELINE Men's Summer Collection",
       "reason": "post_count=2 is below minimum threshold of 5"
     },
     {
       "trend_id": "t04",
-      "label": "Celine Blue Label Aesthetics",
+      "label": "Celine Aesthetic Highlights",
       "reason": "post_count=2 is below minimum threshold of 5"
     },
     {
       "trend_id": "t05",
-      "label": "White Outfit Aesthetic",
+      "label": "White-Toned Outfits",
       "reason": "post_count=2 is below minimum threshold of 5"
     },
     {
       "trend_id": "t06",
-      "label": "Celine Fashion Shows",
+      "label": "Celine Fashion Show Trends",
       "reason": "post_count=2 is below minimum threshold of 5"
     }
   ],
@@ -32,21 +32,20 @@
       "trend_id": "t01",
       "shortlist": false,
       "scores": {
-        "freshness": 5,
+        "freshness": 7,
         "brand_fit": 2,
-        "category_fit": 3,
+        "category_fit": 5,
         "materiality": 6,
         "actionability": 3
       },
-      "composite_score": 3.95,
-      "reasoning": "Although the trend shows some engagement with 66 posts and a total_engagement of 362605, it lacks brand fit as it focuses on Stone Island, which does not align with Christian Dior's aesthetic of Parisian elegance and feminine codes. The posts are not from Christian Dior's preferred sources and are centered around outerwear, which is far removed from Dior's emphasis on ready-to-wear and leather goods. The freshness score suffers due to the trend being associated with a brand not resonating with Dior's clientele, indicating that a Christian Dior CA would struggle to bring this up in conversation effectively.",
+      "composite_score": 4.65,
+      "reasoning": "The trend has freshness with recent posts like '石头岛外套哪款最值得买？2025版本横向比较', but it lacks brand fit for Christian Dior due to the streetwear connection of Stone Island, failing to align with the brand's aesthetic of Parisian elegance and couture heritage. The engagement metrics show some interest, with a total engagement of 362605, but the creator types do not match Dior's preferred influencers. The combination of these factors makes this trend unsuitable for Christian Dior client conversations.",
       "confidence": "high",
       "evidence_references": [
-        "石头岛外套哪款最值得买？2025版本横向比较",
-        "Total engagement: 362605",
-        "Brand taboos include streetwear and hypebeast culture"
+        "total_engagement: 362605",
+        "post_id: si_synth_0003 snippet: 石头岛外套哪款最值得买？2025版本横向比较"
       ],
-      "disqualifying_reason": "brand_fit: Trend is based on a non-luxury streetwear brand.",
+      "disqualifying_reason": "brand_fit - trend is centered around Stone Island, which does not fit Dior's aesthetic or target clientele.",
       "label": "Stone Island Outerwear Insights",
       "category": "",
       "metric_signal": {
@@ -60,21 +59,20 @@
       "shortlist": true,
       "scores": {
         "freshness": 8,
-        "brand_fit": 9,
-        "category_fit": 7,
+        "brand_fit": 8,
+        "category_fit": 6,
         "materiality": 8,
         "actionability": 7
       },
-      "composite_score": 7.85,
-      "reasoning": "This trend around Tiffany jewelry captures a strong narrative around relationships and personal expression, aligning well with the romantic yet structured aesthetic of Christian Dior. The posts are recent, with the most recent being just five days old, demonstrating ongoing interest. Additionally, the trend resonates with affluent women and offers meaningful context for conversation, as seen in snippets such as '求婚用Tiffany Setting 我为什么最终选了它', making it easy for CAs to weave in discussions about gifting or personal style referencing Dior products. The total engagement of 134894 shows significant interest, sufficient for a luxury audience.",
+      "composite_score": 7.35,
+      "reasoning": "This trend displays strong freshness with posts such as '求婚用Tiffany Setting 我为什么最终选了它' from just 5 days ago. The brand fit is high as it aligns with the feminine, romantic codes valued by Dior's clientele. The luxury jewelry aspect is appropriate for Dior's category fit, appealing to affluent women. With a total engagement of 134894 and multiple posts showing sustained interest, this trend represents materiality that can be actionable for Christian Dior CAs in client conversations about jewelry and gifts.",
       "confidence": "high",
       "evidence_references": [
-        "求婚用Tiffany Setting 我为什么最终选了它",
-        "Total engagement: 134894",
-        "Top keywords include 'tiffany' and '蒂芙尼', indicating strong brand recognition"
+        "total_engagement: 134894",
+        "post_id: tiffany_synth_0020 snippet: 求婚用Tiffany Setting 我为什么最终选了它"
       ],
       "disqualifying_reason": null,
-      "label": "Tiffany Jewelry & Relationships",
+      "label": "Tiffany Jewelry Experience",
       "category": "",
       "metric_signal": {
         "total_engagement": 134894,

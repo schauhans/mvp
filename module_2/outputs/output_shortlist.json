@@ -1,6 +1,6 @@
 {
-  "run_id": "m2_20260418_094749",
-  "generated_at": "2026-04-18T09:47:49.922550+00:00",
+  "run_id": "m2_20260418_095937",
+  "generated_at": "2026-04-18T09:59:37.530840+00:00",
   "brand": "Tiffany & Co.",
   "module1_run_id": "run_latest",
   "total_evaluated": 6,
@@ -10,22 +10,21 @@
     {
       "rank": 1,
       "trend_id": "t02",
-      "label": "Tiffany Jewelry & Relationships",
+      "label": "Tiffany Jewelry Experience",
       "category": "",
-      "composite_score": 7.85,
+      "composite_score": 7.35,
       "scores": {
         "freshness": 8,
-        "brand_fit": 9,
-        "category_fit": 7,
+        "brand_fit": 8,
+        "category_fit": 6,
         "materiality": 8,
         "actionability": 7
       },
       "confidence": "high",
-      "why_selected": "This trend around Tiffany jewelry captures a strong narrative around relationships and personal expression, aligning well with the romantic yet structured aesthetic of Christian Dior. The posts are recent, with the most recent being just five days old, demonstrating ongoing interest. Additionally, the trend resonates with affluent women and offers meaningful context for conversation, as seen in snippets such as '求婚用Tiffany Setting 我为什么最终选了它', making it easy for CAs to weave in discussions about gifting or personal style referencing Dior products. The total engagement of 134894 shows significant interest, sufficient for a luxury audience.",
+      "why_selected": "This trend displays strong freshness with posts such as '求婚用Tiffany Setting 我为什么最终选了它' from just 5 days ago. The brand fit is high as it aligns with the feminine, romantic codes valued by Dior's clientele. The luxury jewelry aspect is appropriate for Dior's category fit, appealing to affluent women. With a total engagement of 134894 and multiple posts showing sustained interest, this trend represents materiality that can be actionable for Christian Dior CAs in client conversations about jewelry and gifts.",
       "evidence_references": [
-        "求婚用Tiffany Setting 我为什么最终选了它",
-        "Total engagement: 134894",
-        "Top keywords include 'tiffany' and '蒂芙尼', indicating strong brand recognition"
+        "total_engagement: 134894",
+        "post_id: tiffany_synth_0020 snippet: 求婚用Tiffany Setting 我为什么最终选了它"
       ],
       "metric_signal": {
         "total_engagement": 134894,

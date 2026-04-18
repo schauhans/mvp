@@ -63,11 +63,6 @@ SYSTEM_PROMPT = (
     "**TREND OVERVIEW**\n"
     "[2–3 sentences. What is happening on XHS right now? Describe the visual or behavioral signal. "
     "Plain language a CA can repeat out loud. No jargon.]\n\n"
-    "---\n\n"
-    "**DATA SIGNAL**\n"
-    "- Engagement rate: [X]% (vs. XHS fashion category avg ~4.5% · [N] posts · [month year])\n"
-    "- Post growth: +[X]% (week-on-week)\n"
-    "- Brand relevance: [high/medium/low]\n\n"
     "**CONFIDENCE NOTE**\n"
     "[use exactly the confidence level you are given] — [one sentence on methodology; "
     "if data is synthetic write: \"Synthetic data — for prototype testing only\"]\n\n"
@@ -242,7 +237,17 @@ def _detect_data_note():
 
 
 def load_trends(brand: str = ""):
-    # Try module 2 pipeline output first — but only if it was generated for this brand
+    # Brand-specific synthetic shortlist takes priority (explicit prototype data)
+    brand_json = SCRIPT_DIR / f"trend_shortlist_{_brand_slug(brand)}.json" if brand else None
+    if brand_json and brand_json.exists():
+        print(f"Using brand-specific shortlist: {brand_json.name}")
+        with open(brand_json, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if "query_context" in data and "data_note" not in data["query_context"]:
+            data["query_context"]["data_note"] = _detect_data_note()
+        return data
+
+    # Try module 2 pipeline output — but only if it was generated for this brand
     if MODULE2_OUTPUT.exists():
         with open(MODULE2_OUTPUT, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -264,20 +269,11 @@ def load_trends(brand: str = ""):
                 },
                 "trends": trends,
             }
-    # Fallback: brand-specific shortlist file, then generic
-    brand_json = SCRIPT_DIR / f"trend_shortlist_{_brand_slug(brand)}.json" if brand else None
-    if brand_json and brand_json.exists():
-        print(f"Module 2 output not found — falling back to {brand_json.name}")
-        with open(brand_json, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        if "query_context" in data and "data_note" not in data["query_context"]:
-            data["query_context"]["data_note"] = _detect_data_note()
-        return data
+    # Generic fallback for standalone testing
     if not JSON_PATH.exists():
         raise FileNotFoundError(
-            f"No input found. Expected module 2 output at {MODULE2_OUTPUT}, "
-            f"brand shortlist at trend_shortlist_{_brand_slug(brand)}.json, "
-            f"or generic fallback at {JSON_PATH}"
+            f"No input found. Expected a brand shortlist at trend_shortlist_{_brand_slug(brand)}.json, "
+            f"module 2 output at {MODULE2_OUTPUT}, or generic fallback at {JSON_PATH}"
         )
     print(f"Module 2 output not found — falling back to {JSON_PATH}")
     with open(JSON_PATH, "r", encoding="utf-8") as f:
@@ -657,7 +653,7 @@ def _card_to_html(trend_id, card_text):
                 f'</div>'
             )
         # Known labelled sections
-        elif re.match(r'^\*\*(TREND OVERVIEW|DATA SIGNAL|CLIENT MATCH|CONVERSATION STARTER|PRODUCT SPOTLIGHT)\*\*', first):
+        elif re.match(r'^\*\*(TREND OVERVIEW|CLIENT MATCH|CONVERSATION STARTER|PRODUCT SPOTLIGHT)\*\*', first):
             label = re.match(r'^\*\*(.+?)\*\*', first).group(1)
             body = re.sub(r'^\*\*[^*]+\*\*\n?', '', section, count=1)
 
@@ -679,7 +675,6 @@ def _card_to_html(trend_id, card_text):
             else:
                 css_class = {
                     'TREND OVERVIEW': 'section-overview',
-                    'DATA SIGNAL': 'section-data',
                     'CLIENT MATCH': 'section-client',
                     'PRODUCT SPOTLIGHT': 'section-product',
                 }.get(label, '')
