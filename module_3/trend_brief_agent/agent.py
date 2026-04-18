@@ -633,7 +633,7 @@ def _block_md(text):
 def _card_to_html(trend_id, card_text):
     """Convert one LLM card (markdown) to a styled HTML block."""
     import html as _html
-    sections = re.split(r'\n---\n', card_text.strip())
+    sections = re.split(r'\n---[ \t]*\n', card_text.strip())
     parts = []
 
     for section in sections:
